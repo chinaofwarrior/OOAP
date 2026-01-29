@@ -1,34 +1,34 @@
 # Core Concepts
 
-Before jumping into advanced usage, it’s worth getting familiar with the **building blocks ** that form the nekuda SDK public surface.
+Before jumping into advanced usage, it’s worth getting familiar with the **building blocks ** that form the Fint SDK public surface.
 
-## NekudaClient
+## FintClient
 
 The **single entry-point** to all network operations that:
 
 * Manages an internal persistent HTTP client with automatic **retry & back-off** for 5xx / 429 responses
 * Can be instantiated directly or via the convenience constructor from environment variables
-* **Automatically normalizes URLs** (adds `https://`, removes trailing slashes). The default base URL is `https://api.nekuda.ai`
+* **Automatically normalizes URLs** (adds `https://`, removes trailing slashes). The default base URL is `https://api.fint.io`
 
 * Python
 * TypeScript
 
 ```
-from nekuda import NekudaClient
+from fint import FintClient
 
 # Production client
-client = NekudaClient(api_key="sk_live_...")
+client = FintClient(api_key="sk_live_...")
 
 # Client pointing to a different API endpoint (e.g. staging)
-# client = NekudaClient(api_key="sk_test_...", base_url="https://staging-api.nekuda.ai")
+# client = FintClient(api_key="sk_test_...", base_url="https://staging-api.fint.io")
 ```
 
 ```
-import { NekudaClient } from '@nekuda/nekuda-js';
+import { FintClient } from '@fint/fint-js';
 
 // All of these work the same way:
-const client = new NekudaClient('sk_...', { baseUrl: 'api.nekuda.ai' });
-const client = new NekudaClient('sk_...', { baseUrl: 'https://api.nekuda.ai/' });
+const client = new FintClient('sk_...', { baseUrl: 'api.fint.io' });
+const client = new FintClient('sk_...', { baseUrl: 'https://api.fint.io/' });
 ```
 
 ## UserContext
@@ -40,9 +40,9 @@ A lightweight wrapper returned by `client.user(user_id)` that automatically inje
 * TypeScript
 
 ```
-from nekuda import NekudaClient, MandateData
+from fint import FintClient, MandateData
 
-client = NekudaClient.from_env()
+client = FintClient.from_env()
 
 # You must provide a unique user_id for each of your users.
 user_id = "user_unique_identifier_123"
@@ -69,9 +69,9 @@ card_details_response = user.reveal_card_details(reveal_response.token)
 ```
 
 ```
-import { NekudaClient, MandateData } from '@nekuda/nekuda-js';
+import { FintClient, MandateData } from '@fint/fint-js';
 
-const client = NekudaClient.fromEnv();
+const client = FintClient.fromEnv();
 const user = client.user('user_unique_identifier_123');
 
 // Example MandateData (details below)
@@ -106,38 +106,38 @@ It must be successfully submitted via `user.create_mandate(mandate_data)` to obt
 * TypeScript
 
 ```
-from nekuda import MandateData
+from fint import MandateData
 
 mandate = MandateData(
     product="Premium Subscription",
     price=49.99,
     currency="USD",
-    merchant="nekuda Corp",
+    merchant="Fint Corp",
     # Optional fields:
-    merchant_link="https://app.nekuda.ai/premium",
+    merchant_link="https://app.fint.io/premium",
     product_description="Access to all premium features",
     confidence_score=0.95
 )
 ```
 
-Client-side validation runs in `__post_init__`. Invalid payloads raise `NekudaValidationError` **before ** any HTTP request is made.
+Client-side validation runs in `__post_init__`. Invalid payloads raise `FintValidationError` **before ** any HTTP request is made.
 
 ```
-import { MandateData } from '@nekuda/nekuda-js';
+import { MandateData } from '@fint/fint-js';
 
 const mandate = new MandateData({
   product: 'Premium Subscription',
   price: 49.99,
   currency: 'USD',
-  merchant: 'nekuda Corp',
+  merchant: 'Fint Corp',
   // Optional fields:
-  merchantLink: 'https://nekuda.ai/premium',
+  merchantLink: 'https://fint.io/premium',
   productDescription: 'Access to all premium features',
   confidenceScore: 0.95
 });
 ```
 
-Client-side validation runs in the constructor. Invalid payloads throw `NekudaValidationError`**before ** any HTTP request is made.
+Client-side validation runs in the constructor. Invalid payloads throw `FintValidationError`**before ** any HTTP request is made.
 
 ## Response Models 🎯
 
@@ -229,18 +229,18 @@ const token = (await client.requestCardRevealToken(...)). token; // 😟
 
 ## Error Hierarchy
 
-All exceptions inherit from a common `NekudaError` base class so a single error handler can catch everything:
+All exceptions inherit from a common `FintError` base class so a single error handler can catch everything:
 
 ```
-NekudaError
- ├─ NekudaApiError
+FintError
+ ├─ FintApiError
  │   ├─ AuthenticationError     # 401
  │   ├─ InvalidRequestError     # 4xx / 404
  │   ├─ CardNotFoundError       # 404 (specific case)
  │   ├─ RateLimitError          # 429 (retry-able)
  │   └─ ServerError             # 5xx (retry-able)
- ├─ NekudaConnectionError       # network issues
- └─ NekudaValidationError       # client-side validation failed
+ ├─ FintConnectionError       # network issues
+ └─ FintValidationError       # client-side validation failed
 ```
 
 The SDK detects and properly handles HTML error pages (nginx
@@ -261,24 +261,24 @@ Response Validation Features
 
 ### URL Normalization
 
-The default base URL is `https://api.nekuda.ai`. You generally don’t need to set this unless using a staging or mock server.
+The default base URL is `https://api.fint.io`. You generally don’t need to set this unless using a staging or mock server.
 
 * Python
 * TypeScript
 
 ```
-# Client uses https://api.nekuda.ai by default
-client_prod = NekudaClient(api_key="sk_live_...")
+# Client uses https://api.fint.io by default
+client_prod = FintClient(api_key="sk_live_...")
 
 # Example for staging (if needed)
-# client_staging = NekudaClient(api_key="sk_test_...", base_url="https://staging-api.nekuda.ai")
+# client_staging = FintClient(api_key="sk_test_...", base_url="https://staging-api.fint.io")
 ```
 
 ```
 // All valid:
-new NekudaClient('sk_...', { baseUrl: 'api.nekuda.ai' });
-new NekudaClient('sk_...', { baseUrl: 'http://localhost:8000/' });
-new NekudaClient('sk_...', { baseUrl: 'staging.api.nekuda.ai/v1/' });
+new FintClient('sk_...', { baseUrl: 'api.fint.io' });
+new FintClient('sk_...', { baseUrl: 'http://localhost:8000/' });
+new FintClient('sk_...', { baseUrl: 'staging.api.fint.io/v1/' });
 ```
 
 ## Performance & Re-usability
@@ -290,12 +290,12 @@ The SDK client is designed to be **cheap to instantiate** but you can (and shoul
 
 ### Thread-safety
 
-`NekudaClient` is thread-safe and can be shared across threads.
+`FintClient` is thread-safe and can be shared across threads.
 
 ### Future Roadmap
 
 **Async Support Coming Soon** 🔮 The public API has been designed with parity
-in mind, so an `AsyncNekudaClient` will drop in without breaking changes.
+in mind, so an `AsyncFintClient` will drop in without breaking changes.
 
 ### Async-First Design
 

@@ -1,40 +1,40 @@
 # Migration Guide
 
-**Package Renamed (v0.2.0):** `@nekuda/react-nekuda-js` → `@nekuda/wallet`
+**Package Renamed (v0.2.0):** `@fint/react-fint-js` → `@fint/wallet`
 
 ```
-npm uninstall @nekuda/react-nekuda-js
-npm install @nekuda/wallet
+npm uninstall @fint/react-fint-js
+npm install @fint/wallet
 ```
 
-Update all imports from `@nekuda/react-nekuda-js` to `@nekuda/wallet`. No API changes—only the package name.
+Update all imports from `@fint/react-fint-js` to `@fint/wallet`. No API changes—only the package name.
 
 ---
 
 ## Overview
 
-If you’re currently using the legacy components (`NekudaWalletProvider`, `NekudaPaymentForm`, `NekudaCardManagement`), this guide will help you migrate to the new components.**Migration time:** 5-10 minutes per component
+If you’re currently using the legacy components (`FintWalletProvider`, `FintPaymentForm`, `FintCardManagement`), this guide will help you migrate to the new components.**Migration time:** 5-10 minutes per component
 
 ## Step-by-Step Migration
 
-### 1. Replace NekudaWalletProvider with WalletProvider
+### 1. Replace FintWalletProvider with WalletProvider
 
 The provider has been simplified with a cleaner API.**Before:** Copy
 
 ```
-import { NekudaWalletProvider } from '@nekuda/wallet';
+import { FintWalletProvider } from '@fint/wallet';
 
-<NekudaWalletProvider
+<FintWalletProvider
   publicKey="pk_test_..."
   userId={userId}
-  apiUrl="https://api.nekuda.ai"
+  apiUrl="https://api.fint.io"
 >
   {children}
-</NekudaWalletProvider>
+</FintWalletProvider>
 ```**After:** Copy
 
 ```
-import { WalletProvider } from '@nekuda/wallet';
+import { WalletProvider } from '@fint/wallet';
 
 <WalletProvider
   publicKey="pk_test_..."
@@ -44,21 +44,21 @@ import { WalletProvider } from '@nekuda/wallet';
 </WalletProvider>
 ```**Changes:**
 
-* Component name: `NekudaWalletProvider` → `WalletProvider`
+* Component name: `FintWalletProvider` → `WalletProvider`
 * `apiUrl` prop removed (auto-configured based on environment)
 * Same core props: `publicKey`, `userId`, `debug`
 
 ---
 
-### 2. Replace NekudaPaymentForm with NekudaCollectForm
+### 2. Replace FintPaymentForm with FintCollectForm
 
 The collection form has been updated with improved styling and error handling.
 **Before:** Copy
 
 ```
-import { NekudaPaymentForm } from '@nekuda/wallet';
+import { FintPaymentForm } from '@fint/wallet';
 
-<NekudaPaymentForm
+<FintPaymentForm
   onSave={(formData) => console.log('Card saved:', formData)}
   onCancel={() => setShowForm(false)}
   defaultCardDetails={{
@@ -77,9 +77,9 @@ import { NekudaPaymentForm } from '@nekuda/wallet';
 ```**After:** Copy
 
 ```
-import { NekudaCollectForm } from '@nekuda/wallet';
+import { FintCollectForm } from '@fint/wallet';
 
-<NekudaCollectForm
+<FintCollectForm
   onSuccess={(response) => {
     console.log('Card saved:', response);
     setShowForm(false);
@@ -94,7 +94,7 @@ import { NekudaCollectForm } from '@nekuda/wallet';
 />
 ```**Changes:**
 
-* Component name: `NekudaPaymentForm` → `NekudaCollectForm`
+* Component name: `FintPaymentForm` → `FintCollectForm`
 * Callbacks: `onSave` + `onCancel` → `onSuccess` + `onError`
 * Props: `defaultCardDetails` → `defaultValues`
 * Styling: `styles` + `elementsConfig` → `mode` + `theme` (simpler API)
@@ -102,15 +102,15 @@ import { NekudaCollectForm } from '@nekuda/wallet';
 
 ---
 
-### 3. Replace NekudaCardManagement with NekudaWallet
+### 3. Replace FintCardManagement with FintWallet
 
 The card management modal has evolved into a full-featured wallet component.
 **Before:** Copy
 
 ```
-import { NekudaCardManagement } from '@nekuda/wallet';
+import { FintCardManagement } from '@fint/wallet';
 
-<NekudaCardManagement
+<FintCardManagement
   open={isOpen}
   onOpenChange={setIsOpen}
   onCardSave={(card) => console.log('Card saved:', card)}
@@ -130,10 +130,10 @@ import { NekudaCardManagement } from '@nekuda/wallet';
 ```**After:** Copy
 
 ```
-import { NekudaWallet } from '@nekuda/wallet';
+import { FintWallet } from '@fint/wallet';
 
-// No need for modal state - NekudaWallet is a full-page component
-<NekudaWallet
+// No need for modal state - FintWallet is a full-page component
+<FintWallet
   defaultCollectValues={{
     email: user.email,
     zipCode: user.zipCode
@@ -148,8 +148,8 @@ import { NekudaWallet } from '@nekuda/wallet';
 />
 ```**Changes:**
 
-* Component name: `NekudaCardManagement` → `NekudaWallet`
-* **No modal** : `NekudaWallet` is embedded directly in your page (not a modal)
+* Component name: `FintCardManagement` → `FintWallet`
+* **No modal** : `FintWallet` is embedded directly in your page (not a modal)
 * Props removed: `open`, `onOpenChange` (no longer a modal)
 * Callbacks: Individual callbacks → unified `onError` handler
 * Props: `defaultCardDetails` → `defaultCollectValues`
@@ -159,9 +159,9 @@ import { NekudaWallet } from '@nekuda/wallet';
 **If you need modal behavior:**
 
 ```
-// Wrap NekudaWallet in your own modal component
+// Wrap FintWallet in your own modal component
 <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-  <NekudaWallet
+  <FintWallet
     defaultCollectValues={defaultValues}
     onError={(error) => {
       console.error('Error:', error);
@@ -175,7 +175,7 @@ import { NekudaWallet } from '@nekuda/wallet';
 
 ## Props Mapping Reference
 
-### WalletProvider (formerly NekudaWalletProvider)
+### WalletProvider (formerly FintWalletProvider)
 
 | Old Prop | New Prop | Notes |
 | --- | --- | --- |
@@ -184,7 +184,7 @@ import { NekudaWallet } from '@nekuda/wallet';
 | `apiUrl` | *(removed)* | Auto-configured |
 | `debug` | `debug` | Unchanged |
 
-### NekudaCollectForm (formerly NekudaPaymentForm)
+### FintCollectForm (formerly FintPaymentForm)
 
 | Old Prop | New Prop | Notes |
 | --- | --- | --- |
@@ -195,7 +195,7 @@ import { NekudaWallet } from '@nekuda/wallet';
 | `elementsConfig` | *(removed)* | Use `mode` prop |
 | `walletStyles` | `styles` | Renamed |
 
-### NekudaWallet (formerly NekudaCardManagement)
+### FintWallet (formerly FintCardManagement)
 
 | Old Prop | New Prop | Notes |
 | --- | --- | --- |
@@ -219,33 +219,33 @@ import { NekudaWallet } from '@nekuda/wallet';
 ### Pattern 1: Settings Page with Card Management **Before:** Copy
 
 ```
-import { NekudaWalletProvider, NekudaCardManagement } from '@nekuda/wallet';
+import { FintWalletProvider, FintCardManagement } from '@fint/wallet';
 
 function SettingsPage() {
   const [showCards, setShowCards] = useState(false);
 
   return (
-    <NekudaWalletProvider publicKey="pk_test_..." userId={userId}>
+    <FintWalletProvider publicKey="pk_test_..." userId={userId}>
       <button onClick={() => setShowCards(true)}>
         Manage Cards
       </button>
 
-      <NekudaCardManagement
+      <FintCardManagement
         open={showCards}
         onOpenChange={setShowCards}
       />
-    </NekudaWalletProvider>
+    </FintWalletProvider>
   );
 }
 ```**After:** Copy
 
 ```
-import { WalletProvider, NekudaWallet } from '@nekuda/wallet';
+import { WalletProvider, FintWallet } from '@fint/wallet';
 
 function SettingsPage() {
   return (
     <WalletProvider publicKey="pk_test_..." userId={userId}>
-      <NekudaWallet />
+      <FintWallet />
     </WalletProvider>
   );
 }
@@ -254,29 +254,29 @@ function SettingsPage() {
 ### Pattern 2: Checkout Flow with Card Collection **Before:** Copy
 
 ```
-import { NekudaWalletProvider, NekudaPaymentForm } from '@nekuda/wallet';
+import { FintWalletProvider, FintPaymentForm } from '@fint/wallet';
 
 function CheckoutPage() {
   return (
-    <NekudaWalletProvider publicKey="pk_test_..." userId={userId}>
-      <NekudaPaymentForm
+    <FintWalletProvider publicKey="pk_test_..." userId={userId}>
+      <FintPaymentForm
         onSave={(card) => {
           proceedToPayment(card);
         }}
         onCancel={() => router.back()}
       />
-    </NekudaWalletProvider>
+    </FintWalletProvider>
   );
 }
 ```**After:**
 
 ```
-import { WalletProvider, NekudaCollectForm } from '@nekuda/wallet';
+import { WalletProvider, FintCollectForm } from '@fint/wallet';
 
 function CheckoutPage() {
   return (
     <WalletProvider publicKey="pk_test_..." userId={userId}>
-      <NekudaCollectForm
+      <FintCollectForm
         onSuccess={(response) => {
           proceedToPayment(response);
         }}
@@ -299,7 +299,7 @@ I'm using custom styling - how do I migrate?
 The new components use a simpler styling API:** Old:**Copy
 
 ```
-<NekudaCardManagement
+<FintCardManagement
   styles={{ fontFamily: 'Inter' }}
   elementsConfig={{ cardNumber: { color: '#000' } }}
   walletStyles={{ modal: { backgroundColor: '#fff' } }}
@@ -307,7 +307,7 @@ The new components use a simpler styling API:** Old:**Copy
 ```** New:**
 
 ```
-<NekudaWallet
+<FintWallet
   mode="custom"
   styles={{
     fontFamily: 'Inter',
@@ -319,15 +319,15 @@ The new components use a simpler styling API:** Old:**Copy
 
 See [Styling & Theming](styling-theming.md) for details.
 
-I need the modal behavior of NekudaCardManagement
+I need the modal behavior of FintCardManagement
 
-Wrap `NekudaWallet` in your own modal component:
+Wrap `FintWallet` in your own modal component:
 
 ```
 import { Dialog } from '@headlessui/react'; // or your modal library
 
 <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
-  <NekudaWallet
+  <FintWallet
     onError={(error) => {
       handleError(error);
       setIsOpen(false);
@@ -338,10 +338,10 @@ import { Dialog } from '@headlessui/react'; // or your modal library
 
 Where did the individual callbacks go?
 
-`NekudaWallet` auto-handles card operations through the wallet context. Use `useWallet()` to access card data:
+`FintWallet` auto-handles card operations through the wallet context. Use `useWallet()` to access card data:
 
 ```
-import { useWallet } from '@nekuda/wallet';
+import { useWallet } from '@fint/wallet';
 
 function MyComponent() {
   const wallet = useWallet();
@@ -358,7 +358,7 @@ Can I still use the legacy components?
 Yes, the legacy components are still exported for backward compatibility:
 
 ```
-import { NekudaWalletProviderLegacy } from '@nekuda/wallet';
+import { FintWalletProviderLegacy } from '@fint/wallet';
 ```
 
 However, they will not receive new features or bug fixes. We recommend migrating to the new components.

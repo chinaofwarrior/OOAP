@@ -3,18 +3,18 @@
 **What You’ll Learn ** Learn how to:
 
 * Check CVV validity with `isCvvValid` field
-* Show `NekudaCvvCollector` when CVV expires
+* Show `FintCvvCollector` when CVV expires
 * Handle backend CVV errors
 * Integrate CVV re-collection into your purchase flow
 
 **Time to complete:** 5 minutes
 
-CVVs are stored securely for 60 minutes after collection. After this window, you must prompt users to re-enter their CVV using `NekudaCvvCollector`.
+CVVs are stored securely for 60 minutes after collection. After this window, you must prompt users to re-enter their CVV using `FintCvvCollector`.
 
 ## Quick Start
 
 ```
-import { useWallet, NekudaCvvCollector } from '@nekuda/wallet';
+import { useWallet, FintCvvCollector } from '@fint/wallet';
 
 function Checkout() {
   const wallet = useWallet();
@@ -23,7 +23,7 @@ function Checkout() {
   // Check if CVV is still valid
   if (defaultCard && !defaultCard.isCvvValid) {
     return (
-      <NekudaCvvCollector
+      <FintCvvCollector
         cardId={defaultCard.id}
         last4={defaultCard.lastFourDigits}
         brand={defaultCard.cardType}
@@ -44,7 +44,7 @@ function Checkout() {
 ## How It Works
 
 1.**Check CVV validity** : Each payment method has an `isCvvValid` boolean
-2. **Show collector if expired** : Display `NekudaCvvCollector` when `isCvvValid === false`
+2. **Show collector if expired** : Display `FintCvvCollector` when `isCvvValid === false`
 3. **User enters CVV** : Secure iframe collects only the CVV (no full card re-entry)
 4. **60-minute window resets** : CVV is stored again for 60 minutes
 5. **Retry purchase** : Your backend can now reveal card details with CVV
@@ -150,7 +150,7 @@ Partial<ThemeContract>
 Theme token overrides for brand customization.**Example:**
 
 ```
-<NekudaCvvCollector
+<FintCvvCollector
   themeConfig={{
     accent: { primary: '#7C3AED' },
     typography: { fontFamily: { base: 'Inter' } }
@@ -180,7 +180,7 @@ Button text
 
 ```
 import { useState } from 'react';
-import { WalletProvider, useWallet, NekudaCvvCollector } from '@nekuda/wallet';
+import { WalletProvider, useWallet, FintCvvCollector } from '@fint/wallet';
 
 function PurchaseFlow() {
   const [step, setStep] = useState('review'); // 'review' | 'cvv' | 'processing'
@@ -213,7 +213,7 @@ function PurchaseFlow() {
         <h2>CVV Expired</h2>
         <p>Please re-enter your CVV to continue</p>
 
-        <NekudaCvvCollector
+        <FintCvvCollector
           cardId={defaultCard.id}
           last4={defaultCard.lastFourDigits}
           brand={defaultCard.cardType}
@@ -262,9 +262,9 @@ When CVV expires, your backend’s `reveal_card_details()` call will return an e
 * TypeScript
 
 ```
-from nekuda import NekudaClient, NekudaError
+from fint import FintClient, FintError
 
-client = NekudaClient.from_env()
+client = FintClient.from_env()
 user = client.user("user_123")
 
 try:
@@ -276,14 +276,14 @@ try:
 except CardCvvExpiredError:
     # CVV expired - frontend must collect it again
     return {"error": "CVV_EXPIRED", "action": "collect_cvv"}
-except NekudaError as e:
+except FintError as e:
     print(f"Error: {e}")
 ```
 
 ```
-import { NekudaClient, NekudaError, CardCvvExpiredError } from '@nekuda/nekuda-js';
+import { FintClient, FintError, CardCvvExpiredError } from '@fint/fint-js';
 
-const client = NekudaClient.fromEnv();
+const client = FintClient.fromEnv();
 const user = client.user('user_123');
 
 try {
@@ -297,13 +297,13 @@ try {
     // CVV expired - frontend must collect it again
     return { error: 'CVV_EXPIRED', action: 'collect_cvv' };
   }
-  if (error instanceof NekudaError) {
+  if (error instanceof FintError) {
     console.error(`Error: ${error.message}`);
   }
 }
 ```
 
-Your frontend should listen for this error and show `NekudaCvvCollector` to re-collect the CVV.
+Your frontend should listen for this error and show `FintCvvCollector` to re-collect the CVV.
 
 ## FAQ
 
@@ -317,7 +317,7 @@ No. The 60-minute limit is a security requirement and cannot be extended.
 
 Do users need to re-enter the full card?
 
-No. `NekudaCvvCollector` only collects the CVV. The card number, expiry, and other details remain saved.
+No. `FintCvvCollector` only collects the CVV. The card number, expiry, and other details remain saved.
 
 What if the user enters the wrong CVV?
 

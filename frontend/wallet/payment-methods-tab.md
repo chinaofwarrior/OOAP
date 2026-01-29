@@ -14,10 +14,10 @@ The Payment Methods tab lets users add, edit, and manage their saved cards. Your
 ## Quick Start
 
 ```
-import { WalletProvider, NekudaWallet } from '@nekuda/wallet';
+import { WalletProvider, FintWallet } from '@fint/wallet';
 
 <WalletProvider publicKey="pk_test_..." userId={userId}>
-  <NekudaWallet theme="light" />
+  <FintWallet theme="light" />
 </WalletProvider>
 ```
 
@@ -30,7 +30,7 @@ import { WalletProvider, NekudaWallet } from '@nekuda/wallet';
 Reduce friction by pre-filling information you already have:
 
 ```
-<NekudaWallet
+<FintWallet
   defaultContact={{
     firstName: user.firstName,
     lastName: user.lastName,
@@ -52,9 +52,9 @@ Reduce friction by pre-filling information you already have:
 Show only payment and billing fields if you already have contact and shipping info:
 
 ```
-import { CollectionSection } from '@nekuda/wallet';
+import { CollectionSection } from '@fint/wallet';
 
-<NekudaWallet
+<FintWallet
   collectFormVisibleSections={[
     CollectionSection.Payment,
     CollectionSection.Billing
@@ -104,7 +104,7 @@ Users can delete any saved card. If they delete the default card, the most recen
 Show your own message when users have no cards:
 
 ```
-<NekudaWallet
+<FintWallet
   renderEmptyState={() => (
     <div style={{ textAlign: 'center', padding: '3rem' }}>
       <h3>No payment methods yet</h3>
@@ -123,7 +123,7 @@ Show your own message when users have no cards:
 Check card information in your app using `useWallet()`:
 
 ```
-import { useWallet } from '@nekuda/wallet';
+import { useWallet } from '@fint/wallet';
 
 function Dashboard() {
   const wallet = useWallet();
@@ -150,7 +150,7 @@ This is metadata only - no full card numbers or CVVs. Only your backend SDK can 
 ## Example: Payment Settings Page
 
 ```
-import { WalletProvider, NekudaWallet } from '@nekuda/wallet';
+import { WalletProvider, FintWallet } from '@fint/wallet';
 
 function PaymentSettingsPage() {
   const { user } = useAuth();
@@ -161,7 +161,7 @@ function PaymentSettingsPage() {
       <p>Manage cards for your AI shopping assistant</p>
 
       <WalletProvider publicKey="pk_test_..." userId={user.id}>
-        <NekudaWallet
+        <FintWallet
           theme="light"
           defaultBilling={user.billingAddress}
           renderEmptyState={() => (

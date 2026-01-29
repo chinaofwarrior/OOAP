@@ -2,7 +2,7 @@
 
 ## Overview
 
-When testing your nekuda SDK integration, use these test card numbers to simulate different payment scenarios.
+When testing your Fint SDK integration, use these test card numbers to simulate different payment scenarios.
 
 ## Cards by brand
 

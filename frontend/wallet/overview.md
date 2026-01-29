@@ -1,18 +1,18 @@
 # Wallet Overview
 
-**Package Update (v0.2.0):** The SDK has been renamed from `@nekuda/react-nekuda-js` to `@nekuda/wallet`.
+**Package Update (v0.2.0):** The SDK has been renamed from `@fint/react-fint-js` to `@fint/wallet`.
 
 ```
-npm install @nekuda/wallet
+npm install @fint/wallet
 ```
 
 Update your imports:
 
 ```
-import { WalletProvider, NekudaWallet } from '@nekuda/wallet';
+import { WalletProvider, FintWallet } from '@fint/wallet';
 ```
 
-All functionality remains the same—only the package name changed.**First time using the Wallet?** Start with the [**Wallet Wizard** ](https://wizard.nekuda.ai) for a quick, interactive walkthrough that shows you how to set up and use the wallet—ideal for visual learners or first-time users.
+All functionality remains the same—only the package name changed.**First time using the Wallet?** Start with the Wallet Wizard for a quick, interactive walkthrough that shows you how to set up and use the wallet—ideal for visual learners or first-time users.
 
 ## Data Collected by the Wallet
 
@@ -25,8 +25,8 @@ The wallet organizes user data into three main groups:
 This structure gives your AI agent a complete set of credentials to handle purchases across different merchant sites without requiring users to re-enter information.**What You’ll Learn ** In this guide, you’ll learn:
 
 * Three integration approaches (Prebuilt, Styled, Custom)
-* How to set up `NekudaWallet` in 3 minutes
-* When to use NekudaWallet vs NekudaCollectForm
+* How to set up `FintWallet` in 3 minutes
+* When to use FintWallet vs FintCollectForm
 * Component props and customization options
 * How to access payment method metadata with `useWallet()`
 
@@ -34,7 +34,7 @@ This structure gives your AI agent a complete set of credentials to handle purch
 
 ## Choose Your Integration Approach
 
-The nekuda React SDK provides three ways to integrate payment collection into your application. Choose based on your needs:
+The Fint React SDK provides three ways to integrate payment collection into your application. Choose based on your needs:
 
 [## Prebuilt Wallet
 
@@ -46,13 +46,13 @@ Standalone collection form for guest checkouts and custom flows.** Best for:**Gu
 
 ### Component Hierarchy
 
-The nekuda React SDK provides components at different levels of abstraction:** NekudaWallet**(highest level): Complete interface with payment methods management, contact info, and shipping address.** NekudaCollectForm**(mid level): Standalone card collection form for custom onboarding or checkout flows.** Individual Components**(lowest level): Field-level components (CardNumber, CVV, ExpiryDate) for complete control over layout and UX.
+The Fint React SDK provides components at different levels of abstraction:** FintWallet**(highest level): Complete interface with payment methods management, contact info, and shipping address.** FintCollectForm**(mid level): Standalone card collection form for custom onboarding or checkout flows.** Individual Components**(lowest level): Field-level components (CardNumber, CVV, ExpiryDate) for complete control over layout and UX.
 
 ---
 
 ## Prebuilt Wallet
 
-`NekudaWallet` provides a complete wallet interface with payment methods, contact info, and shipping address management.** When to use:**
+`FintWallet` provides a complete wallet interface with payment methods, contact info, and shipping address management.** When to use:**
 
 * User account or settings pages requiring full wallet functionality
 * Minimizing development time with pre-built UI
@@ -69,23 +69,23 @@ The nekuda React SDK provides components at different levels of abstraction:** N
 
 ---
 
-## When to Use NekudaWallet
+## When to Use FintWallet
 
-**Use NekudaWallet when you need:**
+**Use FintWallet when you need:**
 
 * Complete payment method management (add, edit, delete cards)
 * Contact and shipping information management
 * Full wallet UI for user account/settings pages
 * Default card selection
 
-**Use NekudaCollectForm when you need:**
+**Use FintCollectForm when you need:**
 
 * Minimal card collection without the wallet UI
 * Guest checkout flows
 * One-time payment collection
 * Simple “add payment method” without managing multiple cards
 
-**They work together** : NekudaWallet uses NekudaCollectForm internally for the “Add Card” flow. You can control which sections show in that flow using `collectFormVisibleSections` and `collectFormCollectionData` props on NekudaWallet.See [Collection Form](collect-form.md) for section control details.
+**They work together** : FintWallet uses FintCollectForm internally for the “Add Card” flow. You can control which sections show in that flow using `collectFormVisibleSections` and `collectFormCollectionData` props on FintWallet.See [Collection Form](collect-form.md) for section control details.
 
 **For custom styling:**
 
@@ -98,30 +98,30 @@ The nekuda React SDK provides components at different levels of abstraction:** N
 ## Quick Start
 
 ```
-npm install @nekuda/wallet
+npm install @fint/wallet
 ```
 
 ```
-import { WalletProvider, NekudaWallet } from '@nekuda/wallet';
+import { WalletProvider, FintWallet } from '@fint/wallet';
 
 function UserSettings() {
   const userId = currentUser.id; // Your user's ID
 
   return (
     <WalletProvider publicKey="pk_test_..." userId={userId}>
-      <NekudaWallet />
+      <FintWallet />
     </WalletProvider>
   );
 }
 ```
 
-Get your public key from [app.nekuda.ai](https://app.nekuda.ai). Users can now save and manage payment methods. Your backend can retrieve them via the backend SDK.
+Get your public key from app.fint.io. Users can now save and manage payment methods. Your backend can retrieve them via the backend SDK.
 
 ---
 
 ## Styled Wallet
 
-Use the same `NekudaWallet` component with full control over styling and appearance.
+Use the same `FintWallet` component with full control over styling and appearance.
 **Styling options:**
 
 * **Themed mode** : Choose from light, dark, or minimal themes
@@ -140,7 +140,7 @@ Use the same `NekudaWallet` component with full control over styling and appeara
 
 ## Custom Integration
 
-For applications with specific requirements beyond the wallet UI:**`NekudaCollectForm` Component:**
+For applications with specific requirements beyond the wallet UI:**`FintCollectForm` Component:**
 
 * Standalone card collection form without wallet UI
 * Flexible section control (contact, shipping, payment, billing)
@@ -169,11 +169,11 @@ See [Collection Form](collect-form.md) for complete documentation and examples.
 
 ### `userId`
 
-Your user’s unique identifier from your system (e.g., database ID). Must be consistent across frontend and backend. nekuda doesn’t generate this - you provide it.
+Your user’s unique identifier from your system (e.g., database ID). Must be consistent across frontend and backend. Fint doesn’t generate this - you provide it.
 
 ### `publicKey`
 
-Your public API key (`pk_test_...` or `pk_live_...`) from [app.nekuda.ai](https://app.nekuda.ai). Safe to use in frontend code. Only allows card collection, not retrieval.
+Your public API key (`pk_test_...` or `pk_live_...`) from app.fint.io. Safe to use in frontend code. Only allows card collection, not retrieval.
 Never use your secret key (`sk_*`) in frontend code - it’s for backend only.
 
 ---
@@ -182,7 +182,7 @@ Never use your secret key (`sk_*`) in frontend code - it’s for backend only.
 
 **Provider Requirements:**
 
-* `WalletProvider` must wrap `NekudaWallet`
+* `WalletProvider` must wrap `FintWallet`
 * Provides authentication context for all API calls
 * `userId` links cards to your user system
 
@@ -193,7 +193,7 @@ Never use your secret key (`sk_*`) in frontend code - it’s for backend only.
 Use `useWallet()` to access non-sensitive card metadata in your React components:
 
 ```
-import { useWallet } from '@nekuda/wallet';
+import { useWallet } from '@fint/wallet';
 
 function Dashboard() {
   const wallet = useWallet();
@@ -229,7 +229,7 @@ string
 
 required
 
-Your nekuda **public API key ** from the [nekuda Portal](https://app.nekuda.ai). Safe to use in client-side code. Format: `pk_test_...` or `pk_live_...`
+Your Fint **public API key ** from the Fint Portal. Safe to use in client-side code. Format: `pk_test_...` or `pk_live_...`
 
 [​](#param-user-id)
 
@@ -249,7 +249,7 @@ default:"false"
 
 Enable debug logging for troubleshooting API calls and iframe communication.
 
-### `<NekudaWallet>`
+### `<FintWallet>`
 
 The main wallet component. All props are optional.
 
@@ -286,7 +286,7 @@ Partial<ThemeContract>
 Override theme tokens for brand customization. Changes cascade throughout the wallet.**Example:**
 
 ```
-<NekudaWallet
+<FintWallet
   themeConfig={{
     accent: { primary: '#7C3AED' },
     typography: { fontFamily: { base: 'Inter, sans-serif' } },
@@ -315,7 +315,7 @@ Partial<WalletStyles>
 Component-level style overrides for fine-grained control. Use this to customize specific UI elements (tabs, cards, buttons, etc.).** Use with themeConfig:**
 
 ```
-<NekudaWallet
+<FintWallet
   themeConfig={{ accent: { primary: '#7C3AED' } }}  // Global brand color
   styles={{ container: { maxWidth: '900px' } }}      // Specific override
 />
@@ -406,9 +406,9 @@ CollectionSection[]
 Control which sections to show when users click “Add Card”. By default, all sections are shown.** Use case**: Streamline the add card flow for existing users by showing only payment and billing sections.** Example:**
 
 ```
-import { CollectionSection } from '@nekuda/react-nekuda-js';
+import { CollectionSection } from '@fint/react-fint-js';
 
-<NekudaWallet
+<FintWallet
   collectFormVisibleSections={[
     CollectionSection.Payment,
     CollectionSection.Billing
@@ -431,7 +431,7 @@ CollectionData
 Provide data for sections hidden from the “Add Card” form. Use with `collectFormVisibleSections` to skip collecting information you already have.** Fields**: `contactInfo`, `shippingAddress`, `billingAddress`, `cardHolderName`, `customData`** Example:**Copy
 
 ```
-<NekudaWallet
+<FintWallet
   collectFormCollectionData={{
     contactInfo: {
       firstName: user.firstName,
@@ -453,14 +453,14 @@ Provide data for sections hidden from the “Add Card” form. Use with `collect
 For existing users, simplify the “Add Card” experience by showing only payment and billing sections:
 
 ```
-import { WalletProvider, NekudaWallet, CollectionSection } from '@nekuda/wallet';
+import { WalletProvider, FintWallet, CollectionSection } from '@fint/wallet';
 
 function PaymentSettings() {
   const { user } = useAuth();
 
   return (
     <WalletProvider publicKey="pk_test_..." userId={user.id}>
-      <NekudaWallet
+      <FintWallet
         theme="light"
         // Simplify "Add Card" - only show payment + billing
         collectFormVisibleSections={[
@@ -496,15 +496,15 @@ See [Integration Patterns](integration-patterns.md) for more examples.
 ```
 // Frontend: User adds card
 <WalletProvider publicKey="pk_test_..." userId="user_123">
-  <NekudaWallet />
+  <FintWallet />
 </WalletProvider>
 ```
 
 ```
 # Backend: Retrieve card when needed
-from nekuda import NekudaClient, MandateData
+from fint import FintClient, MandateData
 
-client = NekudaClient.from_env()
+client = FintClient.from_env()
 user = client.user("user_123")  # Same userId
 
 mandate_resp = user.create_mandate(MandateData(...))
@@ -514,13 +514,13 @@ card = user.reveal_card_details(reveal_resp.reveal_token)
 # AI agent now has: card.card_number, card.cvv, card.card_expiry_date
 ```
 
-Frontend stores cards (tokenized). Backend retrieves cards (full details) for your AI agent. See [Quickstart](../../nekuda-sdk/Quickstart.md) for complete example.
+Frontend stores cards (tokenized). Backend retrieves cards (full details) for your AI agent. See [Quickstart](../../fint-sdk/Quickstart.md) for complete example.
 
 ---
 
 ## Security & PCI Compliance
 
-Card inputs render in secure iframe at `collect.nekuda.ai` - your frontend cannot access them. Wallet only shows tokenized data (last 4 digits, expiry, name). Full card numbers and CVVs are never transmitted to your frontend.
+Card inputs render in secure iframe at `collect.fint.io` - your frontend cannot access them. Wallet only shows tokenized data (last 4 digits, expiry, name). Full card numbers and CVVs are never transmitted to your frontend.
 ** Key separation:**
 
 * **Public key** (`pk_*`): Frontend collection only
@@ -546,7 +546,7 @@ See real-world integration examples](integration-patterns.md)
 
 ## FAQ
 
-Can I use NekudaWallet without WalletProvider?
+Can I use FintWallet without WalletProvider?
 
 No. `WalletProvider` provides authentication context (`publicKey` and `userId`) required for API requests.
 

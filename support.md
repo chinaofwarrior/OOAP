@@ -10,9 +10,9 @@ Review our security and compliance best practices for safe implementation.](best
 
 ## Frequently Asked Questions
 
-How can I use the nekuda SDK?
+How can I use the Fint SDK?
 
-You will need a nekuda account. Please send a message to [[email protected]](cdn-cgi/l/email-protection.md) to get one.
+You will need a Fint account. Please send a message to [[email protected]](cdn-cgi/l/email-protection.md) to get one.
 
 Why do I need to record a mandate?
 

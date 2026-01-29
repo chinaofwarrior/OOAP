@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 from markdownify import markdownify
 
 
-BASE_URL = "https://docs.nekuda.ai"
+BASE_URL = "https://docs.fint.io"
 OUTPUT_DIR = "."
 SESSION = requests.Session()
 SESSION.headers.update(
@@ -198,7 +198,7 @@ def clean_markdown(md: str) -> str:
                     "x.com/",
                     "github.com/",
                     "linkedin.com/",
-                    "nekuda.ai",
+                    "fint.io",
                 )
             ):
                 continue
@@ -368,7 +368,7 @@ def generate_summary(pages: list[tuple[str, str]]) -> None:
         rel_norm = rel_path.replace("\\", "/")
         if rel_norm.startswith("frontend/"):
             sections["Frontend SDK"].append((title, rel_path))
-        elif rel_norm.startswith("nekuda-sdk/"):
+        elif rel_norm.startswith("fint-sdk/"):
             sections["Backend SDK"].append((title, rel_path))
         elif rel_norm.startswith("api-reference/"):
             sections["API Reference"].append((title, rel_path))

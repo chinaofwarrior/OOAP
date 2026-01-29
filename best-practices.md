@@ -2,7 +2,7 @@
 
 ### TL;DR
 
-* **nekuda** supplies PCI‑compliant iframes + token APIs; raw card data never hits your servers.
+* **Fint** supplies PCI‑compliant iframes + token APIs; raw card data never hits your servers.
 * **You** keep tokens and logs safe and isolate card data from AI.
 
 ---
@@ -19,8 +19,8 @@
 
 ### Data Flow
 
-1. **Frontend** – Use `@nekuda/react-nekuda-js`; iframes keep card data off your origin.
-2.**Backend** – Store only `{user_id ↔ nekuda_token}` + `mandate_id`, `request_id`.
+1. **Frontend** – Use `@fint/react-fint-js`; iframes keep card data off your origin.
+2.**Backend** – Store only `{user_id ↔ fint_token}` + `mandate_id`, `request_id`.
 3.**Checkout** – Call `revealCardDetails`, pay immediately, forget the PAN.
 
 ---

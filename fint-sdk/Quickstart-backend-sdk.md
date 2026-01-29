@@ -1,6 +1,6 @@
 # Quickstart
 
-Welcome to the rapid-fire tour of the nekuda SDK. In less than five minutes you will:
+Welcome to the rapid-fire tour of the Fint SDK. In less than five minutes you will:
 
 1. Install the package
 2. Authenticate with your **API key**
@@ -14,27 +14,27 @@ This SDK handles the backend payment handling. You’ll also need to integrate o
 * TypeScript
 
 ```
-uv pip install nekuda
+uv pip install fint
 ```
 
 The SDK ships as a single, pure-Python wheel with minimal dependencies – install is ~1 second.
 
 ```
-npm install @nekuda/nekuda-js
+npm install @fint/fint-js
 ```
 
 The SDK ships as a modern TypeScript package with minimal dependencies and full tree-shaking support.
 
 ## Step 2: Authentication
 
-Grab your secret key from the [nekuda customer portal](https://app.nekuda.ai) and export it as an environment variable:
+Grab your secret key from the [Fint customer portal](https://app.fint.io) and export it as an environment variable:
 
 ```
-export NEKUDA_API_KEY="sk_live_…"  # required
+export FINT_API_KEY="sk_live_…"  # required
 
-# The SDK defaults to the production API: https://api.nekuda.ai
+# The SDK defaults to the production API: https://api.fint.io
 # For staging or local testing, you can override the base URL:
-# export NEKUDA_BASE_URL="https://staging-api.nekuda.ai"
+# export FINT_BASE_URL="https://staging-api.fint.io"
 ```
 
 That’s *all* the configuration you need for the quickstart.
@@ -47,9 +47,9 @@ That’s *all* the configuration you need for the quickstart.
 hello.py
 
 ```
-from nekuda import NekudaClient
+from fint import FintClient
 
-client = NekudaClient.from_env()
+client = FintClient.from_env()
 print("🚀 Authenticated! Your account ID is:", client.api_key[:8] + "…")
 ```
 
@@ -60,9 +60,9 @@ python hello.py
 hello.ts
 
 ```
-import { NekudaClient } from '@nekuda/nekuda-js';
+import { FintClient } from '@fint/fint-js';
 
-const client = NekudaClient.fromEnv();
+const client = FintClient.fromEnv();
 console.log("🚀 Authenticated! Your account ID is:", (client as any).apiKey.slice(0, 8) + "…");
 ```
 
@@ -86,9 +86,9 @@ The snippet below walks through the **full payment flow** with type-safe respons
 quick\_demo.py
 
 ```
-from nekuda import MandateData, NekudaClient, NekudaError
+from fint import MandateData, FintClient, FintError
 
-client = NekudaClient.from_env()
+client = FintClient.from_env()
 
 # A unique identifier for your user is required.
 user_id = "test_user_123"
@@ -101,7 +101,7 @@ try:
         product="Premium Subscription",
         price=49.99,
         currency="USD",
-        merchant="nekuda Corp"
+        merchant="Fint Corp"
     )
 
     # Create mandate - returns MandateCreateResponse
@@ -125,17 +125,17 @@ try:
     print(f"📅 Expiry: {card.card_expiry_date}")  # Always MM/YY format
     print(f"👤 Name: {card.cardholder_name}")
 
-except NekudaError as e:
+except FintError as e:
     print(f"❌ Error: {e}")
 ```
 
 quick\_demo.ts
 
 ```
-import { NekudaClient, MandateData, NekudaError } from '@nekuda/nekuda-js';
+import { FintClient, MandateData, FintError } from '@fint/fint-js';
 
 async function main() {
-  const client = NekudaClient.fromEnv();
+  const client = FintClient.fromEnv();
   const user = client.user('test_user_123');
 
   try {
@@ -144,7 +144,7 @@ async function main() {
       product: 'Premium Subscription',
       price: 49.99,
       currency: 'USD',
-      merchant: 'nekuda Corp'
+      merchant: 'Fint Corp'
     });
 
     // Create mandate - returns MandateCreateResponse
@@ -167,7 +167,7 @@ async function main() {
     console.log(`👤 Name: ${card.cardholderName}`);
 
   } catch (error) {
-    if (error instanceof NekudaError) {
+    if (error instanceof FintError) {
       console.log(`❌ Error: ${error.message}`);
     } else {
       console.log(`❌ Unexpected error: ${error}`);
@@ -206,7 +206,7 @@ const token = result. token; // Hope the property exists!
 
 [## Core Concepts
 
-Understand NekudaClient, UserContext, and response models](core-concepts.md)[## Usage Guide
+Understand FintClient, UserContext, and response models](core-concepts.md)[## Usage Guide
 
 Deep dive into the complete payment flow](usage-guide.md)[## Configuration
 

@@ -19,15 +19,15 @@
 * [Styling & Theming](frontend/wallet/styling-theming.md)
 * [Wallet Overview](frontend/wallet/overview.md)
 
-## Backend SDK
-* [API Reference](nekuda-sdk/api-reference.md)
-* [Configuration](nekuda-sdk/Configuration.md)
-* [Core Concepts](nekuda-sdk/core-concepts.md)
-* [Error Handling](nekuda-sdk/Errors.md)
-* [Getting Started](nekuda-sdk/getting-started.md)
-* [Quickstart](nekuda-sdk/Quickstart.md)
-* [Quickstart](nekuda-sdk/Quickstart-backend-sdk.md)
-* [Usage Guide](nekuda-sdk/usage-guide.md)
+## Fint SDK
+* [API Reference](fint-sdk/api-reference.md)
+* [Configuration](fint-sdk/Configuration.md)
+* [Core Concepts](fint-sdk/core-concepts.md)
+* [Error Handling](fint-sdk/Errors.md)
+* [Getting Started](fint-sdk/getting-started.md)
+* [Quickstart](fint-sdk/Quickstart.md)
+* [Quickstart](fint-sdk/Quickstart-backend-sdk.md)
+* [Usage Guide](fint-sdk/usage-guide.md)
 
 ## Security
 * [Best practices](best-practices.md)

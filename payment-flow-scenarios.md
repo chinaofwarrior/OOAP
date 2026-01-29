@@ -16,7 +16,7 @@ This page provides concrete examples of how the payment flow works in real-world
 
 Understanding when each step happens helps prevent CVV expiration issues:**Key Insights:**
 
-* **0:00-0:05** - User adds card via NekudaWallet (CVV timer starts)
+* **0:00-0:05** - User adds card via FintWallet (CVV timer starts)
 * **0:05-1:05** - 60-minute window where CVV is available
 * **1:05+** - CVV expires, `request_card_reveal_token()` raises `CardCvvExpiredError`
 * **Best Practice:** Complete purchases within 60 minutes of card collection
@@ -29,7 +29,7 @@ User adds card and immediately makes a purchase.
 
 ### Flow
 
-1.**00:00** - User adds card via NekudaWallet
+1.**00:00** - User adds card via FintWallet
 2.**00:02** - User says “Buy this item”
 3.**00:02** - Backend flow:
    * Create mandate #1
@@ -48,7 +48,7 @@ User adds card and immediately makes a purchase.
 
 ```
 // User adds card
-<NekudaWallet />
+<FintWallet />
 
 // Immediately trigger purchase
 const handlePurchase = async () => {
@@ -60,9 +60,9 @@ const handlePurchase = async () => {
 ```
 
 ```
-from nekuda import NekudaClient, MandateData
+from fint import FintClient, MandateData
 
-client = NekudaClient.from_env()
+client = FintClient.from_env()
 user = client.user("user_123")
 
 # Create mandate
@@ -89,14 +89,14 @@ User adds card but doesn’t make a purchase until later.
 
 ### Flow
 
-1. **00:00** - User adds card via NekudaWallet
+1. **00:00** - User adds card via FintWallet
 2. *User closes app, comes back next day*
 3. **24:00** - User says “Buy this item”
 4.**24:00** - Backend flow:
    * Create mandate #1
    * Request reveal token #1 → **Raises `CardCvvExpiredError`** ❌ (60-minute window expired)
 5.**24:01** - Backend signals frontend to collect CVV
-6.**24:01** - User re-enters CVV via `NekudaCvvCollector`
+6.**24:01** - User re-enters CVV via `FintCvvCollector`
 
 ### Outcome **Timeline** : 24 hours (beyond 60-minute window)
 **Result** : CVV expired - must collect again
@@ -107,7 +107,7 @@ User adds card but doesn’t make a purchase until later.
 * Backend
 
 ```
-import { useWallet, NekudaCvvCollector } from '@nekuda/react-nekuda-js';
+import { useWallet, FintCvvCollector } from '@fint/react-fint-js';
 
 function Purchase() {
   const wallet = useWallet();
@@ -127,7 +127,7 @@ function Purchase() {
 
   if (showCvvCollector) {
     return (
-      <NekudaCvvCollector
+      <FintCvvCollector
         cardId={defaultCard.id}
         last4={defaultCard.lastFourDigits}
         brand={defaultCard.cardType}
@@ -146,9 +146,9 @@ function Purchase() {
 ```
 
 ```
-from nekuda import NekudaClient, MandateData
+from fint import FintClient, MandateData
 
-client = NekudaClient.from_env()
+client = FintClient.from_env()
 user = client.user("user_123")
 
 # Create mandate
@@ -183,7 +183,7 @@ User makes multiple purchases with the same card.
 
 ### Flow
 
-1. **00:00** - User adds card via NekudaWallet
+1. **00:00** - User adds card via FintWallet
 2.**00:05** - Purchase #1:
    * Create mandate #1 → Request token #1 → Reveal card
    * CVV available ✓
@@ -198,7 +198,7 @@ User makes multiple purchases with the same card.
    * Purchase completes
 5. **01:30** - Purchase #4:
    * Create mandate #4 (NEW!) → Request token #4 (NEW!) → **Raises `CardCvvExpiredError`** ❌ (60-minute window expired)
-6.**01:31** - Backend signals frontend; user re-enters CVV via `NekudaCvvCollector`
+6.**01:31** - Backend signals frontend; user re-enters CVV via `FintCvvCollector`
 7.**01:32** - Purchase #4 retry:
    * Create mandate #5 (NEW!) → Request token #5 (NEW!) → Reveal card
    * CVV available ✓
@@ -212,9 +212,9 @@ User makes multiple purchases with the same card.
 ### Code Example
 
 ```
-from nekuda import NekudaClient, MandateData
+from fint import FintClient, MandateData
 
-client = NekudaClient.from_env()
+client = FintClient.from_env()
 user = client.user("user_123")
 
 # Purchase #1
@@ -246,7 +246,7 @@ Use `isCvvValid` field in frontend to catch expiration early
 
 ## Handle Expired CVV Gracefully
 
-Show `NekudaCvvCollector` with clear messaging when CVV expires
+Show `FintCvvCollector` with clear messaging when CVV expires
 
 ## Proactive CVV Refresh
 
@@ -269,7 +269,7 @@ Never reuse mandates or reveal tokens across multiple purchases
 ### When CVV Expires (> 60 minutes)
 
 * ❌ Backend `request_card_reveal_token()` raises `CardCvvExpiredError`
-* ⚠️ Backend signals frontend to show `NekudaCvvCollector`
+* ⚠️ Backend signals frontend to show `FintCvvCollector`
 * ⏱️ User re-enters CVV (30 seconds)
 * ✅ Retry token request with fresh CVV
 
@@ -293,8 +293,8 @@ Never reuse mandates or reveal tokens across multiple purchases
 
 Understand the three-stage payment flow](payment-flow.md)[## CVV Management
 
-Learn about NekudaCvvCollector component](frontend/wallet/cvv-management.md)[## Troubleshooting
+Learn about FintCvvCollector component](frontend/wallet/cvv-management.md)[## Troubleshooting
 
 Common issues and solutions](payment-flow.md)[## Backend SDK
 
-Implement mandate and reveal logic](nekuda-sdk/getting-started.md)
+Implement mandate and reveal logic](fint-sdk/getting-started.md)

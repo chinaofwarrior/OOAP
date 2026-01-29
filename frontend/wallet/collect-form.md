@@ -2,23 +2,23 @@
 
 ## Overview
 
-`NekudaCollectForm` is a flexible payment collection form that lets you choose exactly what information to collect from users. Use it for guest checkouts, adding payment methods, or any custom flow where you need payment information.
+`FintCollectForm` is a flexible payment collection form that lets you choose exactly what information to collect from users. Use it for guest checkouts, adding payment methods, or any custom flow where you need payment information.
 
 **What You’ll Learn ** In this guide, you’ll learn:
 
-* When to use NekudaCollectForm vs NekudaWallet
+* When to use FintCollectForm vs FintWallet
 * How to collect only payment details (skip contact/shipping)
 * How to use existing user data instead of re-collecting it
-* How this component powers the “Add Card” flow in NekudaWallet
+* How this component powers the “Add Card” flow in FintWallet
 * Customizing the collection experience
 
-**Time to complete:** 5 minutes **NekudaCollectForm powers NekudaWallet** : When users click “Add Card” in NekudaWallet, they’re using this component. The props you learn here also work when customizing the wallet’s card collection flow.
+**Time to complete:** 5 minutes **FintCollectForm powers FintWallet** : When users click “Add Card” in FintWallet, they’re using this component. The props you learn here also work when customizing the wallet’s card collection flow.
 
 ---
 
 ## When to Use This Component
 
-**Use NekudaCollectForm when you need:**
+**Use FintCollectForm when you need:**
 
 * Simple payment collection without managing multiple cards
 * Guest checkout flows
@@ -26,14 +26,14 @@
 * Custom onboarding without wallet UI
 * Minimal form - just collect payment, nothing else
 
-**Use NekudaWallet when you need:**
+**Use FintWallet when you need:**
 
 * Payment method management (view, add, edit, delete cards)
 * Contact and shipping information management
 * Default card selection
 * Full wallet UI for user accounts
 
-**Key difference** : NekudaCollectForm is the building block for collecting payment information. NekudaWallet is the complete experience for managing payment methods and user information. The wallet uses this collection form internally when users click “Add Card”.
+**Key difference** : FintCollectForm is the building block for collecting payment information. FintWallet is the complete experience for managing payment methods and user information. The wallet uses this collection form internally when users click “Add Card”.
 See [Wallet Overview](overview.md) for the complete wallet component.
 
 ---
@@ -54,12 +54,12 @@ The form can collect four types of information:
 Collect everything from a first-time user:
 
 ```
-import { WalletProvider, NekudaCollectForm } from '@nekuda/wallet';
+import { WalletProvider, FintCollectForm } from '@fint/wallet';
 
 function GuestCheckout() {
   return (
     <WalletProvider publicKey="pk_test_..." userId="guest-123">
-      <NekudaCollectForm
+      <FintCollectForm
         onSuccess={(data) => {
           // You get: contact, shipping, billing, and payment info
           processOrder(data);
@@ -79,9 +79,9 @@ That’s it. The form shows all four sections by default.
 Your user already has an account with contact and shipping info. Just collect their payment method:
 
 ```
-import { NekudaCollectForm, CollectionSection } from '@nekuda/wallet';
+import { FintCollectForm, CollectionSection } from '@fint/wallet';
 
-<NekudaCollectForm
+<FintCollectForm
   visibleSections={[CollectionSection.Payment, CollectionSection.Billing]}
   collectionData={{
     contactInfo: {
@@ -111,7 +111,7 @@ import { NekudaCollectForm, CollectionSection } from '@nekuda/wallet';
 Control what to show using `visibleSections`:
 
 ```
-import { CollectionSection } from '@nekuda/wallet';
+import { CollectionSection } from '@fint/wallet';
 
 CollectionSection.Contact   // Name, email, phone
 CollectionSection.Shipping  // Shipping address
@@ -144,7 +144,7 @@ Payment section is always required - it contains secure card fields that can’t
 When you skip sections, provide that data via `collectionData`:
 
 ```
-<NekudaCollectForm
+<FintCollectForm
   visibleSections={[CollectionSection.Payment, CollectionSection.Billing]}
   collectionData={{
     contactInfo: {
@@ -173,7 +173,7 @@ This data is sent to the API along with what the user fills in.
 Pre-populate fields that the user will see:
 
 ```
-<NekudaCollectForm
+<FintCollectForm
   defaultValues={{
     firstName: 'Jane',
     email: '[email protected]',
@@ -195,13 +195,13 @@ Card fields (number, CVV, expiry) cannot be pre-filled for security.
 
 ```
 // Dark theme
-<NekudaCollectForm theme="dark" />
+<FintCollectForm theme="dark" />
 
 // Light theme (default)
-<NekudaCollectForm theme="light" />
+<FintCollectForm theme="light" />
 
 // Minimal theme
-<NekudaCollectForm theme="minimal" />
+<FintCollectForm theme="minimal" />
 ```
 
 ### Brand Customization with Theme Tokens
@@ -209,7 +209,7 @@ Card fields (number, CVV, expiry) cannot be pre-filled for security.
 Apply your brand colors and typography consistently:
 
 ```
-<NekudaCollectForm
+<FintCollectForm
   mode="themed"
   theme="light"
   themeConfig={{
@@ -230,7 +230,7 @@ Apply your brand colors and typography consistently:
 For fine-grained control, use the `styles` prop:
 
 ```
-<NekudaCollectForm
+<FintCollectForm
   mode="themed"
   theme="light"
   themeConfig={{
@@ -247,14 +247,14 @@ See [Styling & Theming](styling-theming.md) for all customization options.
 
 ---
 
-## Controlling Collection in NekudaWallet
+## Controlling Collection in FintWallet
 
-When users click “Add Card” in NekudaWallet, they see this collection form. Customize which sections to show:
+When users click “Add Card” in FintWallet, they see this collection form. Customize which sections to show:
 
 ```
-import { NekudaWallet, CollectionSection } from '@nekuda/react-nekuda-js';
+import { FintWallet, CollectionSection } from '@fint/react-fint-js';
 
-<NekudaWallet
+<FintWallet
   // Show only payment + billing when adding cards
   collectFormVisibleSections={[
     CollectionSection.Payment,
@@ -291,7 +291,7 @@ function Onboarding() {
   return (
     <WalletProvider publicKey="pk_test_..." userId={newUser.id}>
       <h2>Add a payment method</h2>
-      <NekudaCollectForm
+      <FintCollectForm
         visibleSections={[CollectionSection.Payment, CollectionSection.Billing]}
         collectionData={{
           contactInfo: {
@@ -312,7 +312,7 @@ function Onboarding() {
 function Checkout() {
   return (
     <WalletProvider publicKey="pk_test_..." userId="guest-user">
-      <NekudaCollectForm
+      <FintCollectForm
         onSuccess={(data) => completeOrder(data)}
       />
     </WalletProvider>
@@ -328,7 +328,7 @@ function AddPaymentMethod() {
 
   return (
     <WalletProvider publicKey="pk_test_..." userId={user.id}>
-      <NekudaCollectForm
+      <FintCollectForm
         visibleSections={[CollectionSection.Payment, CollectionSection.Billing]}
         collectionData={{
           contactInfo: user.contact,
@@ -436,7 +436,7 @@ Google Places API key for address autocomplete.
 Handle errors to guide users:
 
 ```
-<NekudaCollectForm
+<FintCollectForm
   onError={(error) => {
     if (error.code === 'NETWORK_ERROR') {
       showMessage('Connection issue. Please try again.');
@@ -463,7 +463,7 @@ Real-world examples and flows](integration-patterns.md)[## Styling & Theming
 
 Customize appearance](styling-theming.md)[## Backend SDK
 
-Retrieve payment details securely](../../nekuda-sdk/getting-started.md)
+Retrieve payment details securely](../../fint-sdk/getting-started.md)
 
 ---
 
@@ -481,9 +481,9 @@ Can I change the section order?
 
 Yes. Sections appear in the order you list them in `visibleSections`.
 
-How is this different from NekudaWallet?
+How is this different from FintWallet?
 
-NekudaCollectForm is for one-time collection. NekudaWallet manages saved payment methods with full CRUD operations. The wallet uses this component internally when users add cards.
+FintCollectForm is for one-time collection. FintWallet manages saved payment methods with full CRUD operations. The wallet uses this component internally when users add cards.
 
 Can I use this for returning users?
 
@@ -491,4 +491,4 @@ Yes. Show only payment + billing sections, and pass their existing contact/shipp
 
 Where does the collected data go?
 
-Payment information is securely tokenized and stored. Your backend retrieves it using the nekuda SDK when your AI agent needs to complete a purchase.
+Payment information is securely tokenized and stored. Your backend retrieves it using the Fint SDK when your AI agent needs to complete a purchase.

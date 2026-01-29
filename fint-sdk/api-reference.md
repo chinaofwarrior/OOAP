@@ -1,11 +1,11 @@
 # API Reference
 
-Complete reference for all classes, methods, and response models in the nekuda SDKs.
+Complete reference for all classes, methods, and response models in the Fint SDKs.
 
-## NekudaClient
+## FintClient
 
-The main client for interacting with the nekuda API. It should be instantiated once and reused.
-It uses `https://api.nekuda.ai` as the default `base_url`.
+The main client for interacting with the Fint API. It should be instantiated once and reused.
+It uses `https://api.fint.io` as the default `base_url`.
 
 ### Constructor
 
@@ -13,11 +13,11 @@ It uses `https://api.nekuda.ai` as the default `base_url`.
 * TypeScript
 
 ```
-from nekuda import NekudaClient
+from fint import FintClient
 
-client = NekudaClient(
+client = FintClient(
     api_key="sk_live_your_api_key",  # Replace with your actual secret API key
-    # base_url="https://api.nekuda.ai",  # Default, usually not needed
+    # base_url="https://api.fint.io",  # Default, usually not needed
     timeout=30,  # Optional: request timeout in seconds
     max_retries=3,  # Optional: max retries for retryable errors (429, 5xx)
     backoff_factor=0.5,  # Optional: backoff factor for retries
@@ -25,12 +25,12 @@ client = NekudaClient(
 ```
 
 ```
-import { NekudaClient } from '@nekuda/nekuda-js';
+import { FintClient } from '@fint/fint-js';
 
-const client = new NekudaClient(
+const client = new FintClient(
     "sk_live_your_api_key",  // Replace with your actual secret API key
     {
-        baseUrl: "https://api.nekuda.ai",  // Default, usually not needed
+        baseUrl: "https://api.fint.io",  // Default, usually not needed
         timeout: 30000,  // Optional: request timeout in milliseconds
         maxRetries: 3,  // Optional: max retries for retryable errors (429, 5xx)
         backoffFactor: 0.5,  // Optional: backoff factor for retries
@@ -49,8 +49,8 @@ string
 
 required
 
-Your nekuda Secret API key (starts with `sk_live_` or `sk_test_`). Must be
-provided either directly or via the `NEKUDA_API_KEY` environment variable.
+Your Fint Secret API key (starts with `sk_live_` or `sk_test_`). Must be
+provided either directly or via the `FINT_API_KEY` environment variable.
 
 [​](#param-base-url)
 
@@ -58,10 +58,10 @@ base\_url
 
 string
 
-default:"https://api.nekuda.ai"
+default:"https://api.fint.io"
 
-The base URL for the nekuda API. Defaults to production. Only change this for
-staging/testing (e.g., `https://staging-api.nekuda.ai`) or if using a mock
+The base URL for the Fint API. Defaults to production. Only change this for
+staging/testing (e.g., `https://staging-api.fint.io`) or if using a mock
 server. The SDK normalizes this URL.
 
 [​](#param-timeout)
@@ -102,8 +102,8 @@ string
 
 required
 
-Your nekuda Secret API key (starts with `sk_live_` or `sk_test_`). Must be
-provided either directly or via the `NEKUDA_API_KEY` environment variable.
+Your Fint Secret API key (starts with `sk_live_` or `sk_test_`). Must be
+provided either directly or via the `FINT_API_KEY` environment variable.
 
 [​](#param-base-url)
 
@@ -111,10 +111,10 @@ baseUrl
 
 string
 
-default:"https://api.nekuda.ai"
+default:"https://api.fint.io"
 
-The base URL for the nekuda API. Defaults to production. Only change this for
-staging/testing (e.g., `https://staging-api.nekuda.ai`) or if using a mock
+The base URL for the Fint API. Defaults to production. Only change this for
+staging/testing (e.g., `https://staging-api.fint.io`) or if using a mock
 server. The SDK normalizes this URL.
 
 [​](#param-timeout-1)
@@ -157,25 +157,25 @@ Factory method to create a client instance configured from environment variables
 * TypeScript
 
 ```
-from nekuda import NekudaClient
+from fint import FintClient
 
-# Reads NEKUDA_API_KEY for the API key.
-# Reads NEKUDA_BASE_URL (optional) for the base URL, defaults to https://api.nekuda.ai.
+# Reads FINT_API_KEY for the API key.
+# Reads FINT_BASE_URL (optional) for the base URL, defaults to https://api.fint.io.
 # Allows overriding other client parameters too.
-client = NekudaClient.from_env(
-    # api_key_var="CUSTOM_API_KEY_ENV_VAR_NAME", # Default: "NEKUDA_API_KEY"
-    # base_url_var="CUSTOM_BASE_URL_ENV_VAR_NAME", # Default: "NEKUDA_BASE_URL"
+client = FintClient.from_env(
+    # api_key_var="CUSTOM_API_KEY_ENV_VAR_NAME", # Default: "FINT_API_KEY"
+    # base_url_var="CUSTOM_BASE_URL_ENV_VAR_NAME", # Default: "FINT_BASE_URL"
     timeout=45 # Example: override default timeout
 )
 ```
 
 ```
-import { NekudaClient } from '@nekuda/nekuda-js';
+import { FintClient } from '@fint/fint-js';
 
-// Reads NEKUDA_API_KEY for the API key.
-// Reads NEKUDA_BASE_URL (optional) for the base URL, defaults to https://api.nekuda.ai.
+// Reads FINT_API_KEY for the API key.
+// Reads FINT_BASE_URL (optional) for the base URL, defaults to https://api.fint.io.
 // Allows overriding other client parameters too.
-const client = NekudaClient.fromEnv({
+const client = FintClient.fromEnv({
     timeout: 45000 // Example: override default timeout in ms
 });
 ```
@@ -192,9 +192,9 @@ Creates a `UserContext` for a specific user. This context automatically includes
 * TypeScript
 
 ```
-from nekuda import NekudaClient
+from fint import FintClient
 
-client = NekudaClient.from_env()
+client = FintClient.from_env()
 user_identifier = "unique_user_abc_123"
 user_context = client.user(user_identifier)
 
@@ -205,9 +205,9 @@ user_context = client.user(user_identifier)
 ```
 
 ```
-import { NekudaClient } from '@nekuda/nekuda-js';
+import { FintClient } from '@fint/fint-js';
 
-const client = NekudaClient.fromEnv();
+const client = FintClient.fromEnv();
 const userIdentifier = "unique_user_abc_123";
 const userContext = client.user(userIdentifier);
 
@@ -227,9 +227,9 @@ createMandate / create\_mandate
 * TypeScript
 
 ```
-from nekuda import NekudaClient, MandateData
+from fint import FintClient, MandateData
 
-client = NekudaClient.from_env()
+client = FintClient.from_env()
 user_identifier = "user_for_mandate_creation"
 
 mandate_info = MandateData(
@@ -250,14 +250,14 @@ try:
     )
     print(f"Mandate Created: {response.mandate_id} for user: {user_identifier}")
     # The response.mandate_id is then used for request_card_reveal_token
-except NekudaError as e:
+except FintError as e:
     print(f"Error creating mandate: {e}")
 ```
 
 ```
-import { NekudaClient, MandateData } from '@nekuda/nekuda-js';
+import { FintClient, MandateData } from '@fint/fint-js';
 
-const client = NekudaClient.fromEnv();
+const client = FintClient.fromEnv();
 const userIdentifier = "user_for_mandate_creation";
 
 const mandateInfo = new MandateData({
@@ -275,7 +275,7 @@ try {
     console.log(`Mandate Created: ${response.mandateId} for user: ${userIdentifier}`);
     // The response.mandateId is then used for requestCardRevealToken
 } catch (error) {
-    if (error instanceof NekudaError) {
+    if (error instanceof FintError) {
         console.log(`Error creating mandate: ${error}`);
     }
 }
@@ -289,9 +289,9 @@ requestCardRevealToken / request\_card\_reveal\_token
 * TypeScript
 
 ```
-from nekuda import NekudaClient
+from fint import FintClient
 
-client = NekudaClient.from_env()
+client = FintClient.from_env()
 user_identifier = "user_for_token_request"
 existing_mandate_id = 12345 # Obtained from a previous create_mandate call
 
@@ -302,14 +302,14 @@ try:
     )
     print(f"Reveal Token: {response.token} for user: {user_identifier}")
     # This response.token is then used for reveal_card_details
-except NekudaError as e:
+except FintError as e:
     print(f"Error requesting reveal token: {e}")
 ```
 
 ```
-import { NekudaClient } from '@nekuda/nekuda-js';
+import { FintClient } from '@fint/fint-js';
 
-const client = NekudaClient.fromEnv();
+const client = FintClient.fromEnv();
 const userIdentifier = "user_for_token_request";
 const existingMandateId = 12345; // Obtained from a previous createMandate call
 
@@ -321,7 +321,7 @@ try {
     console.log(`Reveal Token: ${response.revealToken} for user: ${userIdentifier}`);
     // This response.revealToken is then used for revealCardDetails
 } catch (error) {
-    if (error instanceof NekudaError) {
+    if (error instanceof FintError) {
         console.log(`Error requesting reveal token: ${error}`);
     }
 }
@@ -335,9 +335,9 @@ revealCardDetails / reveal\_card\_details
 * TypeScript
 
 ```
-from nekuda import NekudaClient
+from fint import FintClient
 
-client = NekudaClient.from_env()
+client = FintClient.from_env()
 user_identifier = "user_for_card_reveal"
 valid_reveal_token = "rvl_tok_from_previous_step"
 
@@ -348,14 +348,14 @@ try:
     )
     print(f"Card Number (last 4): {card.card_number[-4:]} for user: {user_identifier}")
     print(f"Card Expiry: {card.card_expiry_date}")
-except NekudaError as e:
+except FintError as e:
     print(f"Error revealing card details: {e}")
 ```
 
 ```
-import { NekudaClient } from '@nekuda/nekuda-js';
+import { FintClient } from '@fint/fint-js';
 
-const client = NekudaClient.fromEnv();
+const client = FintClient.fromEnv();
 const userIdentifier = "user_for_card_reveal";
 const validRevealToken = "rvl_tok_from_previous_step";
 
@@ -367,7 +367,7 @@ try {
     console.log(`Card Number (last 4): ${card.cardNumber.slice(-4)} for user: ${userIdentifier}`);
     console.log(`Card Expiry: ${card.cardExpiryDate}`);
 } catch (error) {
-    if (error instanceof NekudaError) {
+    if (error instanceof FintError) {
         console.log(`Error revealing card details: ${error}`);
     }
 }
@@ -381,9 +381,9 @@ A convenience wrapper returned by `client.user(userId)` that automatically inclu
 * TypeScript
 
 ```
-from nekuda import NekudaClient, MandateData
+from fint import FintClient, MandateData
 
-client = NekudaClient.from_env()
+client = FintClient.from_env()
 user_context = client.user("unique_user_id_789")
 
 # Example mandate creation using UserContext
@@ -401,7 +401,7 @@ try:
     # Reveal card details using UserContext and the new token
     card_object = user_context.reveal_card_details(reveal_token_response.token)
     print(f"Cardholder via UserContext: {card_object.cardholder_name}")
-except NekudaError as e:
+except FintError as e:
     print(f"UserContext operation failed: {e}")
 ```
 
@@ -412,9 +412,9 @@ The `UserContext` object has the following methods:
 * `reveal_card_details(reveal_token: str) -> CardDetailsResponse`
 
 ```
-import { NekudaClient, MandateData, NekudaError } from '@nekuda/nekuda-js';
+import { FintClient, MandateData, FintError } from '@fint/fint-js';
 
-const client = NekudaClient.fromEnv();
+const client = FintClient.fromEnv();
 const userContext = client.user("unique_user_id_789");
 
 // Example mandate creation using UserContext
@@ -437,7 +437,7 @@ try {
     const cardObject = await userContext.revealCardDetails(revealTokenResponse.revealToken);
     console.log(`Cardholder via UserContext: ${cardObject.cardholderName}`);
 } catch (error) {
-    if (error instanceof NekudaError) {
+    if (error instanceof FintError) {
         console.log(`UserContext operation failed: ${error}`);
     }
 }
@@ -459,7 +459,7 @@ Represents the user’s intent to purchase. This data is sent when creating a ma
 * TypeScript
 
 ```
-from nekuda import MandateData, NekudaValidationError
+from fint import MandateData, FintValidationError
 
 try:
     mandate = MandateData(
@@ -475,12 +475,12 @@ try:
         confidence_score=0.95,             # Your system's confidence (0.0 to 1.0) that this is a legitimate user intent
         # request_id: Optional[str] = None # Auto-generated UUID if not provided for create_mandate idempotency
     )
-except NekudaValidationError as e:
+except FintValidationError as e:
     print(f"Invalid MandateData: {e}")
 ```
 
 ```
-import { MandateData, NekudaValidationError } from '@nekuda/nekuda-js';
+import { MandateData, FintValidationError } from '@fint/fint-js';
 
 try {
     const mandate = new MandateData({
@@ -497,7 +497,7 @@ try {
         requestId: "optional-idempotency-key" // Auto-generated UUID if not provided
     });
 } catch (error) {
-    if (error instanceof NekudaValidationError) {
+    if (error instanceof FintValidationError) {
         console.log(`Invalid MandateData: ${error}`);
     }
 }
@@ -797,7 +797,7 @@ interface CardDetailsResponse {
 
 ## Exceptions
 
-All exceptions raised by the SDKs inherit from a base `NekudaError` class.
+All exceptions raised by the SDKs inherit from a base `FintError` class.
 Refer to the [Error Handling guide](Errors.md) for a detailed hierarchy and usage patterns.
 
 ### Key Exception Classes
@@ -805,25 +805,25 @@ Refer to the [Error Handling guide](Errors.md) for a detailed hierarchy and usag
 * Python
 * TypeScript
 
-* `NekudaError` (Base class)
-* `NekudaApiError` (Base for API-returned errors)
+* `FintError` (Base class)
+* `FintApiError` (Base for API-returned errors)
   + `AuthenticationError` (401 - Invalid API key)
   + `InvalidRequestError` (4xx - e.g., bad parameters, resource not found)
     - `CardNotFoundError` (Specific 404 for card not found)
   + `RateLimitError` (429 - Rate limit exceeded, SDK retries these)
-  + `ServerError` (5xx - Server-side issue at nekuda, SDK retries these)
-* `NekudaConnectionError` (Network issues like DNS or TCP errors)
-* `NekudaValidationError` (Client-side or response data validation failure against Pydantic models)
+  + `ServerError` (5xx - Server-side issue at Fint, SDK retries these)
+* `FintConnectionError` (Network issues like DNS or TCP errors)
+* `FintValidationError` (Client-side or response data validation failure against Pydantic models)
 
-* `NekudaError` (Base class)
-* `NekudaApiError` (Base for API-returned errors)
+* `FintError` (Base class)
+* `FintApiError` (Base for API-returned errors)
   + `AuthenticationError` (401 - Invalid API key)
   + `InvalidRequestError` (4xx - e.g., bad parameters, resource not found)
     - `CardNotFoundError` (Specific 404 for card not found)
   + `RateLimitError` (429 - Rate limit exceeded, SDK retries these)
-  + `ServerError` (5xx - Server-side issue at nekuda, SDK retries these)
-* `NekudaConnectionError` (Network issues like DNS or TCP errors)
-* `NekudaValidationError` (Client-side validation failed)
+  + `ServerError` (5xx - Server-side issue at Fint, SDK retries these)
+* `FintConnectionError` (Network issues like DNS or TCP errors)
+* `FintValidationError` (Client-side validation failed)
 
 ### Common Exception Attributes
 
@@ -889,13 +889,13 @@ This example shows the end-to-end flow: creating a client, getting a user contex
 * TypeScript
 
 ```
-from nekuda import NekudaClient, MandateData, NekudaError, CardNotFoundError, InvalidRequestError, AuthenticationError, NekudaValidationError, NekudaApiError
+from fint import FintClient, MandateData, FintError, CardNotFoundError, InvalidRequestError, AuthenticationError, FintValidationError, FintApiError
 import os # For environment variables
 
 # Best practice: Initialize client from environment variables
-# Ensure NEKUDA_API_KEY is set in your environment.
-# NEKUDA_BASE_URL defaults to https://api.nekuda.ai if not set.
-client = NekudaClient.from_env()
+# Ensure FINT_API_KEY is set in your environment.
+# FINT_BASE_URL defaults to https://api.fint.io if not set.
+client = FintClient.from_env()
 
 # Each of your users must have a unique identifier string.
 user_identifier = "example_user_e2e_flow_001"
@@ -939,24 +939,24 @@ except InvalidRequestError as e:
     print(f"Invalid Request: {e.message} (Code: {e.code}, HTTP Status: {e.status_code})")
     print("Check your parameters, like mandate_id format or if it exists.")
 except AuthenticationError as e:
-    print(f"Authentication Failed: {e.message}. Check your NEKUDA_API_KEY.")
-except NekudaValidationError as e:
+    print(f"Authentication Failed: {e.message}. Check your FINT_API_KEY.")
+except FintValidationError as e:
     print(f"Data Validation Error: {e}. This could be an issue with data sent or received.")
-except NekudaApiError as e:
-    print(f"nekuda API Error: {e.message} (Code: {e.code}, HTTP Status: {e.status_code})")
-except NekudaError as e: # Catch any other nekuda SDK-specific errors
-    print(f"A nekuda SDK error occurred: {e}")
+except FintApiError as e:
+    print(f"Fint API Error: {e.message} (Code: {e.code}, HTTP Status: {e.status_code})")
+except FintError as e: # Catch any other Fint SDK-specific errors
+    print(f"A Fint SDK error occurred: {e}")
 except Exception as e: # Fallback for unexpected errors
     print(f"An unexpected error occurred: {e}")
 ```
 
 ```
-import { NekudaClient, MandateData, NekudaError, CardNotFoundError, InvalidRequestError, AuthenticationError, NekudaValidationError, NekudaApiError } from '@nekuda/nekuda-js';
+import { FintClient, MandateData, FintError, CardNotFoundError, InvalidRequestError, AuthenticationError, FintValidationError, FintApiError } from '@fint/fint-js';
 
 // Best practice: Initialize client from environment variables
-// Ensure NEKUDA_API_KEY is set in your environment.
-// NEKUDA_BASE_URL defaults to https://api.nekuda.ai if not set.
-const client = NekudaClient.fromEnv();
+// Ensure FINT_API_KEY is set in your environment.
+// FINT_BASE_URL defaults to https://api.fint.io if not set.
+const client = FintClient.fromEnv();
 
 // Each of your users must have a unique identifier string.
 const userIdentifier = "example_user_e2e_flow_001";
@@ -1000,13 +1000,13 @@ const user = client.user(userIdentifier);
       console.log(`Invalid Request: ${error.message} (Code: ${error.code}, HTTP Status: ${error.statusCode})`);
       console.log("Check your parameters, like mandateId format or if it exists.");
     } else if (error instanceof AuthenticationError) {
-      console.log(`Authentication Failed: ${error.message}. Check your NEKUDA_API_KEY.`);
-    } else if (error instanceof NekudaValidationError) {
+      console.log(`Authentication Failed: ${error.message}. Check your FINT_API_KEY.`);
+    } else if (error instanceof FintValidationError) {
       console.log(`Data Validation Error: ${error}. This could be an issue with data sent or received.`);
-    } else if (error instanceof NekudaApiError) {
-      console.log(`nekuda API Error: ${error.message} (Code: ${error.code}, HTTP Status: ${error.statusCode})`);
-    } else if (error instanceof NekudaError) {
-      console.log(`A nekuda SDK error occurred: ${error}`);
+    } else if (error instanceof FintApiError) {
+      console.log(`Fint API Error: ${error.message} (Code: ${error.code}, HTTP Status: ${error.statusCode})`);
+    } else if (error instanceof FintError) {
+      console.log(`A Fint SDK error occurred: ${error}`);
     } else {
       console.log(`An unexpected error occurred: ${error}`);
     }
@@ -1022,10 +1022,10 @@ For simpler scripts or applications where dependency injection is overkill.
 * TypeScript
 
 ```
-from nekuda import set_default_client, get_default_client, NekudaClient, MandateData, NekudaError
+from fint import set_default_client, get_default_client, FintClient, MandateData, FintError
 
 # Set once at startup (e.g., in your main script or app initialization)
-set_default_client(NekudaClient.from_env()) # Configured from environment
+set_default_client(FintClient.from_env()) # Configured from environment
 
 def some_business_logic_function(user_id: str, product_details: dict):
     client_instance = get_default_client() # Retrieve the globally set client
@@ -1041,7 +1041,7 @@ def some_business_logic_function(user_id: str, product_details: dict):
         mandate_response = user_context.create_mandate(mandate_info)
         # ... continue with reveal token and card details ...
         print(f"Mandate {mandate_response.mandate_id} created via global client for {user_id}")
-    except NekudaError as e:
+    except FintError as e:
         print(f"Error in business logic with global client: {e}")
 
 # Example call
@@ -1049,10 +1049,10 @@ def some_business_logic_function(user_id: str, product_details: dict):
 ```
 
 ```
-import { setDefaultClient, getDefaultClient, NekudaClient, MandateData, NekudaError } from '@nekuda/nekuda-js';
+import { setDefaultClient, getDefaultClient, FintClient, MandateData, FintError } from '@fint/fint-js';
 
 // Set once at startup (e.g., in your main script or app initialization)
-setDefaultClient(NekudaClient.fromEnv()); // Configured from environment
+setDefaultClient(FintClient.fromEnv()); // Configured from environment
 
 async function someBusinessLogicFunction(userId: string, productDetails: any) {
     const clientInstance = getDefaultClient(); // Retrieve the globally set client
@@ -1070,7 +1070,7 @@ async function someBusinessLogicFunction(userId: string, productDetails: any) {
         // ... continue with reveal token and card details ...
         console.log(`Mandate ${mandateResponse.mandateId} created via global client for ${userId}`);
     } catch (error) {
-        if (error instanceof NekudaError) {
+        if (error instanceof FintError) {
             console.log(`Error in business logic with global client: ${error}`);
         }
     }

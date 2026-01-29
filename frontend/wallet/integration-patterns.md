@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide shows real-world integration patterns for the `NekudaWallet` component in AI agent applications. Each pattern addresses a specific use case, from user onboarding to AI agent purchase flows.
+This guide shows real-world integration patterns for the `FintWallet` component in AI agent applications. Each pattern addresses a specific use case, from user onboarding to AI agent purchase flows.
 
 **Context** : These patterns assume you’re building an AI agent application where users save payment methods in your frontend, and your AI agent uses those cards to make purchases on e-commerce sites via your backend.
 
@@ -19,7 +19,7 @@ This guide shows real-world integration patterns for the `NekudaWallet` componen
 ### Implementation
 
 ```
-import { WalletProvider, NekudaWallet } from '@nekuda/wallet';
+import { WalletProvider, FintWallet } from '@fint/wallet';
 import { useAuth } from './auth'; // Your auth system
 
 function AccountSettingsPage() {
@@ -81,10 +81,10 @@ function AccountSettingsPage() {
       )}
 
       <WalletProvider
-        publicKey={process.env.REACT_APP_NEKUDA_PUBLIC_KEY}
+        publicKey={process.env.REACT_APP_FINT_PUBLIC_KEY}
         userId={user.id}
       >
-        <NekudaWallet
+        <FintWallet
           theme="light"
           defaultContact={defaultContact}
           defaultShipping={defaultShipping}
@@ -117,14 +117,14 @@ function AccountSettingsPage() {
 ### Implementation
 
 ```
-import { WalletProvider, NekudaWallet, useWallet } from '@nekuda/wallet';
+import { WalletProvider, FintWallet, useWallet } from '@fint/wallet';
 import { useState } from 'react';
 
 function PurchaseRequestFlow() {
   const { user } = useAuth();
 
   return (
-    <WalletProvider publicKey={process.env.REACT_APP_NEKUDA_PUBLIC_KEY} userId={user.id}>
+    <WalletProvider publicKey={process.env.REACT_APP_FINT_PUBLIC_KEY} userId={user.id}>
       <PurchaseFlowContent />
     </WalletProvider>
   );
@@ -149,7 +149,7 @@ function PurchaseFlowContent() {
         <h2>Add a Payment Method</h2>
         <p>To use your AI shopping assistant, please add a payment method first.</p>
 
-        <NekudaWallet
+        <FintWallet
           theme="light"
           onError={(error) => {
             console.error('Wallet error:', error);
@@ -198,7 +198,7 @@ function PurchaseFlowContent() {
       {showWallet && (
         <div className="wallet-modal">
           <button onClick={() => setShowWallet(false)}>Close</button>
-          <NekudaWallet theme="light" />
+          <FintWallet theme="light" />
         </div>
       )}
     </div>
@@ -207,14 +207,14 @@ function PurchaseFlowContent() {
 
 async function handleConfirmPurchase(card) {
   // Send purchase request to your backend
-  // Backend will use nekuda SDK to get card details and complete purchase
+  // Backend will use Fint SDK to get card details and complete purchase
   const response = await fetch('/api/purchases', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       product: 'Premium Headphones',
       price: 199.99,
-      // Your backend will use this to retrieve the card via nekuda SDK
+      // Your backend will use this to retrieve the card via Fint SDK
       // No sensitive card data sent from frontend!
     })
   });
@@ -275,10 +275,10 @@ async function requestAIPurchase(product, price) {
 * TypeScript
 
 ```
-from nekuda import NekudaClient, MandateData, CardNotFoundError, NekudaError
+from fint import FintClient, MandateData, CardNotFoundError, FintError
 
 # Initialize once at app startup
-client = NekudaClient.from_env()
+client = FintClient.from_env()
 
 @app.post("/api/ai-agent/purchase")
 async def ai_agent_purchase(request: PurchaseRequest, current_user: User):
@@ -352,9 +352,9 @@ async def ai_agent_purchase(request: PurchaseRequest, current_user: User):
             "message": "Please add a payment method first"
         }
 
-    except NekudaError as e:
-        # Handle nekuda SDK errors
-        print(f"nekuda error: {e.message}, code: {e.code}")
+    except FintError as e:
+        # Handle Fint SDK errors
+        print(f"fint error: {e.message}, code: {e.code}")
         return {
             "success": False,
             "error": "PAYMENT_ERROR",
@@ -372,10 +372,10 @@ async def ai_agent_purchase(request: PurchaseRequest, current_user: User):
 ```
 
 ```
-import { NekudaClient, MandateData, CardNotFoundError, NekudaError } from '@nekuda/nekuda-js';
+import { FintClient, MandateData, CardNotFoundError, FintError } from '@fint/fint-js';
 
 // Initialize once at app startup
-const client = NekudaClient.fromEnv();
+const client = FintClient.fromEnv();
 
 app.post('/api/ai-agent/purchase', async (req, res) => {
   const userId = req.user.id; // From your auth middleware
@@ -448,9 +448,9 @@ app.post('/api/ai-agent/purchase', async (req, res) => {
         error: 'NO_CARD',
         message: 'Please add a payment method first'
       });
-    } else if (error instanceof NekudaError) {
-      // Handle nekuda SDK errors
-      console.error(`nekuda error: ${error.message}, code: ${error.code}`);
+    } else if (error instanceof FintError) {
+      // Handle Fint SDK errors
+      console.error(`fint error: ${error.message}, code: ${error.code}`);
       res.json({
         success: false,
         error: 'PAYMENT_ERROR',
@@ -490,8 +490,8 @@ app.post('/api/ai-agent/purchase', async (req, res) => {
 ### Implementation
 
 ```
-import { WalletProvider } from '@nekuda/wallet';
-import { NekudaCollectForm, CollectionSection } from '@nekuda/wallet';
+import { WalletProvider } from '@fint/wallet';
+import { FintCollectForm, CollectionSection } from '@fint/wallet';
 import { useState } from 'react';
 
 function OnboardingFlow() {
@@ -516,10 +516,10 @@ function OnboardingFlow() {
           <p>Your AI assistant will use this card to make purchases on your behalf.</p>
 
           <WalletProvider
-            publicKey={process.env.REACT_APP_NEKUDA_PUBLIC_KEY}
+            publicKey={process.env.REACT_APP_FINT_PUBLIC_KEY}
             userId={user.id}
           >
-            <NekudaCollectForm
+            <FintCollectForm
               visibleSections={[CollectionSection.Payment, CollectionSection.Billing]}
               collectionData={{
                 contactInfo: {
@@ -556,7 +556,7 @@ function OnboardingFlow() {
 
 **Key Points:**
 
-* Use `NekudaCollectForm` for simple card collection
+* Use `FintCollectForm` for simple card collection
 * Control visible sections with `visibleSections` prop
 * Send existing data via `collectionData` prop
 * No full wallet UI needed—just add first card
@@ -577,7 +577,7 @@ See [Collection Form](collect-form.md) for complete documentation.
 ### Implementation
 
 ```
-import { WalletProvider, NekudaWallet } from '@nekuda/wallet';
+import { WalletProvider, FintWallet } from '@fint/wallet';
 import { useState } from 'react';
 
 function RobustWalletIntegration() {
@@ -641,11 +641,11 @@ function RobustWalletIntegration() {
       )}
 
       <WalletProvider
-        publicKey={process.env.REACT_APP_NEKUDA_PUBLIC_KEY}
+        publicKey={process.env.REACT_APP_FINT_PUBLIC_KEY}
         userId={user.id}
         debug={process.env.NODE_ENV === 'development'}
       >
-        <NekudaWallet
+        <FintWallet
           theme="light"
           onError={handleError}
           key={retryCount} // Force remount on retry
@@ -701,12 +701,12 @@ async function handleBackendCardRetrievalErrors(userId, purchaseDetails) {
         userMessage: 'Service temporarily unavailable.',
         needsAction: 'RETRY_LATER'
       };
-    } else if (error instanceof NekudaError) {
-      // Other nekuda errors
-      console.error('nekuda error:', error.message, error.code);
+    } else if (error instanceof FintError) {
+      // Other fint errors
+      console.error('fint error:', error.message, error.code);
       return {
         success: false,
-        errorCode: error.code || 'NEKUDA_ERROR',
+        errorCode: error.code || 'FINT_ERROR',
         userMessage: 'Payment processing error. Please try again.',
         needsAction: 'RETRY'
       };
@@ -747,7 +747,7 @@ async function handleBackendCardRetrievalErrors(userId, purchaseDetails) {
 ### Implementation
 
 ```
-import { WalletProvider, NekudaWallet } from '@nekuda/wallet';
+import { WalletProvider, FintWallet } from '@fint/wallet';
 
 function TeamMemberSettings() {
   const { currentUser, selectedTeamMember } = useTeam();
@@ -768,11 +768,11 @@ function TeamMemberSettings() {
       </header>
 
       <WalletProvider
-        publicKey={process.env.REACT_APP_NEKUDA_PUBLIC_KEY}
+        publicKey={process.env.REACT_APP_FINT_PUBLIC_KEY}
         // Use the team member's ID, not the current user's ID
         userId={selectedTeamMember.id}
       >
-        <NekudaWallet
+        <FintWallet
           theme="light"
           mode={canEdit ? 'themed' : 'themed'}
           onError={(error) => {
@@ -832,13 +832,13 @@ app.post('/api/team/purchase', async (req, res) => {
 #### Phase 1: MVP - Simple Card Collection
 
 ```
-import { WalletProvider } from '@nekuda/wallet';
-import { NekudaCollectForm } from '@nekuda/wallet';
+import { WalletProvider } from '@fint/wallet';
+import { FintCollectForm } from '@fint/wallet';
 
 function MVPCardCollection() {
   return (
     <WalletProvider publicKey={publicKey} userId={userId}>
-      <NekudaCollectForm
+      <FintCollectForm
         onSuccess={(result) => {
           alert('Card added! AI agent can now make purchases.');
         }}
@@ -851,13 +851,13 @@ function MVPCardCollection() {
 #### Phase 2: Add Wallet Management
 
 ```
-import { WalletProvider, NekudaWallet } from '@nekuda/wallet';
+import { WalletProvider, FintWallet } from '@fint/wallet';
 
 function WalletManagement() {
   return (
     <WalletProvider publicKey={publicKey} userId={userId}>
       {/* Users can now view, add, edit, delete cards */}
-      <NekudaWallet theme="light" />
+      <FintWallet theme="light" />
     </WalletProvider>
   );
 }
@@ -869,7 +869,7 @@ function WalletManagement() {
 function FullWallet() {
   return (
     <WalletProvider publicKey={publicKey} userId={userId}>
-      <NekudaWallet
+      <FintWallet
         theme="light"
         // Now includes Settings tab with contact/shipping
         defaultContact={userContact}
@@ -888,7 +888,7 @@ function FullWallet() {
 function BrandedWallet() {
   return (
     <WalletProvider publicKey={publicKey} userId={userId}>
-      <NekudaWallet
+      <FintWallet
         mode="custom"
         theme="light"
         styles={{
@@ -933,14 +933,14 @@ async function badPurchase(cardData) {
 ```
 
 ```
-// CORRECT - Backend retrieves card via nekuda SDK
+// CORRECT - Backend retrieves card via Fint SDK
 async function goodPurchase(purchaseDetails) {
   await fetch('/api/purchase', {
     method: 'POST',
     body: JSON.stringify({
       product: purchaseDetails.product,
       price: purchaseDetails.price
-      // Backend uses userId from session + nekuda SDK to get card
+      // Backend uses userId from session + Fint SDK to get card
     })
   });
 }
@@ -949,8 +949,8 @@ async function goodPurchase(purchaseDetails) {
 ### ❌ Problem 2: Wrong userId
 
 ```
-// WRONG - Using nekuda's internal IDs
-<WalletProvider userId={card.id} /> // ❌ card.id is nekuda's ID
+// WRONG - Using Fint's internal IDs
+<WalletProvider userId={card.id} /> // ❌ card.id is Fint's ID
 
 // CORRECT - Use YOUR user ID
 <WalletProvider userId={yourUser.id} /> // ✅ Your user ID
@@ -996,9 +996,8 @@ Back to wallet setup and core concepts](overview.md)[## Styling & Theming
 
 Customize wallet appearance to match your brand](styling-theming.md)[## Backend SDK Docs
 
-Complete backend SDK documentation](../../nekuda-sdk/getting-started.md)[## Error Handling
-
-Handle errors gracefully in production](../../nekuda-sdk/Errors.md)
+Complete backend SDK documentation](../../fint-sdk/getting-started.md)[## Error Handling
+Handle errors gracefully in production](../../fint-sdk/Errors.md)
 
 ---
 
@@ -1006,11 +1005,11 @@ Handle errors gracefully in production](../../nekuda-sdk/Errors.md)
 
 Can I use the wallet without the backend SDK?
 
-No. The wallet is designed for the AI agent use case where your backend retrieves card details via the nekuda backend SDK. The frontend wallet only collects and manages payment method metadata—it never exposes raw card data.
+No. The wallet is designed for the AI agent use case where your backend retrieves card details via the Fint backend SDK. The frontend wallet only collects and manages payment method metadata—it never exposes raw card data.
 
 How does the AI agent get the card details?
 
-Your backend uses the nekuda SDK’s 3-step mandate flow:
+Your backend uses the Fint SDK’s 3-step mandate flow:
 
 1. Create mandate (intent to purchase)
 2. Request reveal token
@@ -1053,4 +1052,4 @@ How do I test integration patterns in development?
 2. Add test cards in your dev environment
 3. Use test mode secret key (`sk_test_...`) in backend
 4. Test the full mandate flow with test data
-5. Check nekuda dashboard for test transactions
+5. Check Fint dashboard for test transactions

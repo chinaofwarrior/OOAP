@@ -11,34 +11,34 @@
 
 **Time to read:** 15 minutes
 
-This guide walks through the complete payment flow in the nekuda system, from initial card collection to final card reveal. Understanding this flow is critical for building reliable payment integrations.
+This guide walks through the complete payment flow in the Fint system, from initial card collection to final card reveal. Understanding this flow is critical for building reliable payment integrations.
 
 ## Overview
 
-The nekuda payment system follows a secure three-stage flow:**Critical: One Mandate Per Purchase ** Every purchase requires a **new mandate ** and **new reveal token** . You cannot reuse mandates or reveal tokens across multiple purchases. Each transaction must follow the complete flow: Create Mandate → Request Token → Reveal Card.
+The Fint payment system follows a secure three-stage flow:**Critical: One Mandate Per Purchase ** Every purchase requires a **new mandate ** and **new reveal token** . You cannot reuse mandates or reveal tokens across multiple purchases. Each transaction must follow the complete flow: Create Mandate → Request Token → Reveal Card.
 
 ## The Three Stages
 
 ### Stage 1: Card Collection (Frontend)
 
-Users add their payment methods through the **NekudaWallet ** component. This happens once when they set up their wallet.
+Users add their payment methods through the **FintWallet ** component. This happens once when they set up their wallet.
 
 ```
-import { WalletProvider, NekudaWallet } from '@nekuda/react-nekuda-js';
+import { WalletProvider, FintWallet } from '@fint/react-fint-js';
 
 function UserSettings() {
   const userId = currentUser.id; // Your user's ID
 
   return (
     <WalletProvider publicKey="pk_test_..." userId={userId}>
-      <NekudaWallet />
+      <FintWallet />
     </WalletProvider>
   );
 }
 ```**What happens:**
 
 * User enters card details in secure iframe
-* Card is tokenized and stored in nekuda vault
+* Card is tokenized and stored in Fint vault
 * Linked to the `userId` you provided
 * CVV is stored securely with timestamp
 
@@ -52,9 +52,9 @@ When your user instructs their AI agent to make a purchase, your backend creates
 * TypeScript
 
 ```
-from nekuda import NekudaClient, MandateData
+from fint import FintClient, MandateData
 
-client = NekudaClient.from_env()
+client = FintClient.from_env()
 user = client.user("user_123")
 
 # Create mandate with purchase details
@@ -70,9 +70,9 @@ print(f"Mandate ID: {mandate_response.mandate_id}")
 ```
 
 ```
-import { NekudaClient, MandateData } from '@nekuda/nekuda-js';
+import { FintClient, MandateData } from '@fint/fint-js';
 
-const client = NekudaClient.fromEnv();
+const client = FintClient.fromEnv();
 const user = client.user('user_123');
 
 // Create mandate with purchase details
@@ -188,7 +188,7 @@ CVVs are stored securely with a timestamp. For PCI compliance, they cannot be st
 Use `useWallet()` to check if the default card has a valid CVV **before** calling your backend:
 
 ```
-import { useWallet, NekudaCvvCollector } from '@nekuda/react-nekuda-js';
+import { useWallet, FintCvvCollector } from '@fint/react-fint-js';
 
 function PurchaseButton() {
   const wallet = useWallet();
@@ -214,17 +214,17 @@ Each payment method has an `isCvvValid` boolean that’s automatically computed 
 
 ### Frontend: Re-collect CVV When Expired
 
-When `isCvvValid === false`, show `NekudaCvvCollector` to prompt the user for just their CVV (not the full card):
+When `isCvvValid === false`, show `FintCvvCollector` to prompt the user for just their CVV (not the full card):
 
 ```
-import { NekudaCvvCollector } from '@nekuda/react-nekuda-js';
+import { FintCvvCollector } from '@fint/react-fint-js';
 
 function CvvPrompt() {
   const wallet = useWallet();
   const defaultCard = wallet.payments.list.find(pm => pm.isDefault);
 
   return (
-    <NekudaCvvCollector
+    <FintCvvCollector
       cardId={defaultCard.id}
       last4={defaultCard.lastFourDigits}
       brand={defaultCard.cardType}
@@ -249,9 +249,9 @@ When you call `request_card_reveal_token()`, the API validates the card’s CVV.
 * TypeScript
 
 ```
-from nekuda import NekudaClient, MandateData, CardCvvExpiredError
+from fint import FintClient, MandateData, CardCvvExpiredError
 
-client = NekudaClient.from_env()
+client = FintClient.from_env()
 user = client.user("user_123")
 
 # Create mandate
@@ -282,9 +282,9 @@ except CardCvvExpiredError:
 ```
 
 ```
-import { NekudaClient, MandateData, CardCvvExpiredError } from '@nekuda/nekuda-js';
+import { FintClient, MandateData, CardCvvExpiredError } from '@fint/fint-js';
 
-const client = NekudaClient.fromEnv();
+const client = FintClient.fromEnv();
 const user = client.user('user_123');
 
 // Create mandate
@@ -318,7 +318,7 @@ try {
 }
 ```
 
-Your frontend receives this error and shows `NekudaCvvCollector`. After the user updates their CVV, retry the token request.
+Your frontend receives this error and shows `FintCvvCollector`. After the user updates their CVV, retry the token request.
 
 ### Best Practices for CVV Handling
 
@@ -332,7 +332,7 @@ Use `useWallet().payments.find(pm => pm.isDefault).isCvvValid` to avoid unnecess
 
 ## Don't: Store CVV Yourself
 
-Never store or log CVV values. Let nekuda handle secure storage.
+Never store or log CVV values. Let Fint handle secure storage.
 
 ## Don't: Check CVV After Reveal
 
@@ -351,7 +351,7 @@ The `userId` is what connects frontend card collection with backend retrieval:
   publicKey="pk_test_..."
   userId="user_123"  // Must match backend
 >
-  <NekudaWallet />
+  <FintWallet />
 </WalletProvider>
 ```
 
@@ -365,12 +365,12 @@ Getting CardCvvExpiredError **Check:**
 * Did the user add the card recently?
 * Is the `userId` consistent between frontend and backend?
 
-**Solution:** Check `isCvvValid` on the frontend before calling backend, and prompt user to re-enter CVV using `NekudaCvvCollector`.
+**Solution:** Check `isCvvValid` on the frontend before calling backend, and prompt user to re-enter CVV using `FintCvvCollector`.
 
 Can't find user's card **Check:**
 
 * Is the `userId` exactly the same between frontend and backend?
-* Did the user successfully add a card? (Check in their NekudaWallet UI)
+* Did the user successfully add a card? (Check in their FintWallet UI)
 * Are you using the correct API key for the environment?
 
 **Solution:** Verify `userId` consistency and ensure card was saved successfully.
@@ -397,7 +397,7 @@ How to extend CVV availability?**Answer:** The 60-minute window cannot be extend
 
 See real-world examples with timing and CVV expiration](payment-flow-scenarios.md)[## Wallet Component
 
-Set up NekudaWallet for card collection](frontend/wallet/overview.md)[## CVV Management
+Set up FintWallet for card collection](frontend/wallet/overview.md)[## CVV Management
  
 ### On-chain Stablecoin Payments (Fint + Fintechain)
  
@@ -423,6 +423,6 @@ curl -X POST https://api.fint.io/v1/payments \
  
 Handle the webhook to mark orders as succeeded or failed, and persist chain metadata (e.g., `tx_hash`, `chain`) when available for audit and reconciliation.
 
-Handle CVV expiration with NekudaCvvCollector](frontend/wallet/cvv-management.md)[## Backend SDK
+Handle CVV expiration with FintCvvCollector](frontend/wallet/cvv-management.md)[## Backend SDK
 
-Implement mandate creation and card reveal](nekuda-sdk/getting-started.md)
+Implement mandate creation and card reveal](fint-sdk/getting-started.md)

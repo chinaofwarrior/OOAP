@@ -5,7 +5,7 @@ Complete your first end-to-end payment flow: collect a card on the frontend, rev
 **What You’ll Learn ** In this guide, you’ll:
 
 * Install frontend and backend SDKs
-* Collect a payment method with `NekudaWallet`
+* Collect a payment method with `FintWallet`
 * Retrieve card details securely on your backend
 * Understand key concepts (userId, mandate, reveal token)
 
@@ -18,27 +18,27 @@ Complete your first end-to-end payment flow: collect a card on the frontend, rev
 * Backend (TypeScript)
 
 ```
-npm install @nekuda/react-nekuda-js
+npm install @fint/wallet
 ```
 
 ```
-pip install nekuda
+pip install fint
 ```
 
 ```
-npm install @nekuda/nekuda-js
+npm install @fint/fint-js
 ```
 
 ## Get API Keys
 
-1. Sign up at [app.nekuda.ai](https://app.nekuda.ai)
+1. Sign up at [app.fint.io](https://app.fint.io)
 2. Generate your keys:
    * **Public key** (`pk_test_...`) - for frontend card collection
    * **Secret key** (`sk_test_...`) - for backend card reveal
 
 ```
 # Backend only - never expose this in frontend
-export NEKUDA_API_KEY="sk_test_..."
+export FINT_API_KEY="sk_test_..."
 ```
 
 ## Frontend: Collect Card
@@ -46,14 +46,14 @@ export NEKUDA_API_KEY="sk_test_..."
 Add the wallet component where users manage payment methods (e.g., settings page):
 
 ```
-import { WalletProvider, NekudaWallet } from '@nekuda/react-nekuda-js';
+import { WalletProvider, FintWallet } from '@fint/wallet';
 
 function UserSettings() {
   const userId = currentUser.id; // Your user's ID
 
   return (
     <WalletProvider publicKey="pk_test_..." userId={userId}>
-      <NekudaWallet />
+      <FintWallet />
     </WalletProvider>
   );
 }
@@ -71,10 +71,10 @@ When your AI agent needs to make a purchase, retrieve the card details:
 * TypeScript
 
 ```
-from nekuda import NekudaClient, MandateData
+from fint import FintClient, MandateData
 
-# Initialize client (reads NEKUDA_API_KEY from env)
-client = NekudaClient.from_env()
+# Initialize client (reads FINT_API_KEY from env)
+client = FintClient.from_env()
 user = client.user("user_123")  # Same userId as frontend
 
 # 1. Create mandate (user's intent to purchase)
@@ -101,10 +101,10 @@ print(f"Name: {card.cardholder_name}")
 ```
 
 ```
-import { NekudaClient, MandateData } from '@nekuda/nekuda-js';
+import { FintClient, MandateData } from '@fint/fint-js';
 
-// Initialize client (reads NEKUDA_API_KEY from env)
-const client = NekudaClient.fromEnv();
+// Initialize client (reads FINT_API_KEY from env)
+const client = FintClient.fromEnv();
 const user = client.user('user_123'); // Same userId as frontend
 
 // 1. Create mandate (user's intent to purchase)
@@ -157,13 +157,13 @@ Short-lived, single-use token that authorizes card reveal. Generated per mandate
 
 ### CVV Expiration
 
-CVVs are valid for 60 minutes after collection. If expired, prompt user to re-enter using `NekudaCvvCollector`. See [CVV Management](../frontend/wallet/cvv-management.md).
+CVVs are valid for 60 minutes after collection. If expired, prompt user to re-enter using `FintCvvCollector`. See [CVV Management](../frontend/wallet/cvv-management.md).
 
 ## Next Steps
 
 [## System Overview
 
-Understand how nekuda works end-to-end](../system-overview.md)[## Payment Flow
+Understand how Fint works end-to-end](../system-overview.md)[## Payment Flow
 
 Detailed walkthrough of the complete payment flow](../payment-flow.md)[## Wallet Component
 

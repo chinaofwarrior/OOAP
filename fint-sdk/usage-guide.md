@@ -1,16 +1,16 @@
 # Usage Guide
 
-This guide walks you through the typical payment flow lifecycle with **type-safe responses ** at every step using the nekuda SDK.
+This guide walks you through the typical payment flow lifecycle with **type-safe responses ** at every step using the Fint SDK.
 
 ## Overview
 
-The nekuda payment flow for backend processing consists of these main steps:
+The Fint payment flow for backend processing consists of these main steps:
 
 1
 
 Initialize Client
 
-Set up the `NekudaClient` with your API key.
+Set up the `FintClient` with your API key.
 
 2
 
@@ -43,7 +43,7 @@ A `MandateData` object **must be created and submitted ** to the API via
 
 ## Complete Example
 
-Here’s a full working example demonstrating the complete payment flow with the nekuda SDK:
+Here’s a full working example demonstrating the complete payment flow with the Fint SDK:
 
 * Python
 * TypeScript
@@ -51,17 +51,17 @@ Here’s a full working example demonstrating the complete payment flow with the
 payment\_flow.py
 
 ```
-from nekuda import MandateData, NekudaClient, NekudaError
+from fint import MandateData, FintClient, FintError
 import os
 
-# Initialize client - uses NEKUDA_API_KEY from environment by default.
-# Default base_url is https://api.nekuda.ai
-client = NekudaClient.from_env()
+# Initialize client - uses FINT_API_KEY from environment by default.
+# Default base_url is https://api.fint.io
+client = FintClient.from_env()
 
-# Or with explicit config (not needed if NEKUDA_API_KEY is set):
-# client = NekudaClient(
+# Or with explicit config (not needed if FINT_API_KEY is set):
+# client = FintClient(
 #     api_key="sk_live_your_api_key",
-#     # base_url="https://api.nekuda.ai", # Default, no need to specify for production
+#     # base_url="https://api.fint.io", # Default, no need to specify for production
 #     timeout=30,
 #     max_retries=3
 # )
@@ -76,8 +76,8 @@ try:
         product="Premium Gold Subscription",
         price=99.99,
         currency="USD",
-        merchant="nekuda Demo Store",
-        merchant_link="https://app.nekuda.ai/demostore",
+        merchant="Fint Demo Store",
+        merchant_link="https://app.fint.io/demostore",
         product_description="Monthly access to all gold features"
     )
 
@@ -118,7 +118,7 @@ try:
 
     print("🎉 Successfully completed the card reveal flow!")
 
-except NekudaError as e:
+except FintError as e:
     # Structured error handling
     print(f"❌ An error occurred: {e}")
     if hasattr(e, 'status_code'):
@@ -131,14 +131,14 @@ except NekudaError as e:
 payment\_flow.ts
 
 ```
-import { NekudaClient, MandateData, NekudaError } from '@nekuda/nekuda-js';
+import { FintClient, MandateData, FintError } from '@fint/fint-js';
 
 async function paymentFlow() {
   // Initialize client with automatic URL normalization
-  const client = NekudaClient.fromEnv(); // Uses NEKUDA_API_KEY env var
+  const client = FintClient.fromEnv(); // Uses FINT_API_KEY env var
   // Or with explicit config:
-  // const client = new NekudaClient('sk_live_...', {
-  //   baseUrl: 'api.nekuda.ai',  // No need for https:// prefix!
+  // const client = new FintClient('sk_live_...', {
+  //   baseUrl: 'api.fint.io',  // No need for https:// prefix!
   //   timeout: 30000,
   //   maxRetries: 5
   // });
@@ -151,8 +151,8 @@ async function paymentFlow() {
       product: 'Premium Gold Subscription',
       price: 99.99,
       currency: 'USD',
-      merchant: 'nekuda Demo Store',
-      merchantLink: 'https://app.nekuda.ai/demostore',
+      merchant: 'Fint Demo Store',
+      merchantLink: 'https://app.fint.io/demostore',
       productDescription: 'Monthly access to all gold features'
     });
 
@@ -194,7 +194,7 @@ async function paymentFlow() {
     console.log('🎉 Successfully completed the card reveal flow!');
 
   } catch (error) {
-    if (error instanceof NekudaError) {
+    if (error instanceof FintError) {
       // Structured error handling
       console.log(`❌ An error occurred: ${error.message}`);
       if ('statusCode' in error) {
@@ -297,8 +297,8 @@ Your IDE knows exactly what fields are available:
 * TypeScript
 
 ```
-from nekuda import NekudaClient
-client = NekudaClient.from_env()
+from fint import FintClient
+client = FintClient.from_env()
 user = client.user("some_user_id")
 # Assume mandate_id is obtained
 reveal_response = user.request_card_reveal_token(mandate_id=123)
@@ -306,8 +306,8 @@ reveal_response.  # IDE shows: reveal_token, reveal_path, expires_at
 ```
 
 ```
-import { NekudaClient } from '@nekuda/nekuda-js';
-const client = NekudaClient.fromEnv();
+import { FintClient } from '@fint/fint-js';
+const client = FintClient.fromEnv();
 const user = client.user('some_user_id');
 // Your IDE knows all available fields
 const revealResponse = await user.requestCardRevealToken(123);
@@ -335,7 +335,7 @@ revealResponse. // IDE shows: revealToken, expiresAt
 * TypeScript
 
 ```
-# Card details are automatically validated by the nekuda SDK
+# Card details are automatically validated by the Fint SDK
 # card = user.reveal_card_details(reveal_token="...")
 # card.card_expiry_date is guaranteed to be in MM/YY format
 # card.card_number is validated to be 13-19 digits
@@ -356,23 +356,23 @@ If the API returns invalid data, you get clear, actionable error messages:“Res
 
 ### URL Normalization
 
-The SDK automatically normalizes URLs. The default base URL is `https://api.nekuda.ai`.
+The SDK automatically normalizes URLs. The default base URL is `https://api.fint.io`.
 
 * Python
 * TypeScript
 
 ```
-from nekuda import NekudaClient
-# Uses https://api.nekuda.ai by default
-client = NekudaClient(api_key="sk_live_...")
+from fint import FintClient
+# Uses https://api.fint.io by default
+client = FintClient(api_key="sk_live_...")
 ```
 
 ```
-import { NekudaClient } from '@nekuda/nekuda-js';
+import { FintClient } from '@fint/fint-js';
 // All of these work the same:
-new NekudaClient('sk_...', { baseUrl: 'api.nekuda.ai' });
-new NekudaClient('sk_...', { baseUrl: 'https://api.nekuda.ai' });
-new NekudaClient('sk_...', { baseUrl: 'https://api.nekuda.ai/' });
+new FintClient('sk_...', { baseUrl: 'api.fint.io' });
+new FintClient('sk_...', { baseUrl: 'https://api.fint.io' });
+new FintClient('sk_...', { baseUrl: 'https://api.fint.io/' });
 ```
 
 ### Response Validation
@@ -413,23 +413,23 @@ Always wrap API calls in try-catch blocks. Refer to the [Error Handling](Errors.
 * TypeScript
 
 ```
-from nekuda import NekudaError
+from fint import FintError
 # try:
 #     card = user.reveal_card_details(token)
 #     # Process payment with card details
-# except NekudaError as e:
+# except FintError as e:
 #     # Log error and handle gracefully
 #     logger.error(f"Payment failed: {e}")
 #     # Return error response to user
 ```
 
 ```
-import { NekudaError } from '@nekuda/nekuda-js';
+import { FintError } from '@fint/fint-js';
 // try {
 //     const card = await user.revealCardDetails(token);
 //     // Process payment with card details
 // } catch (error) {
-//     if (error instanceof NekudaError) {
+//     if (error instanceof FintError) {
 //         // Log error and handle gracefully
 //         console.error(`Payment failed: ${error.message}`);
 //         // Return error response to user

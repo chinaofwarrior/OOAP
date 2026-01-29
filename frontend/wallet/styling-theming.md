@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `NekudaWallet` component comes with **three built-in themes ** and **flexible styling options ** that let you customize everything from colors to spacing to match your brand. You can use themes as-is, apply partial overrides, or take complete control with headless mode.**No Setup Required** : Styling is built into `NekudaWallet` itself. Just pass `theme` and `mode` props—no separate style providers needed.
+The `FintWallet` component comes with **three built-in themes ** and **flexible styling options ** that let you customize everything from colors to spacing to match your brand. You can use themes as-is, apply partial overrides, or take complete control with headless mode.**No Setup Required** : Styling is built into `FintWallet` itself. Just pass `theme` and `mode` props—no separate style providers needed.
 
 ---
 
@@ -11,19 +11,19 @@ The `NekudaWallet` component comes with **three built-in themes ** and **flexibl
 The easiest way to style the wallet is to choose one of the three built-in themes:
 
 ```
-import { WalletProvider, NekudaWallet } from '@nekuda/wallet';
+import { WalletProvider, FintWallet } from '@fint/wallet';
 
 function UserSettings() {
   return (
     <WalletProvider publicKey="pk_test_..." userId={userId}>
       {/* Light theme (default) */}
-      <NekudaWallet theme="light" />
+      <FintWallet theme="light" />
 
       {/* Dark theme */}
-      <NekudaWallet theme="dark" />
+      <FintWallet theme="dark" />
 
       {/* Minimal theme */}
-      <NekudaWallet theme="minimal" />
+      <FintWallet theme="minimal" />
     </WalletProvider>
   );
 }
@@ -53,7 +53,7 @@ Professional, modern design suitable for most applications.
 * General-purpose web apps
 
 ```
-<NekudaWallet theme="light" />
+<FintWallet theme="light" />
 ```
 
 ### Dark Theme
@@ -74,7 +74,7 @@ Optimized for low-light environments with warm accents.
 * Modern dashboards
 
 ```
-<NekudaWallet theme="dark" />
+<FintWallet theme="dark" />
 ```
 
 ### Minimal Theme
@@ -95,7 +95,7 @@ Clean, minimalist design with reduced visual elements.
 * Mobile-first designs
 
 ```
-<NekudaWallet theme="minimal" />
+<FintWallet theme="minimal" />
 ```
 
 ---
@@ -120,7 +120,7 @@ The `mode` prop controls how styles are applied:
 Use built-in themes with no additional configuration.
 
 ```
-<NekudaWallet mode="themed" theme="light" />
+<FintWallet mode="themed" theme="light" />
 ```
 
 ### `custom` Mode
@@ -128,7 +128,7 @@ Use built-in themes with no additional configuration.
 Apply partial overrides on top of a theme. Your custom styles merge with the base theme.
 
 ```
-<NekudaWallet
+<FintWallet
   mode="custom"
   theme="light"
   styles={{
@@ -145,7 +145,7 @@ Apply partial overrides on top of a theme. Your custom styles merge with the bas
 Complete control—no default styles applied. You provide all styling.
 
 ```
-<NekudaWallet
+<FintWallet
   mode="headless"
   className="my-custom-wallet"
 />
@@ -162,7 +162,7 @@ For consistent branding across all wallet components, use `themeConfig` to overr
 ### Quick Brand Color Change
 
 ```
-<NekudaWallet
+<FintWallet
   mode="themed"
   theme="light"
   themeConfig={{
@@ -184,7 +184,7 @@ This single change updates:
 ### Common Token Overrides
 
 ```
-<NekudaWallet
+<FintWallet
   mode="themed"
   theme="light"
   themeConfig={{
@@ -228,7 +228,7 @@ This single change updates:
 Control the color hierarchy for proper depth:
 
 ```
-<NekudaWallet
+<FintWallet
   themeConfig={{
     surfaces: {
       app: {
@@ -266,7 +266,7 @@ Control the color hierarchy for proper depth:
 **Use both together:** Copy
 
 ```
-<NekudaWallet
+<FintWallet
   mode="themed"
   theme="light"
   themeConfig={{
@@ -299,7 +299,7 @@ Controls the wallet-specific interface elements.**Available Properties:**
 * **Empty State** : `emptyState`
 
 ```
-<NekudaWallet
+<FintWallet
   mode="custom"
   theme="light"
   styles={{
@@ -338,7 +338,7 @@ Controls forms within the wallet (contact info, shipping address, add card form)
 * **Special** : `error`, `sectionHeader`, `placesDropdown`
 
 ```
-<NekudaWallet
+<FintWallet
   mode="custom"
   theme="light"
   styles={{
@@ -387,7 +387,7 @@ Controls secure card input fields (card number, CVV, expiry) rendered in iframes
 **Important** : Secure elements inherit styling from the `input*` properties in the form styles.
 
 ```
-<NekudaWallet
+<FintWallet
   mode="custom"
   theme="light"
   styles={{
@@ -421,7 +421,7 @@ Controls secure card input fields (card number, CVV, expiry) rendered in iframes
 Match the wallet to your brand colors:
 
 ```
-<NekudaWallet
+<FintWallet
   mode="custom"
   theme="light"
   styles={{
@@ -442,7 +442,7 @@ Match the wallet to your brand colors:
 Create distinctive focus states for accessibility:
 
 ```
-<NekudaWallet
+<FintWallet
   mode="custom"
   theme="light"
   styles={{
@@ -466,7 +466,7 @@ Adjust border radius to match your design system:
 
 ```
 // Rounded design
-<NekudaWallet
+<FintWallet
   mode="custom"
   theme="light"
   styles={{
@@ -479,7 +479,7 @@ Adjust border radius to match your design system:
 />
 
 // Sharp design
-<NekudaWallet
+<FintWallet
   mode="custom"
   theme="light"
   styles={{
@@ -497,7 +497,7 @@ Adjust border radius to match your design system:
 Tighten or loosen spacing throughout:
 
 ```
-<NekudaWallet
+<FintWallet
   mode="custom"
   theme="light"
   styles={{
@@ -515,7 +515,7 @@ Tighten or loosen spacing throughout:
 Use your brand fonts and sizing:
 
 ```
-<NekudaWallet
+<FintWallet
   mode="custom"
   theme="light"
   styles={{
@@ -547,7 +547,7 @@ Use your brand fonts and sizing:
 The wallet is mobile-responsive by default. You can customize behavior with CSS media queries:
 
 ```
-<NekudaWallet
+<FintWallet
   mode="custom"
   theme="light"
   styles={{
@@ -580,7 +580,7 @@ The wallet is mobile-responsive by default. You can customize behavior with CSS 
 Real-world example showing comprehensive brand styling:
 
 ```
-import { WalletProvider, NekudaWallet } from '@nekuda/wallet';
+import { WalletProvider, FintWallet } from '@fint/wallet';
 
 function BrandedWallet() {
   const brandStyles = {
@@ -703,7 +703,7 @@ function BrandedWallet() {
 
   return (
     <WalletProvider publicKey="pk_test_..." userId={userId}>
-      <NekudaWallet
+      <FintWallet
         mode="custom"
         theme="light"
         styles={brandStyles}
@@ -722,7 +722,7 @@ For complete design control, use headless mode and provide your own styles via `
 ```
 import './my-wallet-styles.css';
 
-<NekudaWallet
+<FintWallet
   mode="headless"
   className="my-custom-wallet"
 />
@@ -760,7 +760,7 @@ import './my-wallet-styles.css';
 All style interfaces are fully typed for autocomplete and type safety:
 
 ```
-import type { WalletStyles } from '@nekuda/wallet';
+import type { WalletStyles } from '@fint/wallet';
 
 const customStyles: Partial<WalletStyles> = {
   container: {
@@ -775,7 +775,7 @@ const customStyles: Partial<WalletStyles> = {
   // and catch type errors
 };
 
-<NekudaWallet mode="custom" theme="light" styles={customStyles} />
+<FintWallet mode="custom" theme="light" styles={customStyles} />
 ```
 
 **Interface Hierarchy:**
@@ -794,14 +794,14 @@ Don’t start from scratch. Pick a theme close to your design and customize:
 
 ```
 // Good: Start with minimal theme and customize
-<NekudaWallet
+<FintWallet
   mode="custom"
   theme="minimal"
   styles={{ /* your overrides */ }}
 />
 
 // Avoid: Headless mode unless necessary
-<NekudaWallet mode="headless" />
+<FintWallet mode="headless" />
 ```
 
 ### 2. Override Sparingly
@@ -810,7 +810,7 @@ Only override what you need. Themes are designed to work together:
 
 ```
 // Good: Override key brand elements
-<NekudaWallet
+<FintWallet
   mode="custom"
   theme="light"
   styles={{
@@ -820,7 +820,7 @@ Only override what you need. Themes are designed to work together:
 />
 
 // Avoid: Overriding everything
-<NekudaWallet
+<FintWallet
   mode="custom"
   theme="light"
   styles={{ /* 100+ overrides */ }}
@@ -832,7 +832,7 @@ Only override what you need. Themes are designed to work together:
 For dynamic theming, use CSS custom properties:
 
 ```
-<NekudaWallet
+<FintWallet
   mode="custom"
   theme="light"
   styles={{
@@ -852,7 +852,7 @@ For dynamic theming, use CSS custom properties:
 Always test styling on mobile devices:
 
 ```
-<NekudaWallet
+<FintWallet
   mode="custom"
   theme="light"
   styles={{
@@ -869,7 +869,7 @@ Always test styling on mobile devices:
 Ensure sufficient contrast and focus states:
 
 ```
-<NekudaWallet
+<FintWallet
   mode="custom"
   theme="light"
   styles={{
@@ -898,7 +898,7 @@ Need to build custom components that match your wallet theme? Use the `useTheme(
 ### Basic Usage
 
 ```
-import { useTheme } from '@nekuda/wallet';
+import { useTheme } from '@fint/wallet';
 
 function CustomButton() {
   const theme = useTheme();
@@ -1007,7 +1007,7 @@ Can I use a different font family?
 Yes! Set `fontFamily` on the `container` style, or target specific elements like `label`, `input`, or `button`:
 
 ```
-<NekudaWallet
+<FintWallet
   mode="custom"
   theme="light"
   styles={{
@@ -1027,7 +1027,7 @@ Can I create my own theme?
 Yes! Create a `WalletStyles` object with all your styles and pass it:
 
 ```
-import type { WalletStyles } from '@nekuda/wallet';
+import type { WalletStyles } from '@fint/wallet';
 
 const myTheme: WalletStyles = {
   // Define all your styles here
@@ -1036,7 +1036,7 @@ const myTheme: WalletStyles = {
   // ... 150+ properties
 };
 
-<NekudaWallet mode="custom" theme="light" styles={myTheme} />
+<FintWallet mode="custom" theme="light" styles={myTheme} />
 ```
 
 Use an existing theme as a starting point to ensure you don’t miss critical styles.
@@ -1046,7 +1046,7 @@ How do I match my existing design system?
 Use `mode="custom"` with your design tokens:
 
 ```
-<NekudaWallet
+<FintWallet
   mode="custom"
   theme="light"
   styles={{
@@ -1070,7 +1070,7 @@ Can I use Tailwind CSS with the wallet?
 Yes, but only in `headless` mode. Use `className` to apply Tailwind classes:
 
 ```
-<NekudaWallet mode="headless" className="max-w-4xl mx-auto p-6" />
+<FintWallet mode="headless" className="max-w-4xl mx-auto p-6" />
 ```
 
 Then target elements with Tailwind classes in your CSS or via data attributes.
@@ -1083,15 +1083,15 @@ Render multiple wallets side-by-side in development:
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '32px' }}>
   <div>
     <h3>Light</h3>
-    <NekudaWallet theme="light" />
+    <FintWallet theme="light" />
   </div>
   <div>
     <h3>Dark</h3>
-    <NekudaWallet theme="dark" />
+    <FintWallet theme="dark" />
   </div>
   <div>
     <h3>Minimal</h3>
-    <NekudaWallet theme="minimal" />
+    <FintWallet theme="minimal" />
   </div>
 </div>
 ```

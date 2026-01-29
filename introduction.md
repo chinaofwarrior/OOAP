@@ -16,6 +16,6 @@
 
 ### Getting Started
 
-1. Read the [System Overview](system-overview.md) for a clear description of how the nekuda SDK works, covering the full payment flow and components of the system.
-2. Follow the [Quickstart guide](nekuda-sdk/Quickstart.md) to get your agent making payments in minutes.
-3. Check out our [agent demo repository](https://github.com/nekuda-ai/nekuda-agent-demo) for complete implementation examples.
+1. Read the [System Overview](system-overview.md) for a clear description of how the Fint SDK works, covering the full payment flow and components of the system.
+2. Follow the [Quickstart guide](fint-sdk/Quickstart.md) to get your agent making payments in minutes.
+3. Check out our agent demo repository for complete implementation examples.

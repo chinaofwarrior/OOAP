@@ -11,10 +11,10 @@ Saved settings ensure your AI agent fills forms consistently across all purchase
 ## Quick Start
 
 ```
-import { WalletProvider, NekudaWallet } from '@nekuda/wallet';
+import { WalletProvider, FintWallet } from '@fint/wallet';
 
 <WalletProvider publicKey="pk_test_..." userId={userId}>
-  <NekudaWallet theme="light" />
+  <FintWallet theme="light" />
 </WalletProvider>
 ```
 
@@ -27,7 +27,7 @@ import { WalletProvider, NekudaWallet } from '@nekuda/wallet';
 Reduce friction by pre-filling information from your user database:
 
 ```
-<NekudaWallet
+<FintWallet
   defaultContact={{
     firstName: user.firstName,
     lastName: user.lastName,
@@ -42,7 +42,7 @@ Reduce friction by pre-filling information from your user database:
 Get notified when users update their contact info:
 
 ```
-<NekudaWallet
+<FintWallet
   defaultContact={user.contact}
   onContactChange={(contactData) => {
     // Update your database
@@ -60,7 +60,7 @@ Get notified when users update their contact info:
 ### Pre-fill Shipping Data
 
 ```
-<NekudaWallet
+<FintWallet
   defaultShipping={{
     addressLine1: user.address.street,
     addressLine2: user.address.apt,
@@ -75,7 +75,7 @@ Get notified when users update their contact info:
 ### Sync Changes
 
 ```
-<NekudaWallet
+<FintWallet
   defaultShipping={user.shippingAddress}
   onShippingChange={(shippingData) => {
     updateUser(user.id, { shipping: shippingData });
@@ -92,7 +92,7 @@ Get notified when users update their contact info:
 Display user settings elsewhere in your app:
 
 ```
-import { useWallet } from '@nekuda/wallet';
+import { useWallet } from '@fint/wallet';
 
 function UserProfile() {
   const wallet = useWallet();
@@ -119,7 +119,7 @@ function UserProfile() {
 If you don’t need contact and shipping management, hide the Settings tab:
 
 ```
-<NekudaWallet showSettings={false} />
+<FintWallet showSettings={false} />
 ```
 
 This shows only the Payment Methods view.
@@ -144,7 +144,7 @@ Back to wallet overview](overview.md)
 
 Do I need to sync data to my database?
 
-No, it’s optional. nekuda stores this data and your backend SDK can retrieve it. Use callbacks if you need this data elsewhere in your app.
+No, it’s optional. Fint stores this data and your backend SDK can retrieve it. Use callbacks if you need this data elsewhere in your app.
 
 Can users have multiple shipping addresses?
 
