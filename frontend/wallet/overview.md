@@ -12,17 +12,23 @@ Update your imports:
 import { WalletProvider, FintWallet } from '@fint/wallet';
 ```
 
-All functionality remains the same—only the package name changed.**First time using the Wallet?** Start with the Wallet Wizard for a quick, interactive walkthrough that shows you how to set up and use the wallet—ideal for visual learners or first-time users.
+All functionality remains the same—only the package name changed.
+
+**First time using the Wallet?** Start with the Wallet Wizard for a quick, interactive walkthrough that shows you how to set up and use the wallet—ideal for visual learners or first-time users.
 
 ## Data Collected by the Wallet
 
 The wallet organizes user data into three main groups:
 
 1. **Payment Methods** - Credit/debit cards with billing addresses (tokenized, PCI-compliant)
-2.**Contact Information** - Name, email, phone number
-3.**Shipping Details** - Full shipping address
+2. **Contact Information** - Name, email, phone number
+3. **Shipping Details** - Full shipping address
 
-This structure gives your AI agent a complete set of credentials to handle purchases across different merchant sites without requiring users to re-enter information.**What You’ll Learn ** In this guide, you’ll learn:
+This structure gives your AI agent a complete set of credentials to handle purchases across different merchant sites without requiring users to re-enter information.
+
+**What You’ll Learn**
+
+In this guide, you’ll learn:
 
 * Three integration approaches (Prebuilt, Styled, Custom)
 * How to set up `FintWallet` in 3 minutes
@@ -36,28 +42,30 @@ This structure gives your AI agent a complete set of credentials to handle purch
 
 The Fint React SDK provides three ways to integrate payment collection into your application. Choose based on your needs:
 
-[## Prebuilt Wallet
-
-Complete wallet component with all features included. Recommended for most applications.** Best for:** Getting started quickly with full functionality](#prebuilt-wallet)[## Styled Wallet
-
-Same functionality as prebuilt, with complete control over appearance and theming.** Best for:** Matching your existing design system](#styled-wallet)[## Custom Integration
-
-Standalone collection form for guest checkouts and custom flows.** Best for:**Guest checkout without wallet UI](#custom-integration)
+- [Prebuilt Wallet](#prebuilt-wallet) — Complete wallet component with all features included. Recommended for most applications. **Best for:** Getting started quickly with full functionality
+- [Styled Wallet](#styled-wallet) — Same functionality as prebuilt, with complete control over appearance and theming. **Best for:** Matching your existing design system
+- [Custom Integration](#custom-integration) — Standalone collection form for guest checkouts and custom flows. **Best for:** Guest checkout without wallet UI
 
 ### Component Hierarchy
 
-The Fint React SDK provides components at different levels of abstraction:** FintWallet**(highest level): Complete interface with payment methods management, contact info, and shipping address.** FintCollectForm**(mid level): Standalone card collection form for custom onboarding or checkout flows.** Individual Components**(lowest level): Field-level components (CardNumber, CVV, ExpiryDate) for complete control over layout and UX.
+The Fint React SDK provides components at different levels of abstraction:
+
+- **FintWallet** (highest level): Complete interface with payment methods management, contact info, and shipping address
+- **FintCollectForm** (mid level): Standalone card collection form for custom onboarding or checkout flows
+- **Individual Components** (lowest level): Field-level components (CardNumber, CVV, ExpiryDate) for complete control over layout and UX
 
 ---
 
 ## Prebuilt Wallet
 
-`FintWallet` provides a complete wallet interface with payment methods, contact info, and shipping address management.** When to use:**
+`FintWallet` provides a complete wallet interface with payment methods, contact info, and shipping address management.
+
+**When to use:**
 
 * User account or settings pages requiring full wallet functionality
 * Minimizing development time with pre-built UI
 
-**Security Model** : Card data is tokenized on collection and stored server-side. Your frontend never has access to full card numbers or CVVs. Backend SDK retrieves actual card details using your secret API key when your agent needs to complete a purchase.
+**Security Model:** Card data is tokenized on collection and stored server-side. Your frontend never has access to full card numbers or CVVs. Backend SDK retrieves actual card details using your secret API key when your agent needs to complete a purchase.
 
 ### Frontend-Backend Flow
 
@@ -229,7 +237,7 @@ string
 
 required
 
-Your Fint **public API key ** from the Fint Portal. Safe to use in client-side code. Format: `pk_test_...` or `pk_live_...`
+Your Fint **public API key** from the Fint Portal. Safe to use in client-side code. Format: `pk_test_...` or `pk_live_...`
 
 [​](#param-user-id)
 
@@ -237,7 +245,9 @@ userId
 
 string
 
-required **Your user’s unique identifier** from your system. This links saved payment methods to your users. Can be your database user ID, customer ID, or any stable identifier you manage.
+required
+
+**Your user’s unique identifier** from your system. This links saved payment methods to your users. Can be your database user ID, customer ID, or any stable identifier you manage.
 
 [​](#param-debug)
 
@@ -521,7 +531,7 @@ Frontend stores cards (tokenized). Backend retrieves cards (full details) for yo
 ## Security & PCI Compliance
 
 Card inputs render in secure iframe at `collect.fint.io` - your frontend cannot access them. Wallet only shows tokenized data (last 4 digits, expiry, name). Full card numbers and CVVs are never transmitted to your frontend.
-** Key separation:**
+**Key separation:**
 
 * **Public key** (`pk_*`): Frontend collection only
 * **Secret key** (`sk_*`): Backend retrieval only
@@ -532,15 +542,10 @@ HTTPS required in production. This design keeps you out of PCI scope.
 
 ## What’s Next?
 
-[## Payment Methods Tab
-
-Learn how users manage saved cards](payment-methods-tab.md)[## Settings Tab
-
-Understand contact and shipping management](settings-tab.md)[## Styling & Theming
-
-Customize appearance to match your brand](styling-theming.md)[## Integration Patterns
-
-See real-world integration examples](integration-patterns.md)
+- [Payment Methods Tab](payment-methods-tab.md) — Learn how users manage saved cards
+- [Settings Tab](settings-tab.md) — Understand contact and shipping management
+- [Styling & Theming](styling-theming.md) — Customize appearance to match your brand
+- [Integration Patterns](integration-patterns.md) — See real-world integration examples
 
 ---
 

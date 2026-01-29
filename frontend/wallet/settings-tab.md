@@ -128,15 +128,10 @@ This shows only the Payment Methods view.
 
 ## What’s Next?
 
-[## Payment Methods Tab
-
-Manage saved cards](payment-methods-tab.md)[## Styling & Theming
-
-Customize appearance](styling-theming.md)[## Integration Patterns
-
-Real-world examples](integration-patterns.md)[## Wallet Overview
-
-Back to wallet overview](overview.md)
+- [Payment Methods Tab](payment-methods-tab.md) — Manage saved cards
+- [Styling & Theming](styling-theming.md) — Customize appearance
+- [Integration Patterns](integration-patterns.md) — Real-world examples
+- [Wallet Overview](overview.md) — Back to wallet overview
 
 ---
 

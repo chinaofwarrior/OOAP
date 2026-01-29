@@ -96,8 +96,5 @@ If everything is set up correctly, you should see:
 
 ## What’s Next?
 
-[## Quickstart
-
-Complete your first payment flow in under 5 minutes](Quickstart-backend-sdk.md)[## Core Concepts
-
-Understand the key building blocks of the SDK](core-concepts.md)
+- [Quickstart](Quickstart-backend-sdk.md) — Complete your first payment flow in under 5 minutes
+- [Core Concepts](core-concepts.md) — Understand the key building blocks of the SDK

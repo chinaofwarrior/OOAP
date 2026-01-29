@@ -1,12 +1,14 @@
 # Support
 
-[## Ask our docs
+## Ask our docs
 
-[## Email Us
+## Email Us
 
-If you can’t access your customer portal, contact us at [[email protected]](cdn-cgi/l/email-protection.md).](cdn-cgi/l/email-protection.md)[## Security Guidelines
+If you can’t access your customer portal, contact us at [[email protected]](cdn-cgi/l/email-protection.md).
 
-Review our security and compliance best practices for safe implementation.](best-practices.md)
+## Security Guidelines
+
+Review our security and compliance best practices for safe implementation. [Security Guidelines](best-practices.md)
 
 ## Frequently Asked Questions
 

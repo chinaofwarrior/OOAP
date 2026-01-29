@@ -455,15 +455,10 @@ Validation errors appear inline automatically.
 
 ## What’s Next?
 
-[## Wallet Overview
-
-Full wallet component for account pages](overview.md)[## Integration Patterns
-
-Real-world examples and flows](integration-patterns.md)[## Styling & Theming
-
-Customize appearance](styling-theming.md)[## Backend SDK
-
-Retrieve payment details securely](../../fint-sdk/getting-started.md)
+- [Wallet Overview](overview.md) — Full wallet component for account pages
+- [Integration Patterns](integration-patterns.md) — Real-world examples and flows
+- [Styling & Theming](styling-theming.md) — Customize appearance
+- [Backend SDK](../../fint-sdk/getting-started.md) — Retrieve payment details securely
 
 ---
 

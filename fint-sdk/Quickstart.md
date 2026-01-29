@@ -2,7 +2,7 @@
 
 Complete your first end-to-end payment flow: collect a card on the frontend, reveal it on the backend.
 
-**What You’ll Learn ** In this guide, you’ll:
+**What You’ll Learn**\n\nIn this guide, you’ll:
 
 * Install frontend and backend SDKs
 * Collect a payment method with `FintWallet`
@@ -57,7 +57,7 @@ function UserSettings() {
     </WalletProvider>
   );
 }
-```**What this does:**
+```\n\n**What this does:**
 
 * Users can add/manage payment methods
 * Cards are tokenized and stored securely
@@ -161,12 +161,7 @@ CVVs are valid for 60 minutes after collection. If expired, prompt user to re-en
 
 ## Next Steps
 
-[## System Overview
-
-Understand how Fint works end-to-end](../system-overview.md)[## Payment Flow
-
-Detailed walkthrough of the complete payment flow](../payment-flow.md)[## Wallet Component
-
-Customize the wallet UI and behavior](../frontend/wallet/overview.md)[## Backend SDK
-
-Explore advanced backend SDK features](getting-started.md)
+- [System Overview](../system-overview.md) — Understand how Fint works end-to-end
+- [Payment Flow](../payment-flow.md) — Detailed walkthrough of the complete payment flow
+- [Wallet Component](../frontend/wallet/overview.md) — Customize the wallet UI and behavior
+- [Backend SDK](getting-started.md) — Explore advanced backend SDK features

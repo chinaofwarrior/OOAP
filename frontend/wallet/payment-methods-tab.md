@@ -182,15 +182,10 @@ function PaymentSettingsPage() {
 
 ## What’s Next?
 
-[## Settings Tab
-
-Manage contact info and shipping address](settings-tab.md)[## Collection Form
-
-Customize the add card flow](collect-form.md)[## Styling & Theming
-
-Customize appearance](styling-theming.md)[## Integration Patterns
-
-Real-world examples](integration-patterns.md)
+- [Settings Tab](settings-tab.md) — Manage contact info and shipping address
+- [Collection Form](collect-form.md) — Customize the add card flow
+- [Styling & Theming](styling-theming.md) — Customize appearance
+- [Integration Patterns](integration-patterns.md) — Real-world examples
 
 ---
 

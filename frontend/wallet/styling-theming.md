@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `FintWallet` component comes with **three built-in themes ** and **flexible styling options ** that let you customize everything from colors to spacing to match your brand. You can use themes as-is, apply partial overrides, or take complete control with headless mode.**No Setup Required** : Styling is built into `FintWallet` itself. Just pass `theme` and `mode` props—no separate style providers needed.
+The `FintWallet` component comes with **three built-in themes** and **flexible styling options** that let you customize everything from colors to spacing to match your brand. You can use themes as-is, apply partial overrides, or take complete control with headless mode.\n\n**No Setup Required:** Styling is built into `FintWallet` itself. Just pass `theme` and `mode` props—no separate style providers needed.
 
 ---
 
@@ -102,10 +102,10 @@ Clean, minimalist design with reduced visual elements.
 
 ## Theme System Overview
 
-The wallet uses a **two-layer theming system ** for maximum flexibility:
+The wallet uses a **two-layer theming system** for maximum flexibility:
 
-1.**Theme Tokens** (`themeConfig`) - Global design tokens that cascade across all components
-2.**Component Styles** (`styles`) - Fine-grained CSS overrides for specific elements
+1. **Theme Tokens** (`themeConfig`) - Global design tokens that cascade across all components
+2. **Component Styles** (`styles`) - Fine-grained CSS overrides for specific elements
 
 This separation lets you maintain consistent branding (via tokens) while customizing specific UI elements as needed.
 
@@ -988,15 +988,10 @@ theme.transitions.base            // Transitions
 
 ## What’s Next?
 
-[## Integration Patterns
-
-See real-world examples of wallet integrations](integration-patterns.md)[## Payment Methods Tab
-
-Learn how users manage their saved cards](payment-methods-tab.md)[## Settings Tab
-
-Understand contact and shipping management](settings-tab.md)[## Wallet Overview
-
-Back to wallet overview and setup guide](overview.md)
+- [Integration Patterns](integration-patterns.md) — See real-world examples of wallet integrations
+- [Payment Methods Tab](payment-methods-tab.md) — Learn how users manage their saved cards
+- [Settings Tab](settings-tab.md) — Understand contact and shipping management
+- [Wallet Overview](overview.md) — Back to wallet overview and setup guide
 
 ---
 

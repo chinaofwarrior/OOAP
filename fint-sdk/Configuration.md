@@ -1,8 +1,10 @@
 # Configuration
 
-This page lists every **knob & switch ** exposed by the Fint SDK and how to tweak them for production workloads.
+This page lists every **knob & switch** exposed by the Fint SDK and how to tweak them for production workloads.
 
-## Configuration Consistency 🎯**Important** : Configure your `FintClient` **once** and reuse it throughout your application. Creating multiple clients with different configurations leads to confusion and bugs.
+## Configuration Consistency 🎯
+
+**Important:** Configure your `FintClient` **once** and reuse it throughout your application. Creating multiple clients with different configurations leads to confusion and bugs.
 
 * Python
 * TypeScript
@@ -484,11 +486,11 @@ Does the SDK support async calls?
 * Python
 * TypeScript
 
-Currently, the Python SDK only supports **synchronous ** calls. An async variant (`AsyncFintClient`) is on the roadmap.
+Currently, the Python SDK only supports **synchronous** calls. An async variant (`AsyncFintClient`) is on the roadmap.
 
-The TypeScript SDK only supports **asynchronous ** calls. All methods return Promises and should be used with async/await or .then().
+The TypeScript SDK only supports **asynchronous** calls. All methods return Promises and should be used with async/await or .then().
 
-How do I handle different environments (dev/staging/prod)?**Recommended** : Use environment variables (`FINT_API_KEY`, `FINT_BASE_URL`) and `FintClient.from_env()`. Your deployment process can set these variables appropriately for each environment.Alternatively, you can explicitly instantiate `FintClient` with different parameters based on an environment flag:
+How do I handle different environments (dev/staging/prod)?\n\n**Recommended:** Use environment variables (`FINT_API_KEY`, `FINT_BASE_URL`) and `FintClient.from_env()`. Your deployment process can set these variables appropriately for each environment. Alternatively, you can explicitly instantiate `FintClient` with different parameters based on an environment flag:
 
 ```
 import os

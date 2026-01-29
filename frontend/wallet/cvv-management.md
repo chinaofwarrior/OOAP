@@ -329,8 +329,5 @@ The `isCvvValid` field is computed automatically in `wallet.payments.list`. If y
 
 ## Related
 
-[## Payment Flow
-
-Understand CVV timing in the complete payment flow](../../payment-flow.md)[## Wallet Overview
-
-Learn about the main wallet component](overview.md)
+- [Payment Flow](../../payment-flow.md) — Understand CVV timing in the complete payment flow
+- [Wallet Overview](overview.md) — Learn about the main wallet component

@@ -1,6 +1,8 @@
 # Payment Flow
 
-**What You’ll Learn ** This guide covers:
+**What You’ll Learn**
+
+This guide covers:
 
 * The three-stage payment flow (Collection → Mandate → Reveal)
 * CVV expiration rules (60-minute window)
@@ -15,16 +17,16 @@ This guide walks through the complete payment flow in the Fint system, from init
 
 ## Overview
 
-The Fint payment system follows a secure three-stage flow:**Critical: One Mandate Per Purchase ** Every purchase requires a **new mandate ** and **new reveal token** . You cannot reuse mandates or reveal tokens across multiple purchases. Each transaction must follow the complete flow: Create Mandate → Request Token → Reveal Card.
+The Fint payment system follows a secure three-stage flow. **Critical: One Mandate Per Purchase.** Every purchase requires a **new mandate** and **new reveal token**. You cannot reuse mandates or reveal tokens across multiple purchases. Each transaction must follow the complete flow: Create Mandate → Request Token → Reveal Card.
 
 ## The Three Stages
 
 ### Stage 1: Card Collection (Frontend)
 
-Users add their payment methods through the **FintWallet ** component. This happens once when they set up their wallet.
+Users add their payment methods through the **FintWallet** component. This happens once when they set up their wallet.
 
 ```
-import { WalletProvider, FintWallet } from '@fint/react-fint-js';
+import { WalletProvider, FintWallet } from '@fint/wallet';
 
 function UserSettings() {
   const userId = currentUser.id; // Your user's ID
@@ -35,7 +37,9 @@ function UserSettings() {
     </WalletProvider>
   );
 }
-```**What happens:**
+```
+
+**What happens:**
 
 * User enters card details in secure iframe
 * Card is tokenized and stored in Fint vault
@@ -130,7 +134,9 @@ console.log(`Card:** ** **** ** **${card.cardNumber.slice(-4)}`);
 console.log(`Expiry: ${card.cardExpiryDate}`);
 console.log(`CVV: ${card.cvv}`);
 console.log(`Name: ${card.cardholderName}`);
-```**What happens:**
+```
+
+**What happens:**
 
 * Reveal token is generated (short-lived, single-use)
 * Token is exchanged for card details
@@ -140,10 +146,10 @@ console.log(`Name: ${card.cardholderName}`);
 
 ## 🔑 Mandate Requirements
 
-**Every Purchase = New Mandate + New Reveal Token ** You **cannot ** reuse mandates or reveal tokens. Each purchase requires:
+**Every Purchase = New Mandate + New Reveal Token.** You **cannot** reuse mandates or reveal tokens. Each purchase requires:
 
-1. Create a **new mandate ** with the purchase details
-2. Request a **new reveal token ** using that mandate ID
+1. Create a **new mandate** with the purchase details
+2. Request a **new reveal token** using that mandate ID
 3. Reveal card details using that reveal token
 
 ### Why Mandates Are Required
@@ -166,7 +172,18 @@ Card networks require proof of user authorization for each transaction.
 
 Users can review their purchase history through mandate records.
 
-### Token Lifecycle**1.** Create Mandate →**2.** `mandate_id` →**3.** Request Reveal Token →**4.** `reveal_token` →**5.** Reveal Card →**6.** Card Details →**7.** Complete Purchase →**8.** Token Consumed **Key Points:**
+### Token Lifecycle
+
+1. Create Mandate
+2. `mandate_id`
+3. Request Reveal Token
+4. `reveal_token`
+5. Reveal Card
+6. Card Details
+7. Complete Purchase
+8. Token Consumed
+
+**Key Points:**
 
 * **Reveal tokens are single-use** - once you reveal card details, the token is consumed
 * **Mandates are tied to specific purchases** - you cannot use mandate #1 for purchase #2
@@ -174,9 +191,12 @@ Users can review their purchase history through mandate records.
 
 ---
 
-## ⚠️ Critical: CVV Validation **CVV is only available for 60 minutes after collection.** CVV validation happens when you **request a reveal token** . If the CVV has expired (>60 minutes since collection), `request_card_reveal_token()` will raise a `CardCvvExpiredError`. You must prompt the user to re-enter their CVV before proceeding.
+## ⚠️ Critical: CVV Validation
+
+**CVV is only available for 60 minutes after collection.** CVV validation happens when you **request a reveal token**. If the CVV has expired (>60 minutes since collection), `request_card_reveal_token()` will raise a `CardCvvExpiredError`. You must prompt the user to re-enter their CVV before proceeding.
 
 CVVs are stored securely with a timestamp. For PCI compliance, they cannot be stored long-term. The 60-minute window allows for immediate purchases while maintaining security standards.
+
 **Key behavior:**
 
 * CVV validation occurs at `request_card_reveal_token()` time
@@ -393,11 +413,10 @@ How to extend CVV availability?**Answer:** The 60-minute window cannot be extend
 
 ## Next Steps
 
-[## Payment Flow Scenarios
-
-See real-world examples with timing and CVV expiration](payment-flow-scenarios.md)[## Wallet Component
-
-Set up FintWallet for card collection](frontend/wallet/overview.md)[## CVV Management
+- [Payment Flow Scenarios](payment-flow-scenarios.md) — See real-world examples with timing and CVV expiration
+- [Wallet Component](frontend/wallet/overview.md) — Set up FintWallet for card collection
+- [CVV Management](frontend/wallet/cvv-management.md) — Handle CVV expiration with FintCvvCollector
+- [Backend SDK](fint-sdk/getting-started.md) — Implement mandate creation and card reveal
  
 ### On-chain Stablecoin Payments (Fint + Fintechain)
  
@@ -423,6 +442,3 @@ curl -X POST https://api.fint.io/v1/payments \
  
 Handle the webhook to mark orders as succeeded or failed, and persist chain metadata (e.g., `tx_hash`, `chain`) when available for audit and reconciliation.
 
-Handle CVV expiration with FintCvvCollector](frontend/wallet/cvv-management.md)[## Backend SDK
-
-Implement mandate creation and card reveal](fint-sdk/getting-started.md)

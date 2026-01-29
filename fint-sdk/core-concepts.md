@@ -1,6 +1,6 @@
 # Core Concepts
 
-Before jumping into advanced usage, it’s worth getting familiar with the **building blocks ** that form the Fint SDK public surface.
+Before jumping into advanced usage, it’s worth getting familiar with the **building blocks** that form the Fint SDK public surface.
 
 ## FintClient
 
@@ -93,13 +93,13 @@ const revealResponse = await user.requestCardRevealToken(mandateResponse.mandate
 const cardDetails = await user.revealCardDetails(revealResponse.revealToken);
 ```
 
-Behind the scenes **no extra network round-trip ** happens for
+Behind the scenes **no extra network round-trip** happens for
 `client.user(user_id)` – `UserContext` is just a convenience object that
 stores the `user_id`.
 
 ## MandateData
 
-A data class that represents the **user’s intent to purchase** .
+A data class that represents the **user’s intent to purchase**.
 It must be successfully submitted via `user.create_mandate(mandate_data)` to obtain a `mandate_id` before you can request a card reveal token.
 
 * Python
@@ -120,7 +120,7 @@ mandate = MandateData(
 )
 ```
 
-Client-side validation runs in `__post_init__`. Invalid payloads raise `FintValidationError` **before ** any HTTP request is made.
+Client-side validation runs in `__post_init__`. Invalid payloads raise `FintValidationError` **before** any HTTP request is made.
 
 ```
 import { MandateData } from '@fint/fint-js';
@@ -137,11 +137,11 @@ const mandate = new MandateData({
 });
 ```
 
-Client-side validation runs in the constructor. Invalid payloads throw `FintValidationError`**before ** any HTTP request is made.
+Client-side validation runs in the constructor. Invalid payloads throw `FintValidationError` **before** any HTTP request is made.
 
 ## Response Models 🎯
 
-All API methods return **strongly-typed response models** . This provides:
+All API methods return **strongly-typed response models**. This provides:
 
 * **Type safety** - Your IDE knows exactly what fields are available
 * **Validation** - Card numbers, expiry dates, etc. are automatically validated
@@ -310,8 +310,5 @@ const card = await user.revealCardDetails(token.revealToken);
 
 ## What’s Next?
 
-[## Usage Guide
-
-Learn the complete payment flow step-by-step](usage-guide.md)[## Configuration
-
-Customize the SDK for your production environment](Configuration.md)
+- [Usage Guide](usage-guide.md) — Learn the complete payment flow step-by-step
+- [Configuration](Configuration.md) — Customize the SDK for your production environment

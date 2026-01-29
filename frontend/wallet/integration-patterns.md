@@ -990,14 +990,10 @@ const cardToUse = wallet.payments.list.find(c => c.isDefault); // ✅
 
 ## What’s Next?
 
-[## Wallet Overview
-
-Back to wallet setup and core concepts](overview.md)[## Styling & Theming
-
-Customize wallet appearance to match your brand](styling-theming.md)[## Backend SDK Docs
-
-Complete backend SDK documentation](../../fint-sdk/getting-started.md)[## Error Handling
-Handle errors gracefully in production](../../fint-sdk/Errors.md)
+- [Wallet Overview](overview.md) — Back to wallet setup and core concepts
+- [Styling & Theming](styling-theming.md) — Customize wallet appearance to match your brand
+- [Backend SDK Docs](../../fint-sdk/getting-started.md) — Complete backend SDK documentation
+- [Error Handling](../../fint-sdk/Errors.md) — Handle errors gracefully in production
 
 ---
 

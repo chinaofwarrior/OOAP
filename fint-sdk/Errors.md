@@ -429,18 +429,15 @@ The Fint SDK handles retries for `ServerError` and `RateLimitError` automaticall
 
 Test your application’s error handling by simulating these scenarios with the Fint SDK:
 
-Testing Different Error Conditions
+### Testing Different Error Conditions
 
-* **AuthenticationError** : Use an invalid `FINT_API_KEY`.
-* **InvalidRequestError (e.g., `CardNotFoundError`)** : Try to reveal a card for a `user_id` that has no card, or use an invalid `mandate_id` format.
-* **FintValidationError (on input)** : Create `MandateData` with invalid values (e.g., negative price).
-* **FintConnectionError** : Temporarily block network access to `api.fint.io` (e.g., via firewall rule or hosts file) before an SDK call.
-* **RateLimitError / ServerError** : Harder to simulate reliably against the live API. For these, trust the SDK’s retry mechanism and test how your application behaves if an error *persists* after SDK retries (i.e., the error that is eventually raised).
+* **AuthenticationError**: Use an invalid `FINT_API_KEY`.
+* **InvalidRequestError (e.g., `CardNotFoundError`)**: Try to reveal a card for a `user_id` that has no card, or use an invalid `mandate_id` format.
+* **FintValidationError (on input)**: Create `MandateData` with invalid values (e.g., negative price).
+* **FintConnectionError**: Temporarily block network access to `api.fint.io` (e.g., via firewall rule or hosts file) before an SDK call.
+* **RateLimitError / ServerError**: Harder to simulate reliably against the live API. For these, trust the SDK’s retry mechanism and test how your application behaves if an error *persists* after SDK retries (i.e., the error that is eventually raised).
 
 ## What’s Next?
 
-[## API Reference
-
-Complete method documentation and examples for the Fint SDK](api-reference.md)[## Configuration
-
-Customize the Fint SDK for your environment](Configuration.md)
+- [API Reference](api-reference.md) — Complete method documentation and examples for the Fint SDK
+- [Configuration](Configuration.md) — Customize the Fint SDK for your environment

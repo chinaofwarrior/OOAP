@@ -1,6 +1,6 @@
 # Usage Guide
 
-This guide walks you through the typical payment flow lifecycle with **type-safe responses ** at every step using the Fint SDK.
+This guide walks you through the typical payment flow lifecycle with **type-safe responses** at every step using the Fint SDK.
 
 ## Overview
 
@@ -37,8 +37,8 @@ details.
 Reveal Card Details
 
 Exchange the token for actual card information to complete the purchase
-(e.g., to complete the purchase).**Important Workflow** : A `user_id` is **required ** to create a user context.
-A `MandateData` object **must be created and submitted ** to the API via
+(e.g., to complete the purchase).\n\n**Important Workflow**: A `user_id` is **required** to create a user context.
+A `MandateData` object **must be created and submitted** to the API via
 `user.create_mandate()` to obtain a `mandate_id`. This `mandate_id` is then **required** to request a `reveal_token`.
 
 ## Complete Example
@@ -448,10 +448,6 @@ The SDK automatically handles rate limiting with exponential backoff based on `m
 
 ## What’s Next?
 
-[## Error Handling
-
-Build resilient applications with proper error handling](Errors.md)[## Configuration
-
-Configure advanced settings for your environment](Configuration.md)[## API Reference
-
-Complete method documentation and examples](api-reference.md)
+- [Error Handling](Errors.md) — Build resilient applications with proper error handling
+- [Configuration](Configuration.md) — Configure advanced settings for your environment
+- [API Reference](api-reference.md) — Complete method documentation and examples

@@ -178,7 +178,7 @@ async function main() {
 main().catch(console.error);
 ```
 
-Run it and you’ll see the card details with full type safety and IDE autocomplete support!**Complete Integration:** Remember that in a real application, creating a mandate and requesting a token happen on your backend (using this SDK), while the actual card collection happens on your frontend using our [React wallet SDK](../frontend/wallet/overview.md). A `user_id` must be consistently used for both frontend and backend operations for a given user.
+Run it and you’ll see the card details with full type safety and IDE autocomplete support!\n\n**Complete Integration:** Remember that in a real application, creating a mandate and requesting a token happen on your backend (using this SDK), while the actual card collection happens on your frontend using our [React wallet SDK](../frontend/wallet/overview.md). A `user_id` must be consistently used for both frontend and backend operations for a given user.
 
 ## Step 5: Why Type Safety Matters 🛡️
 
@@ -199,19 +199,14 @@ token = result["reveal_token"]  # Hope the key exists!
 
 ```
 const result = await client.requestCardRevealToken(...);
-const token = result. token; // Hope the property exists!
+const token = result.token; // Hope the property exists!
 ```
 
 ## What’s Next?
 
-[## Core Concepts
-
-Understand FintClient, UserContext, and response models](core-concepts.md)[## Usage Guide
-
-Deep dive into the complete payment flow](usage-guide.md)[## Configuration
-
-Production-ready settings and customization](Configuration.md)[## Error Handling
-
-Build resilient applications with proper error handling](Errors.md)
+- [Core Concepts](core-concepts.md) — Understand FintClient, UserContext, and response models
+- [Usage Guide](usage-guide.md) — Deep dive into the complete payment flow
+- [Configuration](Configuration.md) — Production-ready settings and customization
+- [Error Handling](Errors.md) — Build resilient applications with proper error handling
 
 Happy hacking! 🎉

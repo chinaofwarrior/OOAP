@@ -289,12 +289,7 @@ Never reuse mandates or reveal tokens across multiple purchases
 
 ## Related
 
-[## Payment Flow Core
-
-Understand the three-stage payment flow](payment-flow.md)[## CVV Management
-
-Learn about FintCvvCollector component](frontend/wallet/cvv-management.md)[## Troubleshooting
-
-Common issues and solutions](payment-flow.md)[## Backend SDK
-
-Implement mandate and reveal logic](fint-sdk/getting-started.md)
+- [Payment Flow Core](payment-flow.md) — Understand the three-stage payment flow
+- [CVV Management](frontend/wallet/cvv-management.md) — Learn about FintCvvCollector component
+- [Troubleshooting](payment-flow.md) — Common issues and solutions
+- [Backend SDK](fint-sdk/getting-started.md) — Implement mandate and reveal logic
