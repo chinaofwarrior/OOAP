@@ -156,21 +156,10 @@ console.log(`Name: ${card.cardholderName}`);
 
 Mandates serve multiple critical purposes:
 
-## Authorization Record
-
-Each mandate documents the user’s explicit intent to make a specific purchase, creating an audit trail.
-
-## Security
-
-Single-use tokens prevent replay attacks and unauthorized card reveals.
-
-## Compliance
-
-Card networks require proof of user authorization for each transaction.
-
-## Transparency
-
-Users can review their purchase history through mandate records.
+- **Authorization record:** Each mandate documents the user’s explicit intent to make a specific purchase, creating an audit trail.
+- **Security:** Single-use tokens prevent replay attacks and unauthorized card reveals.
+- **Compliance:** Card networks require proof of user authorization for each transaction.
+- **Transparency:** Users can review their purchase history through mandate records.
 
 ### Token Lifecycle
 

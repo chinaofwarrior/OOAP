@@ -141,16 +141,11 @@ For on-chain stablecoin payments, use Fint as the unified API/SDK surface while 
 * Reconciliation uses Fint’s identifiers and Fintechain’s on-chain metadata
 
 **API base:** https://api.fint.io
+
 ## Next Steps
 
-[## Payment Flow
-
-Understand the complete flow from collection to card reveal](payment-flow.md)[## Quickstart Guide
-
-Get started with a complete integration example](fint-sdk/Quickstart.md)[## Wallet Component
-
-Complete wallet UI for collecting and managing payment methods](frontend/wallet/overview.md)[## Backend SDK
-
-Discover server-side payment information handling](fint-sdk/getting-started.md)[## Security Best Practices
-
-Implement secure payment workflows](best-practices.md)
+- [Payment Flow](payment-flow.md) — Understand the complete flow from collection to card reveal
+- [Quickstart Guide](fint-sdk/Quickstart.md) — Get started with a complete integration example
+- [Wallet Component](frontend/wallet/overview.md) — Complete wallet UI for collecting and managing payment methods
+- [Backend SDK](fint-sdk/getting-started.md) — Discover server-side payment information handling
+- [Security Best Practices](best-practices.md) — Implement secure payment workflows
