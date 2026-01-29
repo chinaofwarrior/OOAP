@@ -1,7 +1,8 @@
 # Get All Mandates
 
 GET /api/v2/mandate
-Get All Mandates
+
+**Summary:** Get All Mandates
 
 ```
 curl --request GET \
@@ -38,18 +39,15 @@ curl --request GET \
 
 #### Authorizations
 
-BearerAuthBearerAuth
+BearerAuth
 
 [​](#authorization-authorization)
 
 Authorization
 
-string
-
-header
-
-required
-
+Type: `string`  
+Location: `header`  
+Required  
 JWT Bearer token from Auth0 authentication
 
 #### Response
@@ -60,130 +58,113 @@ List of all mandates for the customer
 
 id
 
-integer
-
-required
+Type: `integer`  
+Required
 
 [​](#response-items-request-id)
 
 request\_id
 
-string
-
-required
+Type: `string`  
+Required
 
 [​](#response-items-org-id)
 
 org\_id
 
-string<uuid>
-
-required
+Type: `string<uuid>`  
+Required
 
 [​](#response-items-product-one-of-0)
 
 product
 
-string | null
-
-required
+Type: `string | null`  
+Required
 
 [​](#response-items-product-description-one-of-0)
 
 product\_description
 
-string | null
-
-required
+Type: `string | null`  
+Required
 
 [​](#response-items-price-one-of-0)
 
 price
 
-number | null
-
-required
+Type: `number | null`  
+Required
 
 [​](#response-items-currency-one-of-0)
 
 currency
 
-string | null
-
-required
+Type: `string | null`  
+Required
 
 [​](#response-items-merchant-one-of-0)
 
 merchant
 
-string | null
-
-required
+Type: `string | null`  
+Required
 
 [​](#response-items-merchant-link-one-of-0)
 
 merchant\_link
 
-string | null
-
-required
+Type: `string | null`  
+Required
 
 [​](#response-items-confidence-score-one-of-0)
 
 confidence\_score
 
-number | null
-
-required
+Type: `number | null`  
+Required
 
 [​](#response-items-conversation-context-one-of-0)
 
 conversation\_context
 
-Conversation Context · object
-
-required
+Type: `Conversation Context` (object)  
+Required
 
 [​](#response-items-human-messages-one-of-0)
 
 human\_messages
 
-any[] | null
-
-required
+Type: `any[] | null`  
+Required
 
 [​](#response-items-additional-details-one-of-0)
 
 additional\_details
 
-Additional Details · object
-
-required
+Type: `Additional Details` (object)  
+Required
 
 [​](#response-items-created-at-one-of-0)
 
 created\_at
 
-string | null
-
-required
+Type: `string | null`  
+Required
 
 [​](#response-items-updated-at-one-of-0)
 
 updated\_at
 
-string | null
-
-required
+Type: `string | null`  
+Required
 
 [​](#response-items-mode)
 
 mode
 
-enum<string>
-
-default:live
-
+Type: `enum<string>`  
+Default: `live`  
 Mandate mode: 'live' for production, 'sandbox' for testing
 
 Available options:
@@ -196,10 +177,8 @@ Available options:
 
 pm\_type
 
-enum<string>
-
-default:vgs
-
+Type: `enum<string>`  
+Default: `vgs`  
 Vault type: 'vgs' (default) or 'visa' (Visa VTS tokenized)
 
 Available options:
@@ -212,6 +191,5 @@ Available options:
 
 status
 
-string | null
-
-Mandate status: 'active' or 'pending\_visa\_instruction'
+Type: `string | null`  
+Mandate status: 'active' or 'pending_visa_instruction'

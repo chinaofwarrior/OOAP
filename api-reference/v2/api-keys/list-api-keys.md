@@ -1,7 +1,8 @@
 # List API Keys
 
 GET /api/v2/api-keys
-List API Keys
+
+**Summary:** List API Keys
 
 ```
 curl --request GET \
@@ -29,18 +30,15 @@ curl --request GET \
 
 #### Authorizations
 
-BearerAuthBearerAuth
+BearerAuth
 
 [​](#authorization-authorization)
 
 Authorization
 
-string
-
-header
-
-required
-
+Type: `string`  
+Location: `header`  
+Required  
 JWT Bearer token from Auth0 authentication
 
 #### Response
@@ -51,78 +49,71 @@ Successful Response
 
 id
 
-string
-
-required
+Type: `string`  
+Required
 
 [​](#response-items-org-id)
 
 org\_id
 
-string<uuid>
-
-required
+Type: `string<uuid>`  
+Required
 
 [​](#response-items-name)
 
 name
 
-string
-
-required
+Type: `string`  
+Required
 
 [​](#response-items-public-key)
 
 public\_key
 
-string
-
-required
+Type: `string`  
+Required
 
 [​](#response-items-private-key-display)
 
 private\_key\_display
 
-string
-
-required
+Type: `string`  
+Required
 
 [​](#response-items-created-at)
 
 created\_at
 
-string<date-time>
-
-required
+Type: `string<date-time>`  
+Required
 
 [​](#response-items-description-one-of-0)
 
 description
 
-string | null
+Type: `string | null`
 
 [​](#response-items-is-revoked)
 
 is\_revoked
 
-boolean
-
-default:false
+Type: `boolean`  
+Default: `false`
 
 [​](#response-items-revoked-at-one-of-0)
 
 revoked\_at
 
-string<date-time> | null
+Type: `string<date-time> | null`
 
 [​](#response-items-last-used-at-one-of-0)
 
 last\_used\_at
 
-string<date-time> | null
+Type: `string<date-time> | null`
 
 [​](#response-items-environment-one-of-0)
 
 environment
 
-string | null
+Type: `string | null`

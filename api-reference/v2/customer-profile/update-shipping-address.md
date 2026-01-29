@@ -1,7 +1,8 @@
 # Update Shipping Address
 
 PUT /api/v2/wallet/shipping-address
-Update Shipping Address
+
+**Summary:** Update Shipping Address
 
 ```
 curl --request PUT \
@@ -38,18 +39,15 @@ curl --request PUT \
 
 #### Authorizations
 
-PublicKeyAuthPublicKeyAuth
+PublicKeyAuth
 
 [​](#authorization-x-public-key)
 
 X-Public-Key
 
-string
-
-header
-
-required
-
+Type: `string`  
+Location: `header`  
+Required  
 Public key for card collection operations
 
 #### Headers
@@ -58,10 +56,8 @@ Public key for card collection operations
 
 x-user-id
 
-string
-
-required
-
+Type: `string`  
+Required  
 End-user identifier within a customer organization. Required for user-scoped operations.
 
 #### Body
@@ -74,10 +70,8 @@ Shipping address with default flag.
 
 addressLine1
 
-string
-
-required
-
+Type: `string`  
+Required  
 Required string length: `1 - 200`
 
 Example:
@@ -88,10 +82,8 @@ Example:
 
 city
 
-string
-
-required
-
+Type: `string`  
+Required  
 Required string length: `1 - 100`
 
 Example:
@@ -102,10 +94,8 @@ Example:
 
 state
 
-string
-
-required
-
+Type: `string`  
+Required  
 Required string length: `2 - 50`
 
 Example:
@@ -116,10 +106,8 @@ Example:
 
 zipCode
 
-string
-
-required
-
+Type: `string`  
+Required  
 Example:
 
 `"10001"`
@@ -128,8 +116,7 @@ Example:
 
 addressLine2
 
-string | null
-
+Type: `string | null`  
 Maximum string length: `200`
 
 Example:
@@ -140,8 +127,7 @@ Example:
 
 county
 
-string | null
-
+Type: `string | null`  
 Maximum string length: `100`
 
 Example:
@@ -152,10 +138,8 @@ Example:
 
 country
 
-string
-
-default:US
-
+Type: `string`  
+Default: `US`  
 ISO 3166-1 alpha-2 country code
 
 Required string length: `2`
@@ -168,10 +152,8 @@ Example:
 
 isDefault
 
-boolean
-
-default:true
-
+Type: `boolean`  
+Default: `true`  
 Whether this is the default shipping address
 
 #### Response
@@ -184,10 +166,8 @@ Shipping address with default flag.
 
 addressLine1
 
-string
-
-required
-
+Type: `string`  
+Required  
 Required string length: `1 - 200`
 
 Example:
@@ -198,10 +178,8 @@ Example:
 
 city
 
-string
-
-required
-
+Type: `string`  
+Required  
 Required string length: `1 - 100`
 
 Example:
@@ -212,10 +190,8 @@ Example:
 
 state
 
-string
-
-required
-
+Type: `string`  
+Required  
 Required string length: `2 - 50`
 
 Example:
@@ -226,10 +202,8 @@ Example:
 
 zipCode
 
-string
-
-required
-
+Type: `string`  
+Required  
 Example:
 
 `"10001"`
@@ -238,8 +212,7 @@ Example:
 
 addressLine2
 
-string | null
-
+Type: `string | null`  
 Maximum string length: `200`
 
 Example:
@@ -250,8 +223,7 @@ Example:
 
 county
 
-string | null
-
+Type: `string | null`  
 Maximum string length: `100`
 
 Example:
@@ -262,10 +234,8 @@ Example:
 
 country
 
-string
-
-default:US
-
+Type: `string`  
+Default: `US`  
 ISO 3166-1 alpha-2 country code
 
 Required string length: `2`
@@ -278,8 +248,6 @@ Example:
 
 isDefault
 
-boolean
-
-default:true
-
+Type: `boolean`  
+Default: `true`  
 Whether this is the default shipping address

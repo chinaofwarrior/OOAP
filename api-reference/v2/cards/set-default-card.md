@@ -1,11 +1,8 @@
 # Set Default Card
 
-PUT /api/v2/wallet/cards/
-{card\_id}
+PUT /api/v2/wallet/cards/{card_id}/default
 
-default
-
-Set Default Card
+**Summary:** Set Default Card
 
 ```
 curl --request PUT \
@@ -24,18 +21,15 @@ curl --request PUT \
 
 #### Authorizations
 
-PublicKeyAuthPublicKeyAuthApiKeyAuth
+PublicKeyAuth
 
 [​](#authorization-x-public-key)
 
 X-Public-Key
 
-string
-
-header
-
-required
-
+Type: `string`  
+Location: `header`  
+Required  
 Public key for card collection operations
 
 #### Headers
@@ -44,10 +38,8 @@ Public key for card collection operations
 
 x-user-id
 
-string
-
-required
-
+Type: `string`  
+Required  
 End-user identifier within a customer organization. Required for user-scoped operations.
 
 #### Path Parameters
@@ -56,9 +48,8 @@ End-user identifier within a customer organization. Required for user-scoped ope
 
 card\_id
 
-string
-
-required
+Type: `string`  
+Required
 
 #### Response
 
@@ -70,26 +61,21 @@ Response model for card operations (create/update/delete).
 
 status
 
-string
-
-required
-
+Type: `string`  
+Required  
 Operation status
 
 [​](#response-message)
 
 message
 
-string
-
-required
-
+Type: `string`  
+Required  
 Human-readable message
 
 [​](#response-card-id-one-of-0)
 
 card\_id
 
-string | null
-
+Type: `string | null`  
 Affected card ID

@@ -77,79 +77,68 @@ Last 4 digits to display. From `wallet.payments.list[].lastFourDigits`
 
 [​](#param-brand)
 
-brand
+**brand**
 
-string
-
-required
-
+Type: `string`  
+Required  
 Card brand. From `wallet.payments.list[].cardType`
 
 [​](#param-holder-name)
 
-holderName
+**holderName**
 
-string
-
-required
-
+Type: `string`  
+Required  
 Cardholder name. From `wallet.payments.list[].cardHolderName`
 
 [​](#param-expiry)
 
-expiry
+**expiry**
 
-string
-
-required
-
+Type: `string`  
+Required  
 Expiry date (MM/YY). From `wallet.payments.list[].expiryDate`
 
 ### Optional Props
 
 [​](#param-on-success)
 
-onSuccess
+**onSuccess**
 
-(response: PaymentMethodResponse) => void
-
+Type: `(response: PaymentMethodResponse) => void`  
 Called after successful CVV update
 
 [​](#param-on-error)
 
-onError
+**onError**
 
-(error: Error) => void
-
+Type: `(error: Error) => void`  
 Called if CVV collection fails
 
 [​](#param-mode)
 
-mode
+**mode**
 
-'themed' | 'headless' | 'custom'
-
-default:"'themed'"
-
+Type: `'themed' | 'headless' | 'custom'`  
+Default: `'themed'`  
 Styling mode. See [Styling & Theming](styling-theming.md)
 
 [​](#param-theme)
 
-theme
+**theme**
 
-'light' | 'dark' | 'minimal'
-
-default:"'light'"
-
+Type: `'light' | 'dark' | 'minimal'`  
+Default: `'light'`  
 Pre-built theme when using `mode="themed"`
 
 [​](#param-theme-config)
 
-themeConfig
+**themeConfig**
 
-Partial<ThemeContract>
+Type: `Partial<ThemeContract>`  
+Theme token overrides for brand customization.
 
-Theme token overrides for brand customization.**Example:**
+Example:
 
 ```
 <FintCvvCollector

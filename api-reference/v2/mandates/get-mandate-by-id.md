@@ -1,9 +1,8 @@
 # Get Mandate by ID
 
-GET /api/v2/mandate/
-{mandate\_id}
+GET /api/v2/mandate/{mandate_id}
 
-Get Mandate by ID
+**Summary:** Get Mandate by ID
 
 ```
 curl --request GET \
@@ -38,18 +37,15 @@ curl --request GET \
 
 #### Authorizations
 
-BearerAuthBearerAuth
+BearerAuth
 
 [​](#authorization-authorization)
 
 Authorization
 
-string
-
-header
-
-required
-
+Type: `string`  
+Location: `header`  
+Required  
 JWT Bearer token from Auth0 authentication
 
 #### Path Parameters
@@ -58,9 +54,8 @@ JWT Bearer token from Auth0 authentication
 
 mandate\_id
 
-integer
-
-required
+Type: `integer`  
+Required
 
 #### Response
 
@@ -72,130 +67,113 @@ Mandate response
 
 id
 
-integer
-
-required
+Type: `integer`  
+Required
 
 [​](#response-request-id)
 
 request\_id
 
-string
-
-required
+Type: `string`  
+Required
 
 [​](#response-org-id)
 
 org\_id
 
-string<uuid>
-
-required
+Type: `string<uuid>`  
+Required
 
 [​](#response-product-one-of-0)
 
 product
 
-string | null
-
-required
+Type: `string | null`  
+Required
 
 [​](#response-product-description-one-of-0)
 
 product\_description
 
-string | null
-
-required
+Type: `string | null`  
+Required
 
 [​](#response-price-one-of-0)
 
 price
 
-number | null
-
-required
+Type: `number | null`  
+Required
 
 [​](#response-currency-one-of-0)
 
 currency
 
-string | null
-
-required
+Type: `string | null`  
+Required
 
 [​](#response-merchant-one-of-0)
 
 merchant
 
-string | null
-
-required
+Type: `string | null`  
+Required
 
 [​](#response-merchant-link-one-of-0)
 
 merchant\_link
 
-string | null
-
-required
+Type: `string | null`  
+Required
 
 [​](#response-confidence-score-one-of-0)
 
 confidence\_score
 
-number | null
-
-required
+Type: `number | null`  
+Required
 
 [​](#response-conversation-context-one-of-0)
 
 conversation\_context
 
-Conversation Context · object
-
-required
+Type: `Conversation Context` (object)  
+Required
 
 [​](#response-human-messages-one-of-0)
 
 human\_messages
 
-any[] | null
-
-required
+Type: `any[] | null`  
+Required
 
 [​](#response-additional-details-one-of-0)
 
 additional\_details
 
-Additional Details · object
-
-required
+Type: `Additional Details` (object)  
+Required
 
 [​](#response-created-at-one-of-0)
 
 created\_at
 
-string | null
-
-required
+Type: `string | null`  
+Required
 
 [​](#response-updated-at-one-of-0)
 
 updated\_at
 
-string | null
-
-required
+Type: `string | null`  
+Required
 
 [​](#response-mode)
 
 mode
 
-enum<string>
-
-default:live
-
+Type: `enum<string>`  
+Default: `live`  
 Mandate mode: 'live' for production, 'sandbox' for testing
 
 Available options:
@@ -208,10 +186,8 @@ Available options:
 
 pm\_type
 
-enum<string>
-
-default:vgs
-
+Type: `enum<string>`  
+Default: `vgs`  
 Vault type: 'vgs' (default) or 'visa' (Visa VTS tokenized)
 
 Available options:
@@ -224,6 +200,5 @@ Available options:
 
 status
 
-string | null
-
-Mandate status: 'active' or 'pending\_visa\_instruction'
+Type: `string | null`  
+Mandate status: 'active' or 'pending_visa_instruction'

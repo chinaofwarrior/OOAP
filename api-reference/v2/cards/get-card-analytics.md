@@ -1,7 +1,8 @@
 # Get Card Analytics
 
 GET /api/v2/card-analytics
-Get Card Analytics
+
+**Summary:** Get Card Analytics
 
 ```
 curl --request GET \
@@ -36,18 +37,15 @@ curl --request GET \
 
 #### Authorizations
 
-BearerAuthBearerAuth
+BearerAuth
 
 [​](#authorization-authorization)
 
 Authorization
 
-string
-
-header
-
-required
-
+Type: `string`  
+Location: `header`  
+Required  
 JWT Bearer token from Auth0 authentication
 
 #### Query Parameters
@@ -56,9 +54,8 @@ JWT Bearer token from Auth0 authentication
 
 page
 
-integer
-
-default:1
+Type: `integer`  
+Default: `1`
 
 Page number (1-based)
 
@@ -68,9 +65,8 @@ Required range: `x >= 1`
 
 limit
 
-integer
-
-default:50
+Type: `integer`  
+Default: `50`
 
 Items per page
 
@@ -80,8 +76,7 @@ Required range: `1 <= x <= 1000`
 
 search
 
-string | null
-
+Type: `string | null`  
 Search by user ID
 
 #### Response
@@ -94,10 +89,8 @@ V2 Card Analytics paginated response - matches dot-service response format.
 
 items
 
-CardAnalyticsItem · object[]
-
-required
-
+Type: `CardAnalyticsItem` (object[])  
+Required  
 List of card analytics items
 
 Show child attributes
@@ -106,58 +99,46 @@ Show child attributes
 
 total
 
-integer
-
-required
-
+Type: `integer`  
+Required  
 Total number of items across all pages
 
 [​](#response-page)
 
 page
 
-integer
-
-required
-
+Type: `integer`  
+Required  
 Current page number (1-based)
 
 [​](#response-limit)
 
 limit
 
-integer
-
-required
-
+Type: `integer`  
+Required  
 Items per page limit
 
 [​](#response-total-pages)
 
 total\_pages
 
-integer
-
-required
-
+Type: `integer`  
+Required  
 Total number of pages
 
 [​](#response-has-next)
 
 has\_next
 
-boolean
-
-required
-
+Type: `boolean`  
+Required  
 Whether there is a next page
 
 [​](#response-has-previous)
 
 has\_previous
 
-boolean
-
-required
-
+Type: `boolean`  
+Required  
 Whether there is a previous page

@@ -1,7 +1,8 @@
 # Get Stored Card Details
 
 GET /api/v2/wallet/cards/stored
-Get Stored Card Details
+
+**Summary:** Get Stored Card Details
 
 ```
 curl --request GET \
@@ -32,18 +33,15 @@ curl --request GET \
 
 #### Authorizations
 
-PublicKeyAuthPublicKeyAuthApiKeyAuth
+PublicKeyAuth
 
 [​](#authorization-x-public-key)
 
 X-Public-Key
 
-string
-
-header
-
-required
-
+Type: `string`  
+Location: `header`  
+Required  
 Public key for card collection operations
 
 #### Headers
@@ -52,10 +50,8 @@ Public key for card collection operations
 
 x-user-id
 
-string
-
-required
-
+Type: `string`  
+Required  
 End-user identifier within a customer organization. Required for user-scoped operations.
 
 #### Response
@@ -68,20 +64,16 @@ Response model for card details (no sensitive data).
 
 id
 
-string
-
-required
-
+Type: `string`  
+Required  
 Unique card identifier
 
 [​](#response-card-holder)
 
 card\_holder
 
-string
-
-required
-
+Type: `string`  
+Required  
 Card holder name
 
 Required string length: `1 - 255`
@@ -90,30 +82,24 @@ Required string length: `1 - 255`
 
 card\_exp
 
-string
-
-required
-
+Type: `string`  
+Required  
 Card expiration (MM/YY)
 
 [​](#response-email)
 
 email
 
-string<email>
-
-required
-
+Type: `string<email>`  
+Required  
 Cardholder email
 
 [​](#response-phone-number)
 
 phone\_number
 
-string<phone>
-
-required
-
+Type: `string<phone>`  
+Required  
 Phone number in E.164 format
 
 Examples:
@@ -128,10 +114,8 @@ Examples:
 
 billing\_address
 
-string
-
-required
-
+Type: `string`  
+Required  
 Billing address
 
 Minimum string length: `1`
@@ -140,62 +124,52 @@ Minimum string length: `1`
 
 zip\_code
 
-string
-
-required
-
+Type: `string`  
+Required  
 ZIP code
 
 [​](#response-is-default)
 
 is\_default
 
-boolean
-
-default:false
-
+Type: `boolean`  
+Default: `false`  
 Default payment method flag
 
 [​](#response-is-active)
 
 is\_active
 
-boolean
-
-default:true
-
+Type: `boolean`  
+Default: `true`  
 Active status (soft delete flag)
 
 [​](#response-created-at-one-of-0)
 
 created\_at
 
-string<date-time> | null
-
+Type: `string<date-time> | null`  
 Creation timestamp
 
 [​](#response-updated-at-one-of-0)
 
 updated\_at
 
-string<date-time> | null
-
+Type: `string<date-time> | null`  
 Last update timestamp
 
 [​](#response-last4-digits-one-of-0)
 
 last4\_digits
 
-string | null
-
+Type: `string | null`  
 Last 4 digits
 
 [​](#response-city-one-of-0)
 
 city
 
-string | null
-
+Type: `string | null`  
 City
 
 Minimum string length: `1`
@@ -204,14 +178,12 @@ Minimum string length: `1`
 
 state
 
-string | null
-
+Type: `string | null`  
 State/province code
 
 [​](#response-card-brand-one-of-0)
 
 card\_brand
 
-string | null
-
+Type: `string | null`  
 Card network (visa, mastercard, amex, discover, diners, jcb, unionpay, maestro, mir, verve, dankort, troy, other)

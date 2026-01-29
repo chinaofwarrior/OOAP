@@ -1,11 +1,8 @@
 # Revoke API Key
 
-PUT /api/v2/api-keys/
-{key\_id}
+PUT /api/v2/api-keys/{key_id}/revoke
 
-revoke
-
-Revoke API Key
+**Summary:** Revoke API Key
 
 ```
 curl --request PUT \
@@ -28,18 +25,15 @@ curl --request PUT \
 
 #### Authorizations
 
-BearerAuthBearerAuth
+BearerAuth
 
 [​](#authorization-authorization)
 
 Authorization
 
-string
-
-header
-
-required
-
+Type: `string`  
+Location: `header`  
+Required  
 JWT Bearer token from Auth0 authentication
 
 #### Path Parameters
@@ -48,10 +42,8 @@ JWT Bearer token from Auth0 authentication
 
 key\_id
 
-string
-
-required
-
+Type: `string`  
+Required  
 The unique identifier of the API key (UUID format).
 
 Example:
@@ -68,56 +60,51 @@ Model for API key revocation information (V2).
 
 id
 
-string
-
-required
+Type: `string`  
+Required
 
 [​](#response-org-id)
 
 org\_id
 
-string<uuid>
-
-required
+Type: `string<uuid>`  
+Required
 
 [​](#response-name)
 
 name
 
-string
-
-required
+Type: `string`  
+Required
 
 [​](#response-is-revoked)
 
 is\_revoked
 
-boolean
-
-required
+Type: `boolean`  
+Required
 
 [​](#response-created-at)
 
 created\_at
 
-string<date-time>
-
-required
+Type: `string<date-time>`  
+Required
 
 [​](#response-description-one-of-0)
 
 description
 
-string | null
+Type: `string | null`
 
 [​](#response-expires-at-one-of-0)
 
 expires\_at
 
-string<date-time> | null
+Type: `string<date-time> | null`
 
 [​](#response-last-used-at-one-of-0)
 
 last\_used\_at
 
-string<date-time> | null
+Type: `string<date-time> | null`

@@ -59,7 +59,9 @@ function UserSettings() {
     </WalletProvider>
   );
 }
-```\n\n**What this does:**
+```
+
+**What this does:**
 
 * Users can add/manage payment methods
 * Cards are tokenized and stored securely

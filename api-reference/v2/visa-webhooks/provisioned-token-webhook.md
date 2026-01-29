@@ -1,7 +1,8 @@
 # Provisioned Token Webhook
 
 POST /api/v2/webhooks/visa/provisionedToken
-Provisioned Token Webhook
+
+**Summary:** Provisioned Token Webhook
 
 ```
 curl --request POST \
@@ -22,17 +23,15 @@ curl --request POST \
 
 apiKey
 
-string
-
-required
+Type: `string`  
+Required
 
 [​](#parameter-event-type)
 
 eventType
 
-string
-
-required
+Type: `string`  
+Required
 
 #### Body
 

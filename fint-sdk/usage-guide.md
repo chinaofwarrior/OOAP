@@ -6,40 +6,27 @@ This guide walks you through the typical payment flow lifecycle with **type-safe
 
 The Fint payment flow for backend processing consists of these main steps:
 
-1
+1. Initialize Client
 
-Initialize Client
+   Set up the `FintClient` with your API key.
 
-Set up the `FintClient` with your API key.
+2. Create User Context
 
-2
+   Obtain a `UserContext` by providing a unique `user_id` for your end-user.
 
-Create User Context
+3. Create Mandate
 
-Obtain a `UserContext` by providing a unique `user_id` for your end-user.
+   Describe the purchase intent by creating a `MandateData` object. This action returns a `mandate_id`.
 
-3
+4. Request Reveal Token
 
-Create Mandate
+   Use the `mandate_id` to get a short-lived, single-use token to access card details.
 
-Describe the purchase intent by creating a `MandateData` object. This action
-returns a `mandate_id`.
+5. Reveal Card Details
 
-4
+   Exchange the token for actual card information to complete the purchase.
 
-Request Reveal Token
-
-Use the `mandate_id` to get a short-lived, single-use token to access card
-details.
-
-5
-
-Reveal Card Details
-
-Exchange the token for actual card information to complete the purchase
-(e.g., to complete the purchase).
-
-**Important Workflow**: A `user_id` is **required** to create a user context.
+**Important Workflow:** A `user_id` is **required** to create a user context.
 A `MandateData` object **must be created and submitted** to the API via
 `user.create_mandate()` to obtain a `mandate_id`. This `mandate_id` is then **required** to request a `reveal_token`.
 

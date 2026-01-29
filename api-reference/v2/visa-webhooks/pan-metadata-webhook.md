@@ -1,7 +1,8 @@
 # PAN Metadata Webhook
 
 POST /api/v2/webhooks/visa/panMetadata
-PAN Metadata Webhook
+
+**Summary:** PAN Metadata Webhook
 
 ```
 curl --request POST \
@@ -21,9 +22,8 @@ curl --request POST \
 
 apiKey
 
-string
-
-required
+Type: `string`  
+Required
 
 #### Body
 

@@ -1,7 +1,8 @@
 # Update Contact Information
 
 PUT /api/v2/wallet/contact
-Update Contact Information
+
+**Summary:** Update Contact Information
 
 ```
 curl --request PUT \
@@ -30,18 +31,15 @@ curl --request PUT \
 
 #### Authorizations
 
-PublicKeyAuthPublicKeyAuth
+PublicKeyAuth
 
 [​](#authorization-x-public-key)
 
 X-Public-Key
 
-string
-
-header
-
-required
-
+Type: `string`  
+Location: `header`  
+Required  
 Public key for card collection operations
 
 #### Headers
@@ -50,10 +48,8 @@ Public key for card collection operations
 
 x-user-id
 
-string
-
-required
-
+Type: `string`  
+Required  
 End-user identifier within a customer organization. Required for user-scoped operations.
 
 #### Body
@@ -66,10 +62,8 @@ Customer contact information.
 
 firstName
 
-string
-
-required
-
+Type: `string`  
+Required  
 Required string length: `1 - 100`
 
 Example:
@@ -80,10 +74,8 @@ Example:
 
 lastName
 
-string
-
-required
-
+Type: `string`  
+Required  
 Required string length: `1 - 100`
 
 Example:
@@ -94,10 +86,8 @@ Example:
 
 email
 
-string<email>
-
-required
-
+Type: `string<email>`  
+Required  
 Example:
 
 `"[email protected]"`
@@ -106,10 +96,8 @@ Example:
 
 phone
 
-string<phone>
-
-required
-
+Type: `string<phone>`  
+Required  
 Phone number in E.164 format
 
 Example:
@@ -126,10 +114,8 @@ Customer contact information.
 
 firstName
 
-string
-
-required
-
+Type: `string`  
+Required  
 Required string length: `1 - 100`
 
 Example:
@@ -140,10 +126,8 @@ Example:
 
 lastName
 
-string
-
-required
-
+Type: `string`  
+Required  
 Required string length: `1 - 100`
 
 Example:
@@ -154,10 +138,8 @@ Example:
 
 email
 
-string<email>
-
-required
-
+Type: `string<email>`  
+Required  
 Example:
 
 `"[email protected]"`
@@ -166,10 +148,8 @@ Example:
 
 phone
 
-string<phone>
-
-required
-
+Type: `string<phone>`  
+Required  
 Phone number in E.164 format
 
 Example:

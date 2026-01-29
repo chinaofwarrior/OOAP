@@ -1,7 +1,8 @@
 # Execute Visa Payment Instruction Action
 
 POST /api/v2/mandate/action
-Execute Visa Payment Instruction Action
+
+**Summary:** Execute Visa Payment Instruction Action
 
 ```
 curl --request POST \
@@ -57,18 +58,15 @@ curl --request POST \
 
 #### Authorizations
 
-ApiKeyAuthPublicKeyAuthApiKeyAuthPublicKeyAuth
+ApiKeyAuth
 
 [​](#authorization-x-api-key)
 
 X-API-Key
 
-string
-
-header
-
-required
-
+Type: `string`  
+Location: `header`  
+Required  
 Private API key for full access to SDK operations
 
 #### Headers
@@ -77,18 +75,15 @@ Private API key for full access to SDK operations
 
 x-request-id
 
-string | null
-
+Type: `string | null`  
 Unique request identifier for tracing and debugging. Auto-generated if not provided.
 
 [​](#parameter-x-user-id)
 
 x-user-id
 
-string
-
-required
-
+Type: `string`  
+Required  
 End-user identifier within a customer organization. Required for user-scoped operations.
 
 #### Body
@@ -101,9 +96,8 @@ Request for /mandate/action endpoint.
 
 action
 
-enum<string>
-
-required
+Type: `enum<string>`  
+Required
 
 Available options:
 
@@ -125,70 +119,68 @@ Available options:
 
 payment\_method\_id
 
-string<uuid>
-
-required
+Type: `string<uuid>`  
+Required
 
 [​](#body-mandate-id-one-of-0)
 
 mandate\_id
 
-string | null
+Type: `string | null`
 
 [​](#body-session-context-one-of-0)
 
 session\_context
 
-Session Context · object
+Type: `Session Context` (object)
 
 [​](#body-browser-data-one-of-0)
 
 browser\_data
 
-Browser Data · object
+Type: `Browser Data` (object)
 
 [​](#body-otp-value-one-of-0)
 
 otp\_value
 
-string | null
+Type: `string | null`
 
 [​](#body-otp-identifier-one-of-0)
 
 otp\_identifier
 
-string | null
+Type: `string | null`
 
 [​](#body-assurance-identifier-one-of-0)
 
 assurance\_identifier
 
-string | null
+Type: `string | null`
 
 [​](#body-fido-assertion-data-one-of-0)
 
 fido\_assertion\_data
 
-string | null
+Type: `string | null`
 
 [​](#body-dfp-session-id-one-of-0)
 
 dfp\_session\_id
 
-string | null
+Type: `string | null`
 
 [​](#body-conversation-context-one-of-0)
 
 conversation\_context
 
-string | null
+Type: `string | null`
 
 [​](#body-mandate-one-of-0)
 
 mandate
 
-MandateData · object
-
+Type: `MandateData` (object)  
 Mandate data for payment instruction.
 
 Show child attributes
@@ -197,7 +189,7 @@ Show child attributes
 
 transaction\_id
 
-string | null
+Type: `string | null`
 
 #### Response
 

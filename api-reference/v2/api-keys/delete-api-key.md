@@ -1,9 +1,8 @@
 # Delete API Key
 
-DELETE /api/v2/api-keys/
-{key\_id}
+DELETE /api/v2/api-keys/{key_id}
 
-Delete API Key
+**Summary:** Delete API Key
 
 ```
 curl --request DELETE \
@@ -27,18 +26,15 @@ curl --request DELETE \
 
 #### Authorizations
 
-BearerAuthBearerAuth
+BearerAuth
 
 [​](#authorization-authorization)
 
 Authorization
 
-string
-
-header
-
-required
-
+Type: `string`  
+Location: `header`  
+Required  
 JWT Bearer token from Auth0 authentication
 
 #### Path Parameters
@@ -47,10 +43,8 @@ JWT Bearer token from Auth0 authentication
 
 key\_id
 
-string
-
-required
-
+Type: `string`  
+Required  
 The unique identifier of the API key (UUID format).
 
 Example:

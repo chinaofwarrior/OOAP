@@ -1,7 +1,8 @@
 # Get Contact Information
 
 GET /api/v2/wallet/contact
-Get Contact Information
+
+**Summary:** Get Contact Information
 
 ```
 curl --request GET \
@@ -21,18 +22,15 @@ curl --request GET \
 
 #### Authorizations
 
-PublicKeyAuthPublicKeyAuth
+PublicKeyAuth
 
 [​](#authorization-x-public-key)
 
 X-Public-Key
 
-string
-
-header
-
-required
-
+Type: `string`  
+Location: `header`  
+Required  
 Public key for card collection operations
 
 #### Headers
@@ -41,10 +39,8 @@ Public key for card collection operations
 
 x-user-id
 
-string
-
-required
-
+Type: `string`  
+Required  
 End-user identifier within a customer organization. Required for user-scoped operations.
 
 #### Response
@@ -57,10 +53,8 @@ Customer contact information for responses - backward compatible.
 
 firstName
 
-string
-
-required
-
+Type: `string`  
+Required  
 Required string length: `1 - 100`
 
 Example:
@@ -71,10 +65,8 @@ Example:
 
 email
 
-string<email>
-
-required
-
+Type: `string<email>`  
+Required  
 Example:
 
 `"[email protected]"`
@@ -83,10 +75,8 @@ Example:
 
 phone
 
-string<phone>
-
-required
-
+Type: `string<phone>`  
+Required  
 Phone number in E.164 format
 
 Example:
@@ -97,8 +87,7 @@ Example:
 
 lastName
 
-string | null
-
+Type: `string | null`  
 Maximum string length: `100`
 
 Example:

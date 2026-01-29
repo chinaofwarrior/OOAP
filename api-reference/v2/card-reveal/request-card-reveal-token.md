@@ -1,9 +1,8 @@
 # Request Card Reveal Token
 
-POST /api/v2/wallet/
-request\_card\_reveal\_token
+POST /api/v2/wallet/request_card_reveal_token
 
-Request Card Reveal Token
+**Summary:** Request Card Reveal Token
 
 ```
 curl --request POST \
@@ -27,18 +26,15 @@ curl --request POST \
 
 #### Authorizations
 
-ApiKeyAuthApiKeyAuth
+ApiKeyAuth
 
 [​](#authorization-x-api-key)
 
 X-API-Key
 
-string
-
-header
-
-required
-
+Type: `string`  
+Location: `header`  
+Required  
 Private API key for full access to SDK operations
 
 #### Headers
@@ -57,10 +53,8 @@ Request model for card reveal token generation.
 
 mandate\_id
 
-string
-
-required
-
+Type: `string`  
+Required  
 Mandate identifier for authorization
 
 #### Response
@@ -73,14 +67,12 @@ Response from validating a short-lived token.
 
 token
 
-string
-
-required
+Type: `string`  
+Required
 
 [​](#response-expires-at)
 
 expires\_at
 
-string<date-time>
-
-required
+Type: `string<date-time>`  
+Required

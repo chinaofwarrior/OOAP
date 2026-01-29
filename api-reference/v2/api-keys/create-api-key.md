@@ -1,7 +1,8 @@
 # Create API Key
 
 POST /api/v2/api-keys
-Create API Key
+
+**Summary:** Create API Key
 
 ```
 curl --request POST \
@@ -35,18 +36,15 @@ curl --request POST \
 
 #### Authorizations
 
-BearerAuthBearerAuth
+BearerAuth
 
 [​](#authorization-authorization)
 
 Authorization
 
-string
-
-header
-
-required
-
+Type: `string`  
+Location: `header`  
+Required  
 JWT Bearer token from Auth0 authentication
 
 #### Body
@@ -59,10 +57,8 @@ Request model for creating a new API key (V2).
 
 name
 
-string
-
-required
-
+Type: `string`  
+Required  
 A user-friendly name for the API key.
 
 Required string length: `1 - 100`
@@ -71,8 +67,7 @@ Required string length: `1 - 100`
 
 description
 
-string | null
-
+Type: `string | null`  
 An optional description for the API key.
 
 Maximum string length: `255`
@@ -88,88 +83,79 @@ V2 may include additional validation or fields in the future.
 
 id
 
-string
-
-required
+Type: `string`  
+Required
 
 [​](#response-org-id)
 
 org\_id
 
-string<uuid>
-
-required
+Type: `string<uuid>`  
+Required
 
 [​](#response-name)
 
 name
 
-string
-
-required
+Type: `string`  
+Required
 
 [​](#response-public-key)
 
 public\_key
 
-string
-
-required
+Type: `string`  
+Required
 
 [​](#response-private-key-display)
 
 private\_key\_display
 
-string
-
-required
+Type: `string`  
+Required
 
 [​](#response-created-at)
 
 created\_at
 
-string<date-time>
-
-required
+Type: `string<date-time>`  
+Required
 
 [​](#response-private-key)
 
 private\_key
 
-string
-
-required
-
+Type: `string`  
+Required  
 The private key for authentication
 
 [​](#response-description-one-of-0)
 
 description
 
-string | null
+Type: `string | null`
 
 [​](#response-is-revoked)
 
 is\_revoked
 
-boolean
-
-default:false
+Type: `boolean`  
+Default: `false`
 
 [​](#response-revoked-at-one-of-0)
 
 revoked\_at
 
-string<date-time> | null
+Type: `string<date-time> | null`
 
 [​](#response-last-used-at-one-of-0)
 
 last\_used\_at
 
-string<date-time> | null
+Type: `string<date-time> | null`
 
 [​](#response-environment-one-of-0)
 
 environment
 
-string | null
+Type: `string | null`

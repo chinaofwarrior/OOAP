@@ -102,29 +102,21 @@ The wallet interface displays all stored cards with their masked numbers and all
 
 ## Information Flow
 
-1
+1. Frontend Collection
 
-Frontend Collection
+   User provides payment and shipping details through the Fint frontend SDK, which securely stores the information associated with their `userId`.
 
-User provides payment and shipping details through the Fint frontend SDK, which securely stores the information associated with their `userId`.
+2. Mandate Creation
 
-2
+   Your backend captures a mandate using the backend SDK, specifying the purchase details and user context.
 
-Mandate Creation
+3. Token Request
 
-Your backend captures a mandate using the backend SDK, specifying the purchase details and user context.
+   Using the mandate ID, your backend requests a reveal token that authorizes access to the user’s payment information.
 
-3
+4. Information Revelation
 
-Token Request
-
-Using the mandate ID, your backend requests a reveal token that authorizes access to the user’s payment information.
-
-4
-
-Information Revelation
-
-The reveal token is used to securely retrieve the actual card details, which can then be used with the payment.
+   The reveal token is used to securely retrieve the actual card details, which can then be used with the payment.
 
 ## Integration Points
 

@@ -1,9 +1,8 @@
 # Get Billing Details
 
-GET /api/v2/wallet/
-get\_billing\_details
+GET /api/v2/wallet/get_billing_details
 
-Get Billing Details
+**Summary:** Get Billing Details
 
 ```
 curl --request GET \
@@ -26,18 +25,15 @@ curl --request GET \
 
 #### Authorizations
 
-ApiKeyAuthApiKeyAuth
+ApiKeyAuth
 
 [​](#authorization-x-api-key)
 
 X-API-Key
 
-string
-
-header
-
-required
-
+Type: `string`  
+Location: `header`  
+Required  
 Private API key for full access to SDK operations
 
 #### Headers
@@ -46,10 +42,8 @@ Private API key for full access to SDK operations
 
 x-user-id
 
-string
-
-required
-
+Type: `string`  
+Required  
 End-user identifier within a customer organization. Required for user-scoped operations.
 
 #### Response
@@ -62,64 +56,52 @@ Response model for billing details (no sensitive card data).
 
 user\_id
 
-string
-
-required
-
+Type: `string`  
+Required  
 User identifier
 
 [​](#response-card-holder)
 
 card\_holder
 
-string
-
-required
-
+Type: `string`  
+Required  
 Card holder name
 
 [​](#response-phone-number)
 
 phone\_number
 
-string
-
-required
-
+Type: `string`  
+Required  
 Phone number in E.164 format
 
 [​](#response-billing-address)
 
 billing\_address
 
-string
-
-required
-
+Type: `string`  
+Required  
 Billing address
 
 [​](#response-zip-code)
 
 zip\_code
 
-string
-
-required
-
+Type: `string`  
+Required  
 ZIP code
 
 [​](#response-city-one-of-0)
 
 city
 
-string | null
-
+Type: `string | null`  
 City
 
 [​](#response-state-one-of-0)
 
 state
 
-string | null
-
+Type: `string | null`  
 State/province code

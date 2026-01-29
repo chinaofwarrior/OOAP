@@ -78,54 +78,46 @@ client = FintClient(
 )
 ```
 
+#### Python Parameters
+
 [​](#param-api-key)
 
-api\_key
+**api_key**
 
-string
-
-required
-
+Type: `string`  
+Required  
 Your Fint API key (starts with `sk_live_` or `sk_test_`). This is mandatory.
 
 [​](#param-base-url)
 
-base\_url
+**base_url**
 
-string
-
-default:"https://api.fint.io"
-
+Type: `string`  
+Default: `https://api.fint.io`  
 API endpoint. The SDK automatically normalizes this (e.g., adds `https://`, removes trailing `/`). Only change this if you need to point to a non-production environment like staging.
 
 [​](#param-timeout)
 
-timeout
+**timeout**
 
-int
-
-default:"30"
-
+Type: `int`  
+Default: `30`  
 Network timeout in seconds passed to the underlying `httpx` client.
 
 [​](#param-max-retries)
 
-max\_retries
+**max_retries**
 
-int
-
-default:"3"
-
+Type: `int`  
+Default: `3`  
 How many times to automatically retry on 5xx (server errors) or 429 (rate limit) responses.
 
 [​](#param-backoff-factor)
 
-backoff\_factor
+**backoff_factor**
 
-float
-
-default:"0.5"
-
+Type: `float`  
+Default: `0.5`  
 Exponential sleep multiplier between retries. `sleep = (2 ** (retry_attempt - 1)) * backoff_factor`.
 
 ```
@@ -142,54 +134,46 @@ const client = new FintClient(
 )
 ```
 
+#### TypeScript Parameters
+
 [​](#param-api-key)
 
-apiKey
+**apiKey**
 
-string
-
-required
-
+Type: `string`  
+Required  
 Your Fint API key (starts with `sk_live_` or `sk_test_`). This is mandatory.
 
 [​](#param-base-url)
 
-baseUrl
+**baseUrl**
 
-string
-
-default:"https://api.fint.io"
-
+Type: `string`  
+Default: `https://api.fint.io`  
 API endpoint. The SDK automatically normalizes this (e.g., adds `https://`, removes trailing `/`).
 
 [​](#param-timeout-1)
 
-timeout
+**timeout**
 
-number
-
-default:"30000"
-
+Type: `number`  
+Default: `30000`  
 Network timeout in **milliseconds** passed to `axios`.
 
 [​](#param-max-retries)
 
-maxRetries
+**maxRetries**
 
-number
-
-default:"3"
-
+Type: `number`  
+Default: `3`  
 How many times to automatically retry on 5xx (server errors) or 429 (rate limit) responses.
 
 [​](#param-backoff-factor)
 
-backoffFactor
+**backoffFactor**
 
-number
-
-default:"0.5"
-
+Type: `number`  
+Default: `0.5`  
 Exponential sleep multiplier between retries.
 
 ## URL Normalization 🎯

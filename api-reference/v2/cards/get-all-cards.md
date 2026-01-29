@@ -1,7 +1,8 @@
 # Get All Cards
 
 GET /api/v2/wallet/cards
-Get All Cards
+
+**Summary:** Get All Cards
 
 ```
 curl --request GET \
@@ -37,18 +38,15 @@ curl --request GET \
 
 #### Authorizations
 
-PublicKeyAuthPublicKeyAuthApiKeyAuth
+PublicKeyAuth
 
 [​](#authorization-x-public-key)
 
 X-Public-Key
 
-string
-
-header
-
-required
-
+Type: `string`  
+Location: `header`  
+Required  
 Public key for card collection operations
 
 #### Headers
@@ -57,10 +55,8 @@ Public key for card collection operations
 
 x-user-id
 
-string
-
-required
-
+Type: `string`  
+Required  
 End-user identifier within a customer organization. Required for user-scoped operations.
 
 #### Response
@@ -73,10 +69,8 @@ Response model for listing multiple cards.
 
 cards
 
-CardDetailsResponse · object[]
-
-required
-
+Type: `CardDetailsResponse` (object[])  
+Required  
 List of cards
 
 Show child attributes
@@ -85,10 +79,8 @@ Show child attributes
 
 total
 
-integer
-
-required
-
+Type: `integer`  
+Required  
 Total number of cards
 
 Required range: `x >= 0`

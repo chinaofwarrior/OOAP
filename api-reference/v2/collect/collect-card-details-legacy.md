@@ -1,7 +1,8 @@
 # Collect Card Details (Legacy)
 
 POST /api/v2/wallet/cards/collect
-Collect Card Details (Legacy)
+
+**Summary:** Collect Card Details (Legacy)
 
 ```
 curl --request POST \
@@ -66,18 +67,15 @@ curl --request POST \
 
 #### Authorizations
 
-PublicKeyAuthPublicKeyAuthApiKeyAuth
+PublicKeyAuth
 
 [​](#authorization-x-public-key)
 
 X-Public-Key
 
-string
-
-header
-
-required
-
+Type: `string`  
+Location: `header`  
+Required  
 Public key for card collection operations
 
 #### Headers
@@ -86,10 +84,8 @@ Public key for card collection operations
 
 x-user-id
 
-string
-
-required
-
+Type: `string`  
+Required  
 End-user identifier within a customer organization. Required for user-scoped operations.
 
 #### Body
@@ -104,10 +100,8 @@ Supports both new nested format and legacy flat format for backward compatibilit
 
 contactInfo
 
-ContactInfo · object
-
-required
-
+Type: `ContactInfo` (object)  
+Required  
 Customer contact information.
 
 Show child attributes
@@ -116,8 +110,7 @@ Show child attributes
 
 shippingAddress
 
-ShippingAddress · object
-
+Type: `ShippingAddress` (object)  
 Shipping address with default flag.
 
 Show child attributes
@@ -126,8 +119,7 @@ Show child attributes
 
 paymentMethod
 
-PaymentMethodRequest · object
-
+Type: `PaymentMethodRequest` (object)  
 Request to add a payment method.
 
 Show child attributes
@@ -136,9 +128,8 @@ Show child attributes
 
 \_is\_legacy\_format
 
-boolean
-
-default:false
+Type: `boolean`  
+Default: `false`
 
 #### Response
 
@@ -150,32 +141,30 @@ Legacy payment collection response (deprecated).
 
 status
 
-string
-
-required
+Type: `string`  
+Required
 
 [​](#response-message)
 
 message
 
-string
-
-required
+Type: `string`  
+Required
 
 [​](#response-data-one-of-0)
 
 data
 
-Data · object
+Type: `Data` (object)
 
 [​](#response-request-id-one-of-0)
 
 request\_id
 
-string | null
+Type: `string | null`
 
 [​](#response-id-one-of-0)
 
 id
 
-string | null
+Type: `string | null`

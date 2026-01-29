@@ -1,9 +1,8 @@
 # Get API Key Details
 
-GET /api/v2/api-keys/
-{key\_id}
+GET /api/v2/api-keys/{key_id}
 
-Get API Key Details
+**Summary:** Get API Key Details
 
 ```
 curl --request GET \
@@ -29,18 +28,15 @@ curl --request GET \
 
 #### Authorizations
 
-BearerAuthBearerAuth
+BearerAuth
 
 [​](#authorization-authorization)
 
 Authorization
 
-string
-
-header
-
-required
-
+Type: `string`  
+Location: `header`  
+Required  
 JWT Bearer token from Auth0 authentication
 
 #### Path Parameters
@@ -49,10 +45,8 @@ JWT Bearer token from Auth0 authentication
 
 key\_id
 
-string
-
-required
-
+Type: `string`  
+Required  
 The unique identifier of the API key (UUID format).
 
 Example:
@@ -69,78 +63,71 @@ Model for API key information (V2).
 
 id
 
-string
-
-required
+Type: `string`  
+Required
 
 [​](#response-org-id)
 
 org\_id
 
-string<uuid>
-
-required
+Type: `string<uuid>`  
+Required
 
 [​](#response-name)
 
 name
 
-string
-
-required
+Type: `string`  
+Required
 
 [​](#response-public-key)
 
 public\_key
 
-string
-
-required
+Type: `string`  
+Required
 
 [​](#response-private-key-display)
 
 private\_key\_display
 
-string
-
-required
+Type: `string`  
+Required
 
 [​](#response-created-at)
 
 created\_at
 
-string<date-time>
-
-required
+Type: `string<date-time>`  
+Required
 
 [​](#response-description-one-of-0)
 
 description
 
-string | null
+Type: `string | null`
 
 [​](#response-is-revoked)
 
 is\_revoked
 
-boolean
-
-default:false
+Type: `boolean`  
+Default: `false`
 
 [​](#response-revoked-at-one-of-0)
 
 revoked\_at
 
-string<date-time> | null
+Type: `string<date-time> | null`
 
 [​](#response-last-used-at-one-of-0)
 
 last\_used\_at
 
-string<date-time> | null
+Type: `string<date-time> | null`
 
 [​](#response-environment-one-of-0)
 
 environment
 
-string | null
+Type: `string | null`

@@ -1,7 +1,8 @@
 # Add Payment Method
 
 POST /api/v2/wallet/payment-methods
-Add Payment Method
+
+**Summary:** Add Payment Method
 
 ```
 curl --request POST \
@@ -62,18 +63,15 @@ curl --request POST \
 
 #### Authorizations
 
-PublicKeyAuthPublicKeyAuth
+PublicKeyAuth
 
 [​](#authorization-x-public-key)
 
 X-Public-Key
 
-string
-
-header
-
-required
-
+Type: `string`  
+Location: `header`  
+Required  
 Public key for card collection operations
 
 #### Headers
@@ -82,10 +80,8 @@ Public key for card collection operations
 
 x-user-id
 
-string
-
-required
-
+Type: `string`  
+Required  
 End-user identifier within a customer organization. Required for user-scoped operations.
 
 #### Body
@@ -98,10 +94,8 @@ Request to add a payment method.
 
 paymentMethod
 
-PaymentMethod · object
-
-required
-
+Type: `PaymentMethod` (object)  
+Required  
 Payment method with sensitive card data (for requests only).
 
 Show child attributes
@@ -110,10 +104,8 @@ Show child attributes
 
 billingAddress
 
-BillingAddress · object
-
-required
-
+Type: `BillingAddress` (object)  
+Required  
 Billing address (same as base Address).
 
 Show child attributes
@@ -122,8 +114,7 @@ Show child attributes
 
 metadata
 
-PaymentMethodMetadata · object
-
+Type: `PaymentMethodMetadata` (object)  
 Payment method metadata flags.
 
 Show child attributes
@@ -138,10 +129,8 @@ Payment method response (no sensitive data).
 
 id
 
-string
-
-required
-
+Type: `string`  
+Required  
 Unique identifier for the payment method. Generated as an idempotency key based on card details to prevent duplicates.
 
 Example:
@@ -152,10 +141,8 @@ Example:
 
 cardType
 
-string
-
-required
-
+Type: `string`  
+Required  
 Card type
 
 Example:
@@ -166,10 +153,8 @@ Example:
 
 lastFourDigits
 
-string
-
-required
-
+Type: `string`  
+Required  
 Example:
 
 `"1111"`
@@ -178,10 +163,8 @@ Example:
 
 expiryDate
 
-string
-
-required
-
+Type: `string`  
+Required  
 Example:
 
 `"12/25"`
@@ -190,10 +173,8 @@ Example:
 
 cardHolderName
 
-string
-
-required
-
+Type: `string`  
+Required  
 Example:
 
 `"John Doe"`
@@ -202,10 +183,8 @@ Example:
 
 isDefault
 
-boolean
-
-required
-
+Type: `boolean`  
+Required  
 Example:
 
 `false`
@@ -214,10 +193,8 @@ Example:
 
 isActive
 
-boolean
-
-required
-
+Type: `boolean`  
+Required  
 Example:
 
 `true`
@@ -226,10 +203,8 @@ Example:
 
 billingAddress
 
-BillingAddress · object
-
-required
-
+Type: `BillingAddress` (object)  
+Required  
 Billing address (same as base Address).
 
 Show child attributes
@@ -238,10 +213,8 @@ Show child attributes
 
 createdAt
 
-string<date-time>
-
-required
-
+Type: `string<date-time>`  
+Required  
 Example:
 
 `"2024-01-15T10:30:00Z"`
@@ -250,10 +223,8 @@ Example:
 
 updatedAt
 
-string<date-time>
-
-required
-
+Type: `string<date-time>`  
+Required  
 Example:
 
 `"2024-01-15T10:30:00Z"`
@@ -262,8 +233,7 @@ Example:
 
 cvvAvailableUntil
 
-string<date-time> | null
-
+Type: `string<date-time> | null`  
 ISO 8601 timestamp with timezone until CVV is available (60 min after creation/update)
 
 Example:
@@ -274,10 +244,8 @@ Example:
 
 pmType
 
-enum<string>
-
-default:vgs
-
+Type: `enum<string>`  
+Default: `vgs`  
 Vault type: 'vgs' (default VGS vault) or 'visa' (Visa VTS tokenized)
 
 Available options:

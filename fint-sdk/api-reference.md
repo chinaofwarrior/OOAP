@@ -41,110 +41,88 @@ const client = new FintClient(
 * Python
 * TypeScript
 
+#### Python Parameters
+
 [​](#param-api-key)
 
-api\_key
+**api_key**
 
-string
-
-required
-
-Your Fint Secret API key (starts with `sk_live_` or `sk_test_`). Must be
-provided either directly or via the `FINT_API_KEY` environment variable.
+Type: `string`  
+Required  
+Your Fint Secret API key (starts with `sk_live_` or `sk_test_`). Must be provided either directly or via the `FINT_API_KEY` environment variable.
 
 [​](#param-base-url)
 
-base\_url
+**base_url**
 
-string
-
-default:"https://api.fint.io"
-
-The base URL for the Fint API. Defaults to production. Only change this for
-staging/testing (e.g., `https://staging-api.fint.io`) or if using a mock
-server. The SDK normalizes this URL.
+Type: `string`  
+Default: `https://api.fint.io`  
+The base URL for the Fint API. Defaults to production. Only change this for staging/testing (e.g., `https://staging-api.fint.io`) or if using a mock server. The SDK normalizes this URL.
 
 [​](#param-timeout)
 
-timeout
+**timeout**
 
-int
-
-default:"30"
-
+Type: `int`  
+Default: `30`  
 Request timeout in seconds for HTTP calls.
 
 [​](#param-max-retries)
 
-max\_retries
+**max_retries**
 
-int
-
-default:"3"
-
+Type: `int`  
+Default: `3`  
 Maximum number of retry attempts for retryable errors (HTTP 429, 5xx).
 
 [​](#param-backoff-factor)
 
-backoff\_factor
+**backoff_factor**
 
-float
-
-default:"0.5"
-
+Type: `float`  
+Default: `0.5`  
 Multiplier for exponential backoff between retries. `sleep = (2 ** (retry_attempt - 1)) * backoff_factor`.
+
+#### TypeScript Parameters
 
 [​](#param-api-key)
 
-apiKey
+**apiKey**
 
-string
-
-required
-
-Your Fint Secret API key (starts with `sk_live_` or `sk_test_`). Must be
-provided either directly or via the `FINT_API_KEY` environment variable.
+Type: `string`  
+Required  
+Your Fint Secret API key (starts with `sk_live_` or `sk_test_`). Must be provided either directly or via the `FINT_API_KEY` environment variable.
 
 [​](#param-base-url)
 
-baseUrl
+**baseUrl**
 
-string
-
-default:"https://api.fint.io"
-
-The base URL for the Fint API. Defaults to production. Only change this for
-staging/testing (e.g., `https://staging-api.fint.io`) or if using a mock
-server. The SDK normalizes this URL.
+Type: `string`  
+Default: `https://api.fint.io`  
+The base URL for the Fint API. Defaults to production. Only change this for staging/testing (e.g., `https://staging-api.fint.io`) or if using a mock server. The SDK normalizes this URL.
 
 [​](#param-timeout-1)
 
-timeout
+**timeout**
 
-number
-
-default:"30000"
-
+Type: `number`  
+Default: `30000`  
 Request timeout in milliseconds for HTTP calls.
 
 [​](#param-max-retries)
 
-maxRetries
+**maxRetries**
 
-number
-
-default:"3"
-
+Type: `number`  
+Default: `3`  
 Maximum number of retry attempts for retryable errors (HTTP 429, 5xx).
 
 [​](#param-backoff-factor)
 
-backoffFactor
+**backoffFactor**
 
-number
-
-default:"0.5"
-
+Type: `number`  
+Default: `0.5`  
 Multiplier for exponential backoff between retries. `sleep = (2 ** (retryAttempt - 1)) * backoffFactor`.
 
 ### Class Methods
@@ -506,147 +484,126 @@ try {
 * Python
 * TypeScript
 
+#### Python Parameters
+
 [​](#param-product)
 
-product
+**product**
 
-string
-
-required
-
+Type: `string`  
+Required  
 Name of the product or service being purchased.
 
 [​](#param-price)
 
-price
+**price**
 
-float
-
-required
-
+Type: `float`  
+Required  
 Price of the product. Must be a positive number.
 
 [​](#param-currency)
 
-currency
+**currency**
 
-string
-
-required
-
+Type: `string`  
+Required  
 3-letter ISO currency code (e.g., “USD”, “EUR”).
 
 [​](#param-merchant)
 
-merchant
+**merchant**
 
-string
-
+Type: `string`  
 Name of the merchant or store.
 
 [​](#param-merchant-link)
 
-merchant\_link
+**merchant_link**
 
-string
-
+Type: `string`  
 URL related to the merchant or product.
 
 [​](#param-product-description)
 
-product\_description
+**product_description**
 
-string
-
+Type: `string`  
 A more detailed description of the product or service.
 
 [​](#param-confidence-score)
 
-confidence\_score
+**confidence_score**
 
-float
-
-A score (0.0 to 1.0) indicating your system’s confidence in this purchase
-intent.
+Type: `float`  
+A score (0.0 to 1.0) indicating your system’s confidence in this purchase intent.
 
 [​](#param-request-id)
 
-request\_id
+**request_id**
 
-Optional[str]
+Type: `Optional[str]`  
+An optional idempotency key for the `create_mandate` call. If not provided, the SDK generates one.
 
-An optional idempotency key for the `create_mandate` call. If not provided,
-the SDK generates one.
+#### TypeScript Parameters
 
 [​](#param-product-1)
 
-product
+**product**
 
-string
-
-required
-
+Type: `string`  
+Required  
 Name of the product or service being purchased.
 
 [​](#param-price-1)
 
-price
+**price**
 
-number
-
-required
-
+Type: `number`  
+Required  
 Price of the product. Must be a positive number.
 
 [​](#param-currency-1)
 
-currency
+**currency**
 
-string
-
-required
-
+Type: `string`  
+Required  
 3-letter ISO currency code (e.g., “USD”, “EUR”).
 
 [​](#param-merchant-1)
 
-merchant
+**merchant**
 
-string
-
+Type: `string`  
 Name of the merchant or store.
 
 [​](#param-merchant-link)
 
-merchantLink
+**merchantLink**
 
-string
-
+Type: `string`  
 URL related to the merchant or product.
 
 [​](#param-product-description)
 
-productDescription
+**productDescription**
 
-string
-
+Type: `string`  
 A more detailed description of the product or service.
 
 [​](#param-confidence-score)
 
-confidenceScore
+**confidenceScore**
 
-number
-
-A score (0.0 to 1.0) indicating your system’s confidence in this purchase
-intent.
+Type: `number`  
+A score (0.0 to 1.0) indicating your system’s confidence in this purchase intent.
 
 [​](#param-request-id)
 
-requestId
+**requestId**
 
-string
-
+Type: `string`  
 An optional idempotency key. If not provided, the SDK generates one.
 
 ## Response Models
@@ -671,7 +628,7 @@ class MandateCreateResponse:
     updated_at: Optional[datetime]     # Timestamp of last update (UTC), if any
 ```
 
-**Example Usage:** Copy
+**Example Usage:**
 
 ```
 # mandate_resp = user_context.create_mandate(...)
@@ -687,7 +644,9 @@ interface MandateCreateResponse {
     createdAt: Date;                   // Timestamp of mandate creation
     updatedAt?: Date;                  // Timestamp of last update, if any
 }
-```**Example Usage:**
+```
+
+**Example Usage:**
 
 ```
 // const mandateResp = await userContext.createMandate(...);
@@ -707,7 +666,7 @@ class CardRevealTokenResponse:
     expires_at: Optional[datetime]     # Timestamp when this token expires (UTC), if applicable
 ```
 
-**Example Usage:** Copy
+**Example Usage:**
 
 ```
 # reveal_resp = user_context.request_card_reveal_token(...)
@@ -721,7 +680,9 @@ interface CardRevealTokenResponse {
     revealToken: string;               // The single-use token for revealing card details
     expiresAt?: Date;                  // Optional expiration timestamp
 }
-```**Example Usage:**
+```
+
+**Example Usage:**
 
 ```
 // const revealResp = await userContext.requestCardRevealToken(...);
@@ -756,7 +717,7 @@ class CardDetailsResponse:
 * `card_number` is validated to be a string of 13-19 digits.
 * `card_expiry_date` is validated to be in MM/YY format.
 
-**Example Usage:** Copy
+**Example Usage:**
 
 ```
 # card = user_context.reveal_card_details(...)
@@ -781,12 +742,14 @@ interface CardDetailsResponse {
     zipCode?: string;
     phoneNumber?: string;
 }
-```** Validation:**
+```
+
+**Validation:**
 
 * Card number must be 13-19 digits
 * Expiry date must be MM/YY format
 
-**Example Usage:** Copy
+**Example Usage:**
 
 ```
 // const card = await userContext.revealCardDetails(...);

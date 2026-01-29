@@ -1,9 +1,8 @@
 # Update Card Information
 
-PATCH /api/v2/wallet/cards/
-{card\_id}
+PATCH /api/v2/wallet/cards/{card_id}
 
-Update Card Information
+**Summary:** Update Card Information
 
 ```
 curl --request PATCH \
@@ -38,12 +37,9 @@ curl --request PATCH \
 
 X-Public-Key
 
-string
-
-header
-
-required
-
+Type: `string`  
+Location: `header`  
+Required  
 Public key for card collection operations
 
 #### Headers
@@ -52,10 +48,8 @@ Public key for card collection operations
 
 x-user-id
 
-string
-
-required
-
+Type: `string`  
+Required  
 End-user identifier within a customer organization. Required for user-scoped operations.
 
 #### Path Parameters
@@ -64,9 +58,8 @@ End-user identifier within a customer organization. Required for user-scoped ope
 
 card\_id
 
-string
-
-required
+Type: `string`  
+Required
 
 #### Body
 
@@ -78,16 +71,14 @@ Request model for updating card information - all fields optional.
 
 email
 
-string<email> | null
-
+Type: `string<email> | null`  
 Update cardholder email
 
 [​](#body-card-holder-one-of-0)
 
 card\_holder
 
-string | null
-
+Type: `string | null`  
 Update cardholder name
 
 Required string length: `1 - 255`
@@ -96,8 +87,7 @@ Required string length: `1 - 255`
 
 phone\_number
 
-string<phone> | null
-
+Type: `string<phone> | null`  
 Phone number in E.164 format (e.g., +12125551234)
 
 Example:
@@ -108,8 +98,7 @@ Example:
 
 billing\_address
 
-string | null
-
+Type: `string | null`  
 Update billing address
 
 Minimum string length: `1`
@@ -118,8 +107,7 @@ Minimum string length: `1`
 
 city
 
-string | null
-
+Type: `string | null`  
 Update city
 
 Minimum string length: `1`
@@ -128,16 +116,14 @@ Minimum string length: `1`
 
 state
 
-string | null
-
+Type: `string | null`  
 Update state
 
 [​](#body-zip-code-one-of-0)
 
 zip\_code
 
-string | null
-
+Type: `string | null`  
 Update ZIP code
 
 #### Response
@@ -150,26 +136,21 @@ Response model for card operations (create/update/delete).
 
 status
 
-string
-
-required
-
+Type: `string`  
+Required  
 Operation status
 
 [​](#response-message)
 
 message
 
-string
-
-required
-
+Type: `string`  
+Required  
 Human-readable message
 
 [​](#response-card-id-one-of-0)
 
 card\_id
 
-string | null
-
+Type: `string | null`  
 Affected card ID

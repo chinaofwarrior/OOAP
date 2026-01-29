@@ -1,9 +1,8 @@
 # Delete payment method
 
-DELETE /api/v2/wallet/payment-methods/
-{paymentMethodId}
+DELETE /api/v2/wallet/payment-methods/{paymentMethodId}
 
-Delete payment method
+**Summary:** Delete payment method
 
 ```
 curl --request DELETE \
@@ -28,18 +27,15 @@ curl --request DELETE \
 
 #### Authorizations
 
-PublicKeyAuthPublicKeyAuth
+PublicKeyAuth
 
 [​](#authorization-x-public-key)
 
 X-Public-Key
 
-string
-
-header
-
-required
-
+Type: `string`  
+Location: `header`  
+Required  
 Public key for card collection operations
 
 #### Headers
@@ -48,10 +44,8 @@ Public key for card collection operations
 
 x-user-id
 
-string
-
-required
-
+Type: `string`  
+Required  
 End-user identifier within a customer organization. Required for user-scoped operations.
 
 #### Path Parameters
@@ -60,9 +54,8 @@ End-user identifier within a customer organization. Required for user-scoped ope
 
 paymentMethodId
 
-string<uuid>
-
-required
+Type: `string<uuid>`  
+Required
 
 #### Response
 

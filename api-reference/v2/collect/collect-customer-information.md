@@ -1,7 +1,8 @@
 # Collect customer information
 
 POST /api/v2/wallet/collect
-Collect customer information
+
+**Summary:** Collect customer information
 
 ```
 curl --request POST \
@@ -101,18 +102,15 @@ curl --request POST \
 
 #### Authorizations
 
-PublicKeyAuthPublicKeyAuth
+PublicKeyAuth
 
 [​](#authorization-x-public-key)
 
 X-Public-Key
 
-string
-
-header
-
-required
-
+Type: `string`  
+Location: `header`  
+Required  
 Public key for card collection operations
 
 #### Headers
@@ -121,18 +119,15 @@ Public key for card collection operations
 
 x-request-id
 
-string | null
-
+Type: `string | null`  
 Unique request identifier for tracing and debugging. Auto-generated if not provided.
 
 [​](#parameter-x-user-id)
 
 x-user-id
 
-string
-
-required
-
+Type: `string`  
+Required  
 End-user identifier within a customer organization. Required for user-scoped operations.
 
 #### Body
@@ -147,10 +142,8 @@ Supports both new nested format and legacy flat format for backward compatibilit
 
 contactInfo
 
-ContactInfo · object
-
-required
-
+Type: `ContactInfo` (object)  
+Required  
 Customer contact information.
 
 Show child attributes
@@ -159,8 +152,7 @@ Show child attributes
 
 shippingAddress
 
-ShippingAddress · object
-
+Type: `ShippingAddress` (object)  
 Shipping address with default flag.
 
 Show child attributes
@@ -169,8 +161,7 @@ Show child attributes
 
 paymentMethod
 
-PaymentMethodRequest · object
-
+Type: `PaymentMethodRequest` (object)  
 Request to add a payment method.
 
 Show child attributes
@@ -179,9 +170,8 @@ Show child attributes
 
 \_is\_legacy\_format
 
-boolean
-
-default:false
+Type: `boolean`  
+Default: `false`
 
 #### Response
 
@@ -196,10 +186,8 @@ Response from collecting customer information.
 
 userId
 
-string
-
-required
-
+Type: `string`  
+Required  
 The user ID associated with this wallet data
 
 Example:
@@ -210,10 +198,8 @@ Example:
 
 createdAt
 
-string<date-time>
-
-required
-
+Type: `string<date-time>`  
+Required  
 Example:
 
 `"2024-01-15T10:30:00Z"`

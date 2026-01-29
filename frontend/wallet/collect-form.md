@@ -357,86 +357,81 @@ function AddPaymentMethod() {
 
 [​](#param-visible-sections)
 
-visibleSections
+**visibleSections**
 
-CollectionSection[]
+Type: `CollectionSection[]`  
+Default: `"All sections"`  
+Choose which sections to show. Sections appear in the order you specify.
 
-default:"All sections"
-
-Choose which sections to show. Sections appear in the order you specify.** Example:**
-
+Example:
 ```
 visibleSections={[CollectionSection.Payment, CollectionSection.Billing]}
 ```
 
 [​](#param-collection-data)
 
-collectionData
+**collectionData**
 
-CollectionData
+Type: `CollectionData`  
+Data for sections you’re not showing. Gets sent to API automatically.
 
-Data for sections you’re not showing. Gets sent to API automatically.** Fields:** `contactInfo`, `shippingAddress`, `billingAddress`, `cardHolderName`, `customData`
+Fields:
+- `contactInfo`
+- `shippingAddress`
+- `billingAddress`
+- `cardHolderName`
+- `customData`
 
 [​](#param-default-values)
 
-defaultValues
+**defaultValues**
 
-object
-
+Type: `object`  
 Pre-fill visible form fields. User can edit before submitting.
 
 [​](#param-on-success)
 
-onSuccess
+**onSuccess**
 
-(data) => void
-
-required
-
+Type: `(data) => void`  
+Required  
 Called when collection succeeds. Returns contact, shipping, billing, and payment info.
 
 [​](#param-on-error)
 
-onError
+**onError**
 
-(error) => void
-
+Type: `(error) => void`  
 Called when collection fails (validation errors, network issues, etc).
 
 [​](#param-theme)
 
-theme
+**theme**
 
-'light' | 'dark' | 'minimal'
-
-default:"'light'"
-
+Type: `'light' | 'dark' | 'minimal'`  
+Default: `'light'`  
 Pre-built theme to use.
 
 [​](#param-mode)
 
-mode
+**mode**
 
-'themed' | 'custom' | 'headless'
-
-default:"'themed'"
-
+Type: `'themed' | 'custom' | 'headless'`  
+Default: `'themed'`  
 Styling mode. Use `'custom'` to override specific styles.
 
 [​](#param-styles)
 
-styles
+**styles**
 
-object
-
+Type: `object`  
 Custom style overrides. See [Styling & Theming](styling-theming.md).
 
 [​](#param-google-api-key)
 
-googleApiKey
+**googleApiKey**
 
-string
-
+Type: `string`  
 Google Places API key for address autocomplete.
 
 ---

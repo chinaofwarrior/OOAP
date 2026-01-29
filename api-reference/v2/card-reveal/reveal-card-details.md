@@ -1,9 +1,8 @@
 # Reveal Card Details
 
-GET /api/v2/wallet/
-reveal\_card\_details
+GET /api/v2/wallet/reveal_card_details
 
-Reveal Card Details
+**Summary:** Reveal Card Details
 
 ```
 curl --request GET \
@@ -32,18 +31,15 @@ curl --request GET \
 
 #### Authorizations
 
-ShortLivedTokenAuthShortLivedTokenAuth
+ShortLivedTokenAuth
 
 [​](#authorization-authorization)
 
 Authorization
 
-string
-
-header
-
-required
-
+Type: `string`  
+Location: `header`  
+Required  
 Short-lived token obtained from /request\_card\_reveal\_token endpoint
 
 #### Response
@@ -59,10 +55,8 @@ Response model for revealed card data (contains sensitive information).
 
 card\_number
 
-string
-
-required
-
+Type: `string`  
+Required  
 Card number
 
 Required string length: `12 - 19`
@@ -71,10 +65,8 @@ Required string length: `12 - 19`
 
 card\_holder
 
-string
-
-required
-
+Type: `string`  
+Required  
 Card holder name
 
 Required string length: `1 - 255`
@@ -83,30 +75,24 @@ Required string length: `1 - 255`
 
 card\_exp
 
-string
-
-required
-
+Type: `string`  
+Required  
 Card expiration (MM/YY)
 
 [​](#response-one-of-0-email)
 
 email
 
-string<email>
-
-required
-
+Type: `string<email>`  
+Required  
 Cardholder email
 
 [​](#response-one-of-0-phone-number)
 
 phone\_number
 
-string<phone>
-
-required
-
+Type: `string<phone>`  
+Required  
 Phone number in E.164 format
 
 Examples:
@@ -121,10 +107,8 @@ Examples:
 
 billing\_address
 
-string
-
-required
-
+Type: `string`  
+Required  
 Billing address
 
 Minimum string length: `1`
@@ -133,34 +117,29 @@ Minimum string length: `1`
 
 zip\_code
 
-string
-
-required
-
+Type: `string`  
+Required  
 ZIP code
 
 [​](#response-one-of-0-card-cvv-one-of-0)
 
 card\_cvv
 
-string | null
-
+Type: `string | null`  
 CVV code
 
 [​](#response-one-of-0-last4-digits-one-of-0)
 
 last4\_digits
 
-string | null
-
+Type: `string | null`  
 Last 4 digits
 
 [​](#response-one-of-0-city-one-of-0)
 
 city
 
-string | null
-
+Type: `string | null`  
 City
 
 Minimum string length: `1`
@@ -169,40 +148,34 @@ Minimum string length: `1`
 
 state
 
-string | null
-
+Type: `string | null`  
 State/province code
 
 [​](#response-one-of-0-id-one-of-0)
 
 id
 
-string | null
-
+Type: `string | null`  
 Card identifier
 
 [​](#response-one-of-0-is-default-one-of-0)
 
 is\_default
 
-boolean | null
-
+Type: `boolean | null`  
 Default flag
 
 [​](#response-one-of-0-is-active-one-of-0)
 
 is\_active
 
-boolean | null
-
+Type: `boolean | null`  
 Active status
 
 [​](#response-one-of-0-is-visa-payment)
 
 is\_visa\_payment
 
-boolean
-
-default:false
-
+Type: `boolean`  
+Default: `false`  
 Whether this is a Visa-tokenized payment
