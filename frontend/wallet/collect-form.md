@@ -4,7 +4,9 @@
 
 `FintCollectForm` is a flexible payment collection form that lets you choose exactly what information to collect from users. Use it for guest checkouts, adding payment methods, or any custom flow where you need payment information.
 
-**What You’ll Learn ** In this guide, you’ll learn:
+**What You’ll Learn**
+
+In this guide, you’ll learn:
 
 * When to use FintCollectForm vs FintWallet
 * How to collect only payment details (skip contact/shipping)
@@ -12,7 +14,9 @@
 * How this component powers the “Add Card” flow in FintWallet
 * Customizing the collection experience
 
-**Time to complete:** 5 minutes **FintCollectForm powers FintWallet** : When users click “Add Card” in FintWallet, they’re using this component. The props you learn here also work when customizing the wallet’s card collection flow.
+**Time to complete:** 5 minutes
+
+**FintCollectForm powers FintWallet:** When users click “Add Card” in FintWallet, they’re using this component. The props you learn here also work when customizing the wallet’s card collection flow.
 
 ---
 
@@ -33,7 +37,7 @@
 * Default card selection
 * Full wallet UI for user accounts
 
-**Key difference** : FintCollectForm is the building block for collecting payment information. FintWallet is the complete experience for managing payment methods and user information. The wallet uses this collection form internally when users click “Add Card”.
+**Key difference:** FintCollectForm is the building block for collecting payment information. FintWallet is the complete experience for managing payment methods and user information. The wallet uses this collection form internally when users click “Add Card”.
 See [Wallet Overview](overview.md) for the complete wallet component.
 
 ---
@@ -43,9 +47,11 @@ See [Wallet Overview](overview.md) for the complete wallet component.
 The form can collect four types of information:
 
 1. **Contact Information** - Name, email, phone number
-2.**Shipping Address** - Full shipping address
-3.**Payment Details** - Card information (always required)
-4.**Billing Address** - Billing address for the card **You choose which ones to show.** If you already have contact or shipping info for your user, skip those sections and just collect payment details.
+2. **Shipping Address** - Full shipping address
+3. **Payment Details** - Card information (always required)
+4. **Billing Address** - Billing address for the card
+
+**You choose which ones to show.** If you already have contact or shipping info for your user, skip those sections and just collect payment details.
 
 ---
 
@@ -96,7 +102,9 @@ import { FintCollectForm, CollectionSection } from '@fint/wallet';
     alert('Payment method added!');
   }}
 />
-```**What happens:**
+```
+
+**What happens:**
 
 * User sees only payment and billing forms
 * Contact and shipping data from `collectionData` is automatically included
@@ -117,7 +125,9 @@ CollectionSection.Contact   // Name, email, phone
 CollectionSection.Shipping  // Shipping address
 CollectionSection.Payment   // Card details (always required)
 CollectionSection.Billing   // Billing address
-```**Example combinations:**
+```
+
+**Example combinations:**
 
 ```
 // Guest checkout - show everything (default)
@@ -252,7 +262,7 @@ See [Styling & Theming](styling-theming.md) for all customization options.
 When users click “Add Card” in FintWallet, they see this collection form. Customize which sections to show:
 
 ```
-import { FintWallet, CollectionSection } from '@fint/react-fint-js';
+import { FintWallet, CollectionSection } from '@fint/wallet';
 
 <FintWallet
   // Show only payment + billing when adding cards

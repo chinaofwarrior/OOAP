@@ -4,13 +4,15 @@
 
 This guide shows real-world integration patterns for the `FintWallet` component in AI agent applications. Each pattern addresses a specific use case, from user onboarding to AI agent purchase flows.
 
-**Context** : These patterns assume you’re building an AI agent application where users save payment methods in your frontend, and your AI agent uses those cards to make purchases on e-commerce sites via your backend.
+**Context:** These patterns assume you’re building an AI agent application where users save payment methods in your frontend, and your AI agent uses those cards to make purchases on e-commerce sites via your backend.
 
 ---
 
 ## Pattern 1: Account Settings Page
 
-**Use Case:** Users need a dedicated page to manage all their wallet information (payment methods, contact, shipping).**When to Use:**
+**Use Case:** Users need a dedicated page to manage all their wallet information (payment methods, contact, shipping).
+
+**When to Use:**
 
 * Standard “My Account” or “Settings” section
 * Users regularly update their payment info
@@ -471,7 +473,7 @@ app.post('/api/ai-agent/purchase', async (req, res) => {
 
 **Key Points:**
 
-* **3-step mandate flow** : Create mandate → Request token → Reveal card
+* **3-step mandate flow:** Create mandate → Request token → Reveal card
 * Backend retrieves card details, never frontend
 * AI agent uses card to fill merchant checkout forms
 * Handle `CardNotFoundError` when user has no saved cards
@@ -736,9 +738,11 @@ async function handleBackendCardRetrievalErrors(userId, purchaseDetails) {
 
 ## Pattern 6: Multi-User/Team Accounts (Advanced)
 
-**Advanced Pattern** : This pattern covers complex team/organization scenarios. Most applications can skip this section. Only relevant if you’re building team management features where admins need to view/manage other users’ payment methods.
+**Advanced Pattern:** This pattern covers complex team/organization scenarios. Most applications can skip this section. Only relevant if you’re building team management features where admins need to view/manage other users’ payment methods.
 
-**Use Case:** Application with multiple users or team members, each with their own payment methods.**When to Use:**
+**Use Case:** Application with multiple users or team members, each with their own payment methods.
+
+**When to Use:**
 
 * Team/organization accounts
 * Each user has separate payment methods

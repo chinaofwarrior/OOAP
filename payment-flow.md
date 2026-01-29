@@ -197,7 +197,7 @@ CVVs are stored securely with a timestamp. For PCI compliance, they cannot be st
 Use `useWallet()` to check if the default card has a valid CVV **before** calling your backend:
 
 ```
-import { useWallet, FintCvvCollector } from '@fint/react-fint-js';
+import { useWallet, FintCvvCollector } from '@fint/wallet';
 
 function PurchaseButton() {
   const wallet = useWallet();
@@ -226,7 +226,7 @@ Each payment method has an `isCvvValid` boolean that’s automatically computed 
 When `isCvvValid === false`, show `FintCvvCollector` to prompt the user for just their CVV (not the full card):
 
 ```
-import { FintCvvCollector } from '@fint/react-fint-js';
+import { FintCvvCollector } from '@fint/wallet';
 
 function CvvPrompt() {
   const wallet = useWallet();
@@ -353,7 +353,7 @@ Once `reveal_card_details()` succeeds, the CVV is always present. No need to che
 
 The `userId` is what connects frontend card collection with backend retrieval:
 
-**Critical** : Both frontend and backend must use the **exact same** `userId` string.
+**Critical:** Both frontend and backend must use the **exact same** `userId` string.
 
 ```
 <WalletProvider

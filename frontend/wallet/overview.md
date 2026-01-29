@@ -93,7 +93,7 @@ The Fint React SDK provides components at different levels of abstraction:
 * One-time payment collection
 * Simple “add payment method” without managing multiple cards
 
-**They work together** : FintWallet uses FintCollectForm internally for the “Add Card” flow. You can control which sections show in that flow using `collectFormVisibleSections` and `collectFormCollectionData` props on FintWallet.See [Collection Form](collect-form.md) for section control details.
+**They work together:** FintWallet uses FintCollectForm internally for the “Add Card” flow. You can control which sections show in that flow using `collectFormVisibleSections` and `collectFormCollectionData` props on FintWallet. See [Collection Form](collect-form.md) for section control details.
 
 **For custom styling:**
 
@@ -132,9 +132,9 @@ Get your public key from app.fint.io. Users can now save and manage payment meth
 Use the same `FintWallet` component with full control over styling and appearance.
 **Styling options:**
 
-* **Themed mode** : Choose from light, dark, or minimal themes
-* **Custom mode** : Override specific style properties
-* **Headless mode** : Provide your own CSS entirely
+* **Themed mode:** Choose from light, dark, or minimal themes
+* **Custom mode:** Override specific style properties
+* **Headless mode:** Provide your own CSS entirely
 
 **When to use:**
 
@@ -218,7 +218,7 @@ function Dashboard() {
 }
 ```
 
-**Available fields** : `id`, `lastFourDigits`, `expiryDate`, `cardType`, `cardHolderName`, `isDefault`, `isCvvValid`, `billingAddress`, timestamps.
+**Available fields:** `id`, `lastFourDigits`, `expiryDate`, `cardType`, `cardHolderName`, `isDefault`, `isCvvValid`, `billingAddress`, timestamps.
 Full card numbers and CVVs are never exposed. Backend SDK only.
 
 ---
@@ -413,10 +413,14 @@ collectFormVisibleSections
 
 CollectionSection[]
 
-Control which sections to show when users click “Add Card”. By default, all sections are shown.** Use case**: Streamline the add card flow for existing users by showing only payment and billing sections.** Example:**
+Control which sections to show when users click “Add Card”. By default, all sections are shown.
+
+**Use case:** Streamline the add card flow for existing users by showing only payment and billing sections.
+
+**Example:**
 
 ```
-import { CollectionSection } from '@fint/react-fint-js';
+import { CollectionSection } from '@fint/wallet';
 
 <FintWallet
   collectFormVisibleSections={[

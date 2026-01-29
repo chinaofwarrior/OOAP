@@ -13,13 +13,17 @@ Update all imports from `@fint/react-fint-js` to `@fint/wallet`. No API changes�
 
 ## Overview
 
-If you’re currently using the legacy components (`FintWalletProvider`, `FintPaymentForm`, `FintCardManagement`), this guide will help you migrate to the new components.**Migration time:** 5-10 minutes per component
+If you’re currently using the legacy components (`FintWalletProvider`, `FintPaymentForm`, `FintCardManagement`), this guide will help you migrate to the new components.
+
+**Migration time:** 5-10 minutes per component
 
 ## Step-by-Step Migration
 
 ### 1. Replace FintWalletProvider with WalletProvider
 
-The provider has been simplified with a cleaner API.**Before:** Copy
+The provider has been simplified with a cleaner API.
+
+**Before:** Copy
 
 ```
 import { FintWalletProvider } from '@fint/wallet';
@@ -31,7 +35,9 @@ import { FintWalletProvider } from '@fint/wallet';
 >
   {children}
 </FintWalletProvider>
-```**After:** Copy
+```
+
+**After:** Copy
 
 ```
 import { WalletProvider } from '@fint/wallet';
@@ -42,7 +48,9 @@ import { WalletProvider } from '@fint/wallet';
 >
   {children}
 </WalletProvider>
-```**Changes:**
+```
+
+**Changes:**
 
 * Component name: `FintWalletProvider` → `WalletProvider`
 * `apiUrl` prop removed (auto-configured based on environment)
@@ -53,6 +61,7 @@ import { WalletProvider } from '@fint/wallet';
 ### 2. Replace FintPaymentForm with FintCollectForm
 
 The collection form has been updated with improved styling and error handling.
+
 **Before:** Copy
 
 ```
@@ -74,7 +83,9 @@ import { FintPaymentForm } from '@fint/wallet';
     }
   }}
 />
-```**After:** Copy
+```
+
+**After:** Copy
 
 ```
 import { FintCollectForm } from '@fint/wallet';
@@ -92,7 +103,9 @@ import { FintCollectForm } from '@fint/wallet';
   mode="themed"
   theme="light"
 />
-```**Changes:**
+```
+
+**Changes:**
 
 * Component name: `FintPaymentForm` → `FintCollectForm`
 * Callbacks: `onSave` + `onCancel` → `onSuccess` + `onError`
@@ -105,6 +118,7 @@ import { FintCollectForm } from '@fint/wallet';
 ### 3. Replace FintCardManagement with FintWallet
 
 The card management modal has evolved into a full-featured wallet component.
+
 **Before:** Copy
 
 ```
@@ -127,7 +141,9 @@ import { FintCardManagement } from '@fint/wallet';
     }
   }}
 />
-```**After:** Copy
+```
+
+**After:** Copy
 
 ```
 import { FintWallet } from '@fint/wallet';
@@ -146,15 +162,17 @@ import { FintWallet } from '@fint/wallet';
     button: { backgroundColor: '#3b82f6' }
   }}
 />
-```**Changes:**
+```
+
+**Changes:**
 
 * Component name: `FintCardManagement` → `FintWallet`
-* **No modal** : `FintWallet` is embedded directly in your page (not a modal)
+* **No modal:** `FintWallet` is embedded directly in your page (not a modal)
 * Props removed: `open`, `onOpenChange` (no longer a modal)
 * Callbacks: Individual callbacks → unified `onError` handler
 * Props: `defaultCardDetails` → `defaultCollectValues`
 * Styling: `walletStyles` → `styles` (consistent API)
-* **New features** : Settings tab with contact & shipping info
+* **New features:** Settings tab with contact & shipping info
 
 **If you need modal behavior:**
 

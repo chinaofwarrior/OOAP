@@ -490,7 +490,9 @@ Currently, the Python SDK only supports **synchronous** calls. An async variant 
 
 The TypeScript SDK only supports **asynchronous** calls. All methods return Promises and should be used with async/await or .then().
 
-How do I handle different environments (dev/staging/prod)?\n\n**Recommended:** Use environment variables (`FINT_API_KEY`, `FINT_BASE_URL`) and `FintClient.from_env()`. Your deployment process can set these variables appropriately for each environment. Alternatively, you can explicitly instantiate `FintClient` with different parameters based on an environment flag:
+How do I handle different environments (dev/staging/prod)?
+
+**Recommended:** Use environment variables (`FINT_API_KEY`, `FINT_BASE_URL`) and `FintClient.from_env()`. Your deployment process can set these variables appropriately for each environment. Alternatively, you can explicitly instantiate `FintClient` with different parameters based on an environment flag:
 
 ```
 import os

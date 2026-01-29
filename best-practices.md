@@ -19,9 +19,9 @@
 
 ### Data Flow
 
-1. **Frontend** – Use `@fint/react-fint-js`; iframes keep card data off your origin.
-2.**Backend** – Store only `{user_id ↔ fint_token}` + `mandate_id`, `request_id`.
-3.**Checkout** – Call `revealCardDetails`, pay immediately, forget the PAN.
+1. **Frontend** – Use `@fint/wallet`; iframes keep card data off your origin.
+2. **Backend** – Store only `{user_id ↔ fint_token}` + `mandate_id`, `request_id`.
+3. **Checkout** – Call `revealCardDetails`, pay immediately, forget the PAN.
 
 ---
 

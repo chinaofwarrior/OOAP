@@ -2,7 +2,9 @@
 
 Complete your first end-to-end payment flow: collect a card on the frontend, reveal it on the backend.
 
-**What You’ll Learn**\n\nIn this guide, you’ll:
+**What You’ll Learn**
+
+In this guide, you’ll:
 
 * Install frontend and backend SDKs
 * Collect a payment method with `FintWallet`

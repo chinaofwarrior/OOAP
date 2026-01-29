@@ -37,7 +37,9 @@ details.
 Reveal Card Details
 
 Exchange the token for actual card information to complete the purchase
-(e.g., to complete the purchase).\n\n**Important Workflow**: A `user_id` is **required** to create a user context.
+(e.g., to complete the purchase).
+
+**Important Workflow**: A `user_id` is **required** to create a user context.
 A `MandateData` object **must be created and submitted** to the API via
 `user.create_mandate()` to obtain a `mandate_id`. This `mandate_id` is then **required** to request a `reveal_token`.
 

@@ -4,7 +4,7 @@
 
 The Payment Methods tab lets users add, edit, and manage their saved cards. Your AI agent uses the default card when making purchases.
 
-**Default Card** : When your backend retrieves payment details, it gets the default card. This is either:
+**Default Card:** When your backend retrieves payment details, it gets the default card. This is either:
 
 * The card the user marked as default, OR
 * The most recently added card if no default is set
@@ -83,8 +83,11 @@ Card number, expiry, and CVV cannot be edited for security. Users need to add a 
 
 ## Setting Default Card
 
-Users set a default by checking “Set as default payment method” on any card.**Why it matters** : Your AI agent uses the default card for purchases. Only one card can be default at a time.
-**Backend retrieval** :
+Users set a default by checking “Set as default payment method” on any card.
+
+**Why it matters:** Your AI agent uses the default card for purchases. Only one card can be default at a time.
+
+**Backend retrieval:**
 
 ```
 # Your AI agent gets the default card
@@ -114,7 +117,7 @@ Show your own message when users have no cards:
 />
 ```
 
-**Use for** : Onboarding messaging, value propositions, or branding.
+**Use for:** Onboarding messaging, value propositions, or branding.
 
 ---
 
@@ -141,7 +144,7 @@ function Dashboard() {
 }
 ```
 
-**Available fields** : `id`, `lastFourDigits`, `expiryDate`, `cardType`, `cardHolderName`, `isDefault`, `billingAddress`
+**Available fields:** `id`, `lastFourDigits`, `expiryDate`, `cardType`, `cardHolderName`, `isDefault`, `billingAddress`
 
 This is metadata only - no full card numbers or CVVs. Only your backend SDK can retrieve sensitive details.
 

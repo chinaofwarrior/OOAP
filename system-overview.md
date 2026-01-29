@@ -1,6 +1,8 @@
 # System Overview
 
-**What You’ll Learn ** This page explains:
+**What You’ll Learn**
+
+This page explains:
 
 * How Fint’s architecture separates frontend and backend operations
 * The role of mandates, reveal tokens, and network tokens
@@ -44,7 +46,7 @@ The **Frontend SDK** (`@fint/wallet`) runs in the user’s browser and handles:
 * User interface components for the wallet
 * Client-side validation and error handling
 
-**API Key** : Uses your **public key** (`pk_*`) - safe to expose in client-side code. Only allows card collection, never retrieval.
+**API Key:** Uses your **public key** (`pk_*`) - safe to expose in client-side code. Only allows card collection, never retrieval.
 
 ### Backend SDKs
 
@@ -54,7 +56,7 @@ The **Backend SDKs** (`fint` for Python and `@fint/fint-js` for TypeScript) run 
 * Card details / network token retrieve
 * Policy engine for security (coming soon)
 
-**API Key** : Uses your **secret key** (`sk_*`) - must be kept private on your server. Allows card retrieval for your AI agent.
+**API Key:** Uses your **secret key** (`sk_*`) - must be kept private on your server. Allows card retrieval for your AI agent.
 
 ## Core Concepts
 
@@ -85,11 +87,11 @@ Mandates must be created before revealing card details, ensuring proper authoriz
 
 Each user can store multiple credit cards in their Fint wallet, identified by unique `cardId` values. This allows users to manage multiple payment methods:
 
-* **Multiple Cards** : Users can store several credit cards under the same `userId`
-* **Card Identification** : Each card is assigned a unique `cardId` for reference
-* **Default Card** : Users can set one card as their default payment method
-* **Automatic Selection** : When revealing card details, the default card is automatically retrieved unless a specific `cardId` is requested
-* **Card Management** : Users can add, update, or remove cards through the frontend SDK
+* **Multiple Cards:** Users can store several credit cards under the same `userId`
+* **Card Identification:** Each card is assigned a unique `cardId` for reference
+* **Default Card:** Users can set one card as their default payment method
+* **Automatic Selection:** When revealing card details, the default card is automatically retrieved unless a specific `cardId` is requested
+* **Card Management:** Users can add, update, or remove cards through the frontend SDK
 
 The wallet interface displays all stored cards with their masked numbers and allows users to easily select or change their default payment method.
 

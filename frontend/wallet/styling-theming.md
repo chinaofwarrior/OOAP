@@ -2,7 +2,9 @@
 
 ## Overview
 
-The `FintWallet` component comes with **three built-in themes** and **flexible styling options** that let you customize everything from colors to spacing to match your brand. You can use themes as-is, apply partial overrides, or take complete control with headless mode.\n\n**No Setup Required:** Styling is built into `FintWallet` itself. Just pass `theme` and `mode` props—no separate style providers needed.
+The `FintWallet` component comes with **three built-in themes** and **flexible styling options** that let you customize everything from colors to spacing to match your brand. You can use themes as-is, apply partial overrides, or take complete control with headless mode.
+
+**No Setup Required:** Styling is built into `FintWallet` itself. Just pass `theme` and `mode` props—no separate style providers needed.
 
 ---
 
@@ -246,7 +248,7 @@ Control the color hierarchy for proper depth:
 />
 ```
 
-**Rule of thumb** : App → Card → Sunken should progressively get darker (light mode) or lighter (dark mode) for proper visual hierarchy.
+**Rule of thumb:** App → Card → Sunken should progressively get darker (light mode) or lighter (dark mode) for proper visual hierarchy.
 
 ### When to Use `themeConfig` vs `styles`
 
@@ -290,13 +292,15 @@ The wallet styling system has three layers you can customize:
 
 ### Layer 1: Wallet UI Styles
 
-Controls the wallet-specific interface elements.**Available Properties:**
+Controls the wallet-specific interface elements.
 
-* **Tabs** : `tabList`, `tabButton`, `tabButtonSelected`, `tabIndicator`
-* **Card List** : `cardSurface`, `cardItemContainer`, `cardItemBadge`
-* **Settings** : `settingsCard`, `settingsContainer`, `settingsDivider`
-* **Dialogs** : `dialogOverlay`, `dialogPanel`, `dialogActions`
-* **Empty State** : `emptyState`
+**Available Properties:**
+
+* **Tabs:** `tabList`, `tabButton`, `tabButtonSelected`, `tabIndicator`
+* **Card List:** `cardSurface`, `cardItemContainer`, `cardItemBadge`
+* **Settings:** `settingsCard`, `settingsContainer`, `settingsDivider`
+* **Dialogs:** `dialogOverlay`, `dialogPanel`, `dialogActions`
+* **Empty State:** `emptyState`
 
 ```
 <FintWallet
@@ -331,11 +335,12 @@ Controls the wallet-specific interface elements.**Available Properties:**
 ### Layer 2: Form Styles
 
 Controls forms within the wallet (contact info, shipping address, add card form).
+
 **Available Properties:**
 
-* **Structure** : `form`, `fieldset`, `button`, `field`, `label`
-* **Input States** : `input`, `inputFocus`, `inputHover`, `inputValid`, `inputInvalid`
-* **Special** : `error`, `sectionHeader`, `placesDropdown`
+* **Structure:** `form`, `fieldset`, `button`, `field`, `label`
+* **Input States:** `input`, `inputFocus`, `inputHover`, `inputValid`, `inputInvalid`
+* **Special:** `error`, `sectionHeader`, `placesDropdown`
 
 ```
 <FintWallet
@@ -378,13 +383,14 @@ Controls forms within the wallet (contact info, shipping address, add card form)
 ### Layer 3: Secure Element Styles (Iframe)
 
 Controls secure card input fields (card number, CVV, expiry) rendered in iframes.
+
 **How it works:**
 
 * Form styles are automatically converted to iframe element styles
 * You can override with specific iframe styles if needed
 * Styles are applied via `FormStyleProvider` context
 
-**Important** : Secure elements inherit styling from the `input*` properties in the form styles.
+**Important:** Secure elements inherit styling from the `input*` properties in the form styles.
 
 ```
 <FintWallet
@@ -571,7 +577,7 @@ The wallet is mobile-responsive by default. You can customize behavior with CSS 
 />
 ```
 
-**Mobile-First** : The wallet automatically adjusts layouts for mobile screens (single-column forms, larger touch targets, optimized spacing). You can override with custom styles if needed.
+**Mobile-First:** The wallet automatically adjusts layouts for mobile screens (single-column forms, larger touch targets, optimized spacing). You can override with custom styles if needed.
 
 ---
 
@@ -751,7 +757,7 @@ import './my-wallet-styles.css';
 }
 ```
 
-**Headless Mode** : You’re responsible for ALL styling, including forms, inputs, buttons, and layout. Use this only if you need complete control or are integrating with a design system like Tailwind or Chakra UI.
+**Headless Mode:** You’re responsible for ALL styling, including forms, inputs, buttons, and layout. Use this only if you need complete control or are integrating with a design system like Tailwind or Chakra UI.
 
 ---
 

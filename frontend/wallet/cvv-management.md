@@ -1,6 +1,8 @@
 # CVV Management
 
-**What You’ll Learn ** Learn how to:
+**What You’ll Learn**
+
+Learn how to:
 
 * Check CVV validity with `isCvvValid` field
 * Show `FintCvvCollector` when CVV expires
@@ -43,11 +45,11 @@ function Checkout() {
 
 ## How It Works
 
-1.**Check CVV validity** : Each payment method has an `isCvvValid` boolean
-2. **Show collector if expired** : Display `FintCvvCollector` when `isCvvValid === false`
-3. **User enters CVV** : Secure iframe collects only the CVV (no full card re-entry)
-4. **60-minute window resets** : CVV is stored again for 60 minutes
-5. **Retry purchase** : Your backend can now reveal card details with CVV
+1. **Check CVV validity**: Each payment method has an `isCvvValid` boolean
+2. **Show collector if expired**: Display `FintCvvCollector` when `isCvvValid === false`
+3. **User enters CVV**: Secure iframe collects only the CVV (no full card re-entry)
+4. **60-minute window resets**: CVV is stored again for 60 minutes
+5. **Retry purchase**: Your backend can now reveal card details with CVV
 
 ## Component Props
 

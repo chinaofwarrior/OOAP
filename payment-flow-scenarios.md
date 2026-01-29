@@ -1,6 +1,8 @@
 # Payment Flow Scenarios
 
-**What You’ll Learn ** This guide covers:
+**What You’ll Learn**
+
+This guide covers:
 
 * Timeline visualization of the complete payment flow
 * Immediate purchase scenario (within 60-minute window)
@@ -14,7 +16,9 @@ This page provides concrete examples of how the payment flow works in real-world
 
 ## Complete Flow Timeline
 
-Understanding when each step happens helps prevent CVV expiration issues:**Key Insights:**
+Understanding when each step happens helps prevent CVV expiration issues.
+
+**Key Insights:**
 
 * **0:00-0:05** - User adds card via FintWallet (CVV timer starts)
 * **0:05-1:05** - 60-minute window where CVV is available
@@ -29,17 +33,20 @@ User adds card and immediately makes a purchase.
 
 ### Flow
 
-1.**00:00** - User adds card via FintWallet
-2.**00:02** - User says “Buy this item”
-3.**00:02** - Backend flow:
+1. **00:00** - User adds card via FintWallet
+2. **00:02** - User says “Buy this item”
+3. **00:02** - Backend flow:
    * Create mandate #1
    * Request reveal token #1
    * Reveal card
    * CVV is available ✓
 4. **00:03** - Purchase completes successfully
 
-### Outcome **Timeline** : 3 minutes (well within 60-minute window)
-**Result** : Success - CVV is fresh and available
+### Outcome
+
+**Timeline:** 3 minutes (well within 60-minute window)
+
+**Result:** Success - CVV is fresh and available
 
 ### Code Example
 
@@ -92,14 +99,17 @@ User adds card but doesn’t make a purchase until later.
 1. **00:00** - User adds card via FintWallet
 2. *User closes app, comes back next day*
 3. **24:00** - User says “Buy this item”
-4.**24:00** - Backend flow:
+4. **24:00** - Backend flow:
    * Create mandate #1
    * Request reveal token #1 → **Raises `CardCvvExpiredError`** ❌ (60-minute window expired)
-5.**24:01** - Backend signals frontend to collect CVV
-6.**24:01** - User re-enters CVV via `FintCvvCollector`
+5. **24:01** - Backend signals frontend to collect CVV
+6. **24:01** - User re-enters CVV via `FintCvvCollector`
 
-### Outcome **Timeline** : 24 hours (beyond 60-minute window)
-**Result** : CVV expired - must collect again
+### Outcome
+
+**Timeline:** 24 hours (beyond 60-minute window)
+
+**Result:** CVV expired - must collect again
 
 ### Code Example
 
@@ -107,7 +117,7 @@ User adds card but doesn’t make a purchase until later.
 * Backend
 
 ```
-import { useWallet, FintCvvCollector } from '@fint/react-fint-js';
+import { useWallet, FintCvvCollector } from '@fint/wallet';
 
 function Purchase() {
   const wallet = useWallet();
@@ -184,7 +194,7 @@ User makes multiple purchases with the same card.
 ### Flow
 
 1. **00:00** - User adds card via FintWallet
-2.**00:05** - Purchase #1:
+2. **00:05** - Purchase #1:
    * Create mandate #1 → Request token #1 → Reveal card
    * CVV available ✓
    * Purchase completes
@@ -198,16 +208,17 @@ User makes multiple purchases with the same card.
    * Purchase completes
 5. **01:30** - Purchase #4:
    * Create mandate #4 (NEW!) → Request token #4 (NEW!) → **Raises `CardCvvExpiredError`** ❌ (60-minute window expired)
-6.**01:31** - Backend signals frontend; user re-enters CVV via `FintCvvCollector`
-7.**01:32** - Purchase #4 retry:
+6. **01:31** - Backend signals frontend; user re-enters CVV via `FintCvvCollector`
+7. **01:32** - Purchase #4 retry:
    * Create mandate #5 (NEW!) → Request token #5 (NEW!) → Reveal card
    * CVV available ✓
    * Purchase completes
 
 ### Outcome
 
-**Key Insight** : Each purchase requires a new mandate and reveal token, even when using the same card. The card is stored once, but each transaction requires fresh authorization.
-**Best Practice** : If users make frequent purchases, consider prompting them to refresh CVV proactively before the 60-minute window expires.
+**Key Insight:** Each purchase requires a new mandate and reveal token, even when using the same card. The card is stored once, but each transaction requires fresh authorization.
+
+**Best Practice:** If users make frequent purchases, consider prompting them to refresh CVV proactively before the 60-minute window expires.
 
 ### Code Example
 

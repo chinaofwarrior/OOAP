@@ -51,7 +51,7 @@ Get notified when users update their contact info:
 />
 ```
 
-**Fields** : `firstName`, `lastName`, `email`, `phone` (optional)
+**Fields:** `firstName`, `lastName`, `email`, `phone` (optional)
 
 ---
 
@@ -83,7 +83,7 @@ Get notified when users update their contact info:
 />
 ```
 
-**Fields** : `addressLine1`, `addressLine2` (optional), `city`, `state`, `zipCode`, `country`
+**Fields:** `addressLine1`, `addressLine2` (optional), `city`, `state`, `zipCode`, `country`
 
 ---
 
