@@ -1,97 +1,6 @@
 # Payment Flow
 
-[Skip to main content](#content-area)
-
-[nekuda SDK home page![light logo](https://mintcdn.com/nekuda/c311V8lpa3FDeus2/logo/light.svg?fit=max&auto=format&n=c311V8lpa3FDeus2&q=85&s=1e6a8fa59769ac7778921ab3c8b5dc47)![dark logo](https://mintcdn.com/nekuda/c311V8lpa3FDeus2/logo/dark.svg?fit=max&auto=format&n=c311V8lpa3FDeus2&q=85&s=7bea3187e56802ecda17f49cbcc077e5)](/)
-
-Search...
-
-⌘KAsk AI
-
-* [Get Started](https://app.nekuda.ai)
-* [Get Started](https://app.nekuda.ai)
-
-Search...
-
-Navigation
-
-Get Started
-
-Payment Flow
-
-[Guides](/introduction)[API Reference](/api-reference/v2/cards/get-card-analytics)
-
-* [Website](https://nekuda.ai)
-* [X](https://x.com/nekuda_ai)
-* [Blog](https://nekuda.substack.com/)
-
-##### Get Started
-
-* [Introduction](/introduction)
-* [Quickstart](/nekuda-sdk/Quickstart)
-* [System Overview](/system-overview)
-* [Payment Flow](/payment-flow)
-* [Payment Flow Scenarios](/payment-flow-scenarios)
-* [Support](/support)
-
-##### Frontend SDK
-
-* [Wallet Overview](/frontend/wallet/overview)
-* [Payment Methods Tab](/frontend/wallet/payment-methods-tab)
-* [Settings Tab](/frontend/wallet/settings-tab)
-* [CVV Management](/frontend/wallet/cvv-management)
-* [Collection Form](/frontend/wallet/collect-form)
-* [Styling & Theming](/frontend/wallet/styling-theming)
-* [Integration Patterns](/frontend/wallet/integration-patterns)
-* [Migration Guide](/frontend/wallet/migration-guide)
-
-##### Backend SDK
-
-* [Getting Started](/nekuda-sdk/getting-started)
-* [Core Concepts](/nekuda-sdk/core-concepts)
-* [Usage Guide](/nekuda-sdk/usage-guide)
-* [Configuration](/nekuda-sdk/Configuration)
-* [Error Handling](/nekuda-sdk/Errors)
-
-##### Security
-
-* [Best practices](/best-practices)
-* [Policy Engine & Safety](/policy-engine-safety)
-
-##### Testing
-
-* [Testing Cards](/testing/testing-cards)
-
-On this page
-
-* [Overview](#overview)
-* [The Three Stages](#the-three-stages)
-* [Stage 1: Card Collection (Frontend)](#stage-1%3A-card-collection-frontend)
-* [Stage 2: Mandate Creation (Backend)](#stage-2%3A-mandate-creation-backend)
-* [Stage 3: Card Reveal (Backend)](#stage-3%3A-card-reveal-backend)
-* [🔑 Mandate Requirements](#%F0%9F%94%91-mandate-requirements)
-* [Why Mandates Are Required](#why-mandates-are-required)
-* [Token Lifecycle](#token-lifecycle)
-* [⚠️ Critical: CVV Validation](#%E2%9A%A0%EF%B8%8F-critical%3A-cvv-validation)
-* [Frontend: Check CVV Validity Before Purchase](#frontend%3A-check-cvv-validity-before-purchase)
-* [Frontend: Re-collect CVV When Expired](#frontend%3A-re-collect-cvv-when-expired)
-* [Backend: Handle CVV Expiration Errors](#backend%3A-handle-cvv-expiration-errors)
-* [Best Practices for CVV Handling](#best-practices-for-cvv-handling)
-* [User ID: The Connection Point](#user-id%3A-the-connection-point)
-* [Troubleshooting](#troubleshooting)
-* [Next Steps](#next-steps)
-
-Get Started
-
-# Payment Flow
-
-Copy page
-
-Understand the complete payment flow from collection to card reveal, including critical timing considerations
-
-Copy page
-
-**What You’ll Learn**This guide covers:
+**What You’ll Learn ** This guide covers:
 
 * The three-stage payment flow (Collection → Mandate → Reveal)
 * CVV expiration rules (60-minute window)
@@ -104,22 +13,15 @@ Copy page
 
 This guide walks through the complete payment flow in the nekuda system, from initial card collection to final card reveal. Understanding this flow is critical for building reliable payment integrations.
 
-## [​](#overview) Overview
+## Overview
 
-The nekuda payment system follows a secure three-stage flow:
+The nekuda payment system follows a secure three-stage flow:**Critical: One Mandate Per Purchase ** Every purchase requires a **new mandate ** and **new reveal token** . You cannot reuse mandates or reveal tokens across multiple purchases. Each transaction must follow the complete flow: Create Mandate → Request Token → Reveal Card.
 
+## The Three Stages
 
-**Critical: One Mandate Per Purchase**Every purchase requires a **new mandate** and **new reveal token**. You cannot reuse mandates or reveal tokens across multiple purchases. Each transaction must follow the complete flow: Create Mandate → Request Token → Reveal Card.
+### Stage 1: Card Collection (Frontend)
 
-## [​](#the-three-stages) The Three Stages
-
-### [​](#stage-1:-card-collection-frontend) Stage 1: Card Collection (Frontend)
-
-Users add their payment methods through the **NekudaWallet** component. This happens once when they set up their wallet.
-
-Copy
-
-Ask AI
+Users add their payment methods through the **NekudaWallet ** component. This happens once when they set up their wallet.
 
 ```
 import { WalletProvider, NekudaWallet } from '@nekuda/react-nekuda-js';
@@ -133,9 +35,7 @@ function UserSettings() {
     </WalletProvider>
   );
 }
-```
-
-**What happens:**
+```**What happens:**
 
 * User enters card details in secure iframe
 * Card is tokenized and stored in nekuda vault
@@ -144,16 +44,12 @@ function UserSettings() {
 
 ---
 
-### [​](#stage-2:-mandate-creation-backend) Stage 2: Mandate Creation (Backend)
+### Stage 2: Mandate Creation (Backend)
 
 When your user instructs their AI agent to make a purchase, your backend creates a **mandate** - a record of the user’s intent to purchase.
 
 * Python
 * TypeScript
-
-Copy
-
-Ask AI
 
 ```
 from nekuda import NekudaClient, MandateData
@@ -172,10 +68,6 @@ mandate = MandateData(
 mandate_response = user.create_mandate(mandate)
 print(f"Mandate ID: {mandate_response.mandate_id}")
 ```
-
-Copy
-
-Ask AI
 
 ```
 import { NekudaClient, MandateData } from '@nekuda/nekuda-js';
@@ -203,16 +95,12 @@ console.log(`Mandate ID: ${mandateResponse.mandateId}`);
 
 ---
 
-### [​](#stage-3:-card-reveal-backend) Stage 3: Card Reveal (Backend)
+### Stage 3: Card Reveal (Backend)
 
 Using the mandate, request a reveal token and exchange it for the actual card details.
 
 * Python
 * TypeScript
-
-Copy
-
-Ask AI
 
 ```
 # Request reveal token
@@ -223,15 +111,11 @@ reveal_response = user.request_card_reveal_token(
 # Reveal card details
 card = user.reveal_card_details(reveal_response.reveal_token)
 
-print(f"Card: **** **** **** {card.card_number[-4:]}")
+print(f"Card: **** ** ** ****{card.card_number[-4:]}")
 print(f"Expiry: {card.card_expiry_date}")
 print(f"CVV: {card.cvv}")
 print(f"Name: {card.cardholder_name}")
 ```
-
-Copy
-
-Ask AI
 
 ```
 // Request reveal token
@@ -242,13 +126,11 @@ const revealResponse = await user.requestCardRevealToken(
 // Reveal card details
 const card = await user.revealCardDetails(revealResponse.revealToken);
 
-console.log(`Card: **** **** **** ${card.cardNumber.slice(-4)}`);
+console.log(`Card:** ** **** ** **${card.cardNumber.slice(-4)}`);
 console.log(`Expiry: ${card.cardExpiryDate}`);
 console.log(`CVV: ${card.cvv}`);
 console.log(`Name: ${card.cardholderName}`);
-```
-
-**What happens:**
+```**What happens:**
 
 * Reveal token is generated (short-lived, single-use)
 * Token is exchanged for card details
@@ -256,15 +138,15 @@ console.log(`Name: ${card.cardholderName}`);
 
 ---
 
-## [​](#🔑-mandate-requirements) 🔑 Mandate Requirements
+## 🔑 Mandate Requirements
 
-**Every Purchase = New Mandate + New Reveal Token**You **cannot** reuse mandates or reveal tokens. Each purchase requires:
+**Every Purchase = New Mandate + New Reveal Token ** You **cannot ** reuse mandates or reveal tokens. Each purchase requires:
 
-1. Create a **new mandate** with the purchase details
-2. Request a **new reveal token** using that mandate ID
+1. Create a **new mandate ** with the purchase details
+2. Request a **new reveal token ** using that mandate ID
 3. Reveal card details using that reveal token
 
-### [​](#why-mandates-are-required) Why Mandates Are Required
+### Why Mandates Are Required
 
 Mandates serve multiple critical purposes:
 
@@ -284,10 +166,7 @@ Card networks require proof of user authorization for each transaction.
 
 Users can review their purchase history through mandate records.
 
-### [​](#token-lifecycle) Token Lifecycle
-
-**1.** Create Mandate → **2.** `mandate_id` → **3.** Request Reveal Token → **4.** `reveal_token` → **5.** Reveal Card → **6.** Card Details → **7.** Complete Purchase → **8.** Token Consumed
-**Key Points:**
+### Token Lifecycle**1.** Create Mandate →**2.** `mandate_id` →**3.** Request Reveal Token →**4.** `reveal_token` →**5.** Reveal Card →**6.** Card Details →**7.** Complete Purchase →**8.** Token Consumed **Key Points:**
 
 * **Reveal tokens are single-use** - once you reveal card details, the token is consumed
 * **Mandates are tied to specific purchases** - you cannot use mandate #1 for purchase #2
@@ -295,9 +174,7 @@ Users can review their purchase history through mandate records.
 
 ---
 
-## [​](#⚠️-critical:-cvv-validation) ⚠️ Critical: CVV Validation
-
-**CVV is only available for 60 minutes after collection.**CVV validation happens when you **request a reveal token**. If the CVV has expired (>60 minutes since collection), `request_card_reveal_token()` will raise a `CardCvvExpiredError`. You must prompt the user to re-enter their CVV before proceeding.
+## ⚠️ Critical: CVV Validation **CVV is only available for 60 minutes after collection.** CVV validation happens when you **request a reveal token** . If the CVV has expired (>60 minutes since collection), `request_card_reveal_token()` will raise a `CardCvvExpiredError`. You must prompt the user to re-enter their CVV before proceeding.
 
 CVVs are stored securely with a timestamp. For PCI compliance, they cannot be stored long-term. The 60-minute window allows for immediate purchases while maintaining security standards.
 **Key behavior:**
@@ -306,13 +183,9 @@ CVVs are stored securely with a timestamp. For PCI compliance, they cannot be st
 * If CVV is expired, the token request fails with an error
 * If token request succeeds, `reveal_card_details()` always returns a valid CVV
 
-### [​](#frontend:-check-cvv-validity-before-purchase) Frontend: Check CVV Validity Before Purchase
+### Frontend: Check CVV Validity Before Purchase
 
 Use `useWallet()` to check if the default card has a valid CVV **before** calling your backend:
-
-Copy
-
-Ask AI
 
 ```
 import { useWallet, NekudaCvvCollector } from '@nekuda/react-nekuda-js';
@@ -339,13 +212,9 @@ function PurchaseButton() {
 
 Each payment method has an `isCvvValid` boolean that’s automatically computed based on the `cvvAvailableUntil` timestamp.
 
-### [​](#frontend:-re-collect-cvv-when-expired) Frontend: Re-collect CVV When Expired
+### Frontend: Re-collect CVV When Expired
 
 When `isCvvValid === false`, show `NekudaCvvCollector` to prompt the user for just their CVV (not the full card):
-
-Copy
-
-Ask AI
 
 ```
 import { NekudaCvvCollector } from '@nekuda/react-nekuda-js';
@@ -370,18 +239,14 @@ function CvvPrompt() {
 }
 ```
 
-See [CVV Management](/frontend/wallet/cvv-management) for complete documentation.
+See [CVV Management](frontend/wallet/cvv-management.md) for complete documentation.
 
-### [​](#backend:-handle-cvv-expiration-errors) Backend: Handle CVV Expiration Errors
+### Backend: Handle CVV Expiration Errors
 
 When you call `request_card_reveal_token()`, the API validates the card’s CVV. If expired, it raises a `CardCvvExpiredError`:
 
 * Python
 * TypeScript
-
-Copy
-
-Ask AI
 
 ```
 from nekuda import NekudaClient, MandateData, CardCvvExpiredError
@@ -415,10 +280,6 @@ except CardCvvExpiredError:
         "action": "collect_cvv"
     }
 ```
-
-Copy
-
-Ask AI
 
 ```
 import { NekudaClient, MandateData, CardCvvExpiredError } from '@nekuda/nekuda-js';
@@ -459,7 +320,7 @@ try {
 
 Your frontend receives this error and shows `NekudaCvvCollector`. After the user updates their CVV, retry the token request.
 
-### [​](#best-practices-for-cvv-handling) Best Practices for CVV Handling
+### Best Practices for CVV Handling
 
 ## Do: Catch CVV Errors
 
@@ -479,19 +340,11 @@ Once `reveal_card_details()` succeeds, the CVV is always present. No need to che
 
 ---
 
-## [​](#user-id:-the-connection-point) User ID: The Connection Point
+## User ID: The Connection Point
 
 The `userId` is what connects frontend card collection with backend retrieval:
 
-**Critical**: Both frontend and backend must use the **exact same** `userId` string.
-
-Frontend
-
-Backend
-
-Copy
-
-Ask AI
+**Critical** : Both frontend and backend must use the **exact same** `userId` string.
 
 ```
 <WalletProvider
@@ -504,11 +357,9 @@ Ask AI
 
 ---
 
-## [​](#troubleshooting) Troubleshooting
+## Troubleshooting
 
-Getting CardCvvExpiredError
-
-**Check:**
+Getting CardCvvExpiredError **Check:**
 
 * Has it been more than 60 minutes since the CVV was collected?
 * Did the user add the card recently?
@@ -516,9 +367,7 @@ Getting CardCvvExpiredError
 
 **Solution:** Check `isCvvValid` on the frontend before calling backend, and prompt user to re-enter CVV using `NekudaCvvCollector`.
 
-Can't find user's card
-
-**Check:**
+Can't find user's card **Check:**
 
 * Is the `userId` exactly the same between frontend and backend?
 * Did the user successfully add a card? (Check in their NekudaWallet UI)
@@ -526,9 +375,7 @@ Can't find user's card
 
 **Solution:** Verify `userId` consistency and ensure card was saved successfully.
 
-Mandate creation fails
-
-**Check:**
+Mandate creation fails **Check:**
 
 * Are all required mandate fields provided? (product, price, currency, merchant)
 * Is the user authenticated correctly?
@@ -536,9 +383,7 @@ Mandate creation fails
 
 **Solution:** Review mandate data and ensure all fields are present and valid.
 
-How to extend CVV availability?
-
-**Answer:** The 60-minute window cannot be extended for security/compliance reasons. Instead:
+How to extend CVV availability?**Answer:** The 60-minute window cannot be extended for security/compliance reasons. Instead:
 
 * Prompt users to refresh payment methods before expiration
 * Implement graceful error handling when CVV is missing
@@ -546,22 +391,38 @@ How to extend CVV availability?
 
 ---
 
-## [​](#next-steps) Next Steps
+## Next Steps
 
 [## Payment Flow Scenarios
 
-See real-world examples with timing and CVV expiration](/payment-flow-scenarios)[## Wallet Component
+See real-world examples with timing and CVV expiration](payment-flow-scenarios.md)[## Wallet Component
 
-Set up NekudaWallet for card collection](/frontend/wallet/overview)[## CVV Management
+Set up NekudaWallet for card collection](frontend/wallet/overview.md)[## CVV Management
+ 
+### On-chain Stablecoin Payments (Fint + Fintechain)
+ 
+If you need stablecoin payments, create an order in your backend through Fint’s REST API and handle webhook notifications for status changes. Fintechain performs multi-chain execution and confirmation beneath Fint’s API surface, so your integration remains consistent across chains and currencies.
+ 
+**Create payment (server-side)**
+ 
+```bash
+curl -X POST https://api.fint.io/v1/payments \
+  -H "Authorization: Bearer $FINT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "amount": "25.00",
+    "currency": "USDC",
+    "order_id": "ORDER-1001",
+    "description": "Subscription payment",
+    "notify_url": "https://merchant.example.com/fint/webhook",
+    "metadata": {
+      "customer_id": "CUST-2001"
+    }
+  }'
+```
+ 
+Handle the webhook to mark orders as succeeded or failed, and persist chain metadata (e.g., `tx_hash`, `chain`) when available for audit and reconciliation.
 
-Handle CVV expiration with NekudaCvvCollector](/frontend/wallet/cvv-management)[## Backend SDK
+Handle CVV expiration with NekudaCvvCollector](frontend/wallet/cvv-management.md)[## Backend SDK
 
-Implement mandate creation and card reveal](/nekuda-sdk/getting-started)
-
-[System Overview](/system-overview)[Payment Flow Scenarios](/payment-flow-scenarios)
-
-⌘I
-
-[x](https://x.com/nekuda_ai)[github](https://github.com/nekuda-ai)[linkedin](https://linkedin.com/company/nekuda)
-
-[Powered by](https://www.mintlify.com?utm_campaign=poweredBy&utm_medium=referral&utm_source=nekuda)
+Implement mandate creation and card reveal](nekuda-sdk/getting-started.md)
