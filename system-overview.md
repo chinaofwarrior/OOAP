@@ -49,7 +49,7 @@ Use the reveal token to retrieve the actual card details just-in-time for paymen
 
 The Fint system consists of two main components that work together:
 
-![Architecture overview](assets/system-overview/architecture.svg)
+![Architecture overview](assets/system-overview/architecture.png)
 
 ### Frontend SDK
 
