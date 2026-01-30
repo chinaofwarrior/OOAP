@@ -1,5 +1,4 @@
 # Delete API Key
-![Lux Divider](../../../assets/lux/divider.svg)
 
 DELETE /api/v2/api-keys/{key_id}
 

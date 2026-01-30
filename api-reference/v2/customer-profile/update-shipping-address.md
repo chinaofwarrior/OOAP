@@ -1,5 +1,4 @@
 # Update Shipping Address
-![Lux Divider](../../../assets/lux/divider.svg)
 
 PUT /api/v2/wallet/shipping-address
 

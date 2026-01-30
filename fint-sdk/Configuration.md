@@ -1,5 +1,4 @@
 # Configuration
-![Lux Divider](../assets/lux/divider.svg)
 
 This page lists every **knob & switch** exposed by the Fint SDK and how to tweak them for production workloads.
 

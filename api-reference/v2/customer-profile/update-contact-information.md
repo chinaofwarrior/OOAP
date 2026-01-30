@@ -1,5 +1,4 @@
 # Update Contact Information
-![Lux Divider](../../../assets/lux/divider.svg)
 
 PUT /api/v2/wallet/contact
 

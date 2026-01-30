@@ -1,5 +1,4 @@
 # Get Shipping Address
-![Lux Divider](../../../assets/lux/divider.svg)
 
 GET /api/v2/wallet/shipping-address
 

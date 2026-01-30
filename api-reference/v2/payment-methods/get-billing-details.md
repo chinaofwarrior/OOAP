@@ -1,5 +1,4 @@
 # Get Billing Details
-![Lux Divider](../../../assets/lux/divider.svg)
 
 GET /api/v2/wallet/get_billing_details
 

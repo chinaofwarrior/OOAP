@@ -1,5 +1,4 @@
 # Update Card Information
-![Lux Divider](../../../assets/lux/divider.svg)
 
 PATCH /api/v2/wallet/cards/{card_id}
 

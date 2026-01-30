@@ -1,5 +1,4 @@
 # API Reference
-![Lux Divider](../assets/lux/divider.svg)
 
 Complete reference for all classes, methods, and response models in the Fint SDKs.
 

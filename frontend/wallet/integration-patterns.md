@@ -1,5 +1,4 @@
 # Integration Patterns
-![Lux Divider](../../assets/lux/divider.svg)
 
 ## Overview
 

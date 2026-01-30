@@ -1,5 +1,4 @@
 # Get Contact Information
-![Lux Divider](../../../assets/lux/divider.svg)
 
 GET /api/v2/wallet/contact
 

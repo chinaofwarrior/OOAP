@@ -1,5 +1,4 @@
 # Summary
-![Lux Divider](assets/lux/divider.svg)
 
 * [Introduction](README.md)
 
@@ -26,8 +25,8 @@
 * [Core Concepts](fint-sdk/core-concepts.md)
 * [Error Handling](fint-sdk/Errors.md)
 * [Getting Started](fint-sdk/getting-started.md)
-* [Quickstart](fint-sdk/Quickstart.md)
-* [Quickstart](fint-sdk/Quickstart-backend-sdk.md)
+* [Quickstart (Full SDK)](fint-sdk/Quickstart.md)
+* [Quickstart (Backend SDK)](fint-sdk/Quickstart-backend-sdk.md)
 * [Usage Guide](fint-sdk/usage-guide.md)
 
 ## Security

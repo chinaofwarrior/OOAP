@@ -1,5 +1,4 @@
 # Quickstart
-![Lux Divider](../assets/lux/divider.svg)
 
 Welcome to the rapid-fire tour of the Fint SDK. In less than five minutes you will:
 

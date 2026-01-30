@@ -1,5 +1,4 @@
 # Reveal Card Details
-![Lux Divider](../../../assets/lux/divider.svg)
 
 GET /api/v2/wallet/reveal_card_details
 

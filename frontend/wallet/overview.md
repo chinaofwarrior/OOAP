@@ -1,5 +1,4 @@
 # Wallet Overview
-![Lux Divider](../../assets/lux/divider.svg)
 
 **Package Update (v0.2.0):** The SDK has been renamed from `@fint/react-fint-js` to `@fint/wallet`.
 

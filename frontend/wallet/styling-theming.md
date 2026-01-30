@@ -1,5 +1,4 @@
 # Styling & Theming
-![Lux Divider](../../assets/lux/divider.svg)
 
 ## Overview
 

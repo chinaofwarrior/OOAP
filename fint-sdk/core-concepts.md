@@ -1,5 +1,4 @@
 # Core Concepts
-![Lux Divider](../assets/lux/divider.svg)
 
 Before jumping into advanced usage, it’s worth getting familiar with the **building blocks** that form the Fint SDK public surface.
 

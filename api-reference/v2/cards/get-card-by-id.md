@@ -1,5 +1,4 @@
 # Get Card by ID
-![Lux Divider](../../../assets/lux/divider.svg)
 
 GET /api/v2/wallet/cards/{card_id}
 

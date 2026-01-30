@@ -1,5 +1,4 @@
 # Get Stored Card Details (Legacy)
-![Lux Divider](../../../assets/lux/divider.svg)
 
 GET /api/v2/wallet/{user_id}/card-details
 

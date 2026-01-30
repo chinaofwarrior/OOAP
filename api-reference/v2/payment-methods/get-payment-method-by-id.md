@@ -1,5 +1,4 @@
 # Get payment method by ID
-![Lux Divider](../../../assets/lux/divider.svg)
 
 GET /api/v2/wallet/payment-methods/{paymentMethodId}
 

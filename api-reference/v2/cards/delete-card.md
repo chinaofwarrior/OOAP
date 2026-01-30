@@ -1,5 +1,4 @@
 # Delete Card
-![Lux Divider](../../../assets/lux/divider.svg)
 
 DELETE /api/v2/wallet/cards/{card_id}
 

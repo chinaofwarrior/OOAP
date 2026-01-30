@@ -1,5 +1,4 @@
 # Getting Started
-![Lux Divider](../assets/lux/divider.svg)
 
 ## Installation
 

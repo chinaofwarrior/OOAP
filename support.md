@@ -1,5 +1,4 @@
 # Support
-![Lux Divider](assets/lux/divider.svg)
 
 ## Ask our docs
 

@@ -1,5 +1,4 @@
 # Quickstart
-![Lux Divider](../assets/lux/divider.svg)
 
 Complete your first end-to-end payment flow: collect a card on the frontend, reveal it on the backend.
 

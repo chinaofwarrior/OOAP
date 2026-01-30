@@ -1,5 +1,4 @@
 # Delete payment method
-![Lux Divider](../../../assets/lux/divider.svg)
 
 DELETE /api/v2/wallet/payment-methods/{paymentMethodId}
 
