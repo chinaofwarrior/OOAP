@@ -27,6 +27,8 @@ The wallet organizes user data into three main groups:
 
 This structure gives your AI agent a complete set of credentials to handle purchases across different merchant sites without requiring users to re-enter information.
 
+![Wallet Component Breakdown](../../assets/Wallet%20Component%20Breakdown.png)
+
 **What You’ll Learn**
 
 In this guide, you’ll learn:
@@ -60,6 +62,8 @@ The Fint React SDK provides components at different levels of abstraction:
 ## Prebuilt Wallet
 
 `FintWallet` provides a complete wallet interface with payment methods, contact info, and shipping address management.
+
+![Card List & Management UI Mock](../../assets/Card%20List%20%26%20Management%20UI%20Mock.png)
 
 **When to use:**
 

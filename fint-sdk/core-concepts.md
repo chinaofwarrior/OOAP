@@ -3,6 +3,8 @@
 
 Before jumping into advanced usage, it’s worth getting familiar with the **building blocks** that form the Fint SDK public surface.
 
+![Core Concepts](../assets/Core%20Concepts.png)
+
 ## FintClient
 
 The **single entry-point** to all network operations that:

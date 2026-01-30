@@ -26,6 +26,8 @@ The Fint payment system follows a secure three-stage flow. **Critical: One Manda
 
 Users add their payment methods through the **FintWallet** component. This happens once when they set up their wallet.
 
+![Collect Payment Info](assets/Collect%20Payment%20Info.png)
+
 ```
 import { WalletProvider, FintWallet } from '@fint/wallet';
 
@@ -52,6 +54,8 @@ function UserSettings() {
 ### Stage 2: Mandate Creation (Backend)
 
 When your user instructs their AI agent to make a purchase, your backend creates a **mandate** - a record of the user’s intent to purchase.
+
+![Mandate Capture](assets/Mandate%20Capture.png)
 
 * Python
 * TypeScript
@@ -103,6 +107,8 @@ console.log(`Mandate ID: ${mandateResponse.mandateId}`);
 ### Stage 3: Card Reveal (Backend)
 
 Using the mandate, request a reveal token and exchange it for the actual card details.
+
+![Reveal Token Generation & Usage](assets/Reveal%20Token%20Generation%20%26%20Usage.png)
 
 * Python
 * TypeScript
@@ -411,6 +417,8 @@ How to extend CVV availability?**Answer:** The 60-minute window cannot be extend
 ### On-chain Stablecoin Payments (Fint + Fintechain)
  
 If you need stablecoin payments, create an order in your backend through Fint’s REST API and handle webhook notifications for status changes. Fintechain performs multi-chain execution and confirmation beneath Fint’s API surface, so your integration remains consistent across chains and currencies.
+
+![Webhooks Status Push](assets/Webhooks%20Status%20Push.png)
  
 **Create payment (server-side)**
  

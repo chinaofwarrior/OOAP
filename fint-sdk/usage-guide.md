@@ -7,6 +7,8 @@ This guide walks you through the typical payment flow lifecycle with **type-safe
 
 The Fint payment flow for backend processing consists of these main steps:
 
+![Checkout Agents APIs Integration](../assets/Checkout%20Agents%20APIs%20Integration.png)
+
 1. Initialize Client
 
    Set up the `FintClient` with your API key.

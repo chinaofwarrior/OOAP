@@ -19,12 +19,16 @@ This page provides concrete examples of how the payment flow works in real-world
 
 Understanding when each step happens helps prevent CVV expiration issues.
 
+![API Casual Interaction Diagram](assets/API%20Casual%20Interaction%20Diagram.png)
+
 **Key Insights:**
 
 * **0:00-0:05** - User adds card via FintWallet (CVV timer starts)
 * **0:05-1:05** - 60-minute window where CVV is available
 * **1:05+** - CVV expires, `request_card_reveal_token()` raises `CardCvvExpiredError`
 * **Best Practice:** Complete purchases within 60 minutes of card collection
+
+![Information Flow 2](assets/Information%20Flow2.png)
 
 ---
 

@@ -25,6 +25,8 @@
 
 Fint is a developer-first stablecoin payment gateway that exposes a unified multi-chain API and SDK. Fintechain provides the underlying multi-chain payment execution and on-chain confirmation layer. Together, they deliver a single integration surface while abstracting chain-level differences in confirmations, fees, and settlement.
 
+![Stablecoin + Fintechain Joint Payment Architecture](assets/Stablecoin%20%2B%20Fintechain%20Joint%20Payment%20Architecture.png)
+
 **Highlights**
 * Unified access across chains and stablecoins with a consistent REST API
 * Server-side API key authentication for payment creation and status queries

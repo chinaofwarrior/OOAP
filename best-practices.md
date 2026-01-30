@@ -16,6 +16,8 @@
 * AI isolation: do **not** pass PAN or tokens to LLM prompts, outputs, or screenshots.
 * When in doubt, delete the data.
 
+![Security Best Practices](assets/Security%20Best%20Practices.png)
+
 ---
 
 ### Data Flow
@@ -31,6 +33,8 @@
 * Store secret keys in env vars only.
 * Separate keys per env (dev, staging, prod).
 * Rotate keys every 90 days or after any incident.
+
+![API Key Security Policy](assets/API%20Key%20Security%20Policy.png)
 
 ---
 
