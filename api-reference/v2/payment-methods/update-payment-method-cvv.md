@@ -1,4 +1,5 @@
 # Update payment method CVV
+![Lux Divider](../../../assets/lux/divider.svg)
 
 PATCH /api/v2/wallet/payment-methods/{paymentMethodId}
 

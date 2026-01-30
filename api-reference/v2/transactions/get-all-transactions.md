@@ -1,4 +1,5 @@
 # Get All Transactions
+![Lux Divider](../../../assets/lux/divider.svg)
 
 GET /api/v2/transactions
 

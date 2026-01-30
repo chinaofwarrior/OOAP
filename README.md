@@ -1,4 +1,5 @@
 # Introduction
+![Lux Divider](assets/lux/divider.svg)
 
 ### Key Capabilities
 

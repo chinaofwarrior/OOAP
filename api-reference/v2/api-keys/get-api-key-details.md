@@ -1,4 +1,5 @@
 # Get API Key Details
+![Lux Divider](../../../assets/lux/divider.svg)
 
 GET /api/v2/api-keys/{key_id}
 

@@ -1,4 +1,5 @@
 # Testing Cards
+![Lux Divider](../assets/lux/divider.svg)
 
 ## Overview
 

@@ -1,4 +1,5 @@
 # Revoke API Key
+![Lux Divider](../../../assets/lux/divider.svg)
 
 PUT /api/v2/api-keys/{key_id}/revoke
 

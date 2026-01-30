@@ -1,4 +1,5 @@
 # Best practices
+![Lux Divider](assets/lux/divider.svg)
 
 ### TL;DR
 

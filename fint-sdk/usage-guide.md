@@ -1,4 +1,5 @@
 # Usage Guide
+![Lux Divider](../assets/lux/divider.svg)
 
 This guide walks you through the typical payment flow lifecycle with **type-safe responses** at every step using the Fint SDK.
 

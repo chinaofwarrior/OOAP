@@ -1,4 +1,5 @@
 # Migration Guide
+![Lux Divider](../../assets/lux/divider.svg)
 
 **Package Renamed (v0.2.0):** `@fint/react-fint-js` → `@fint/wallet`
 

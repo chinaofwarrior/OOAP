@@ -1,4 +1,5 @@
 # Payment Flow
+![Lux Divider](assets/lux/divider.svg)
 
 **What You’ll Learn**
 

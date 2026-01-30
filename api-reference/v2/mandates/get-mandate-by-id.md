@@ -1,4 +1,5 @@
 # Get Mandate by ID
+![Lux Divider](../../../assets/lux/divider.svg)
 
 GET /api/v2/mandate/{mandate_id}
 

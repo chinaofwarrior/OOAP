@@ -1,4 +1,5 @@
 # Summary
+![Lux Divider](assets/lux/divider.svg)
 
 * [Introduction](README.md)
 

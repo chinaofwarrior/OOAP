@@ -1,4 +1,5 @@
 # Payment Methods Tab
+![Lux Divider](../../assets/lux/divider.svg)
 
 ## Overview
 

@@ -1,4 +1,5 @@
 # Provisioned Token Webhook
+![Lux Divider](../../../assets/lux/divider.svg)
 
 POST /api/v2/webhooks/visa/provisionedToken
 

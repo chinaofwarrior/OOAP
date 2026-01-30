@@ -1,4 +1,5 @@
 # Create Mandate
+![Lux Divider](../../../assets/lux/divider.svg)
 
 POST /api/v2/mandate/create
 

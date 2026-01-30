@@ -1,4 +1,5 @@
 # System Overview
+![Lux Divider](assets/lux/divider.svg)
 
 **What You’ll Learn**
 
@@ -11,12 +12,22 @@ This page explains:
 
 **Time to read:** 10 minutes
 
-Fint SDK provides a wallet designed specifically for AI agents and applications. It provides a secure way to collect, store, and reveal payment information when needed, enabling AI agents to complete transactions on behalf of users.
-It also supports specific nuances of agentic payments required by card networks, such as recording user-specific authorization (mandate) and utilizing network tokens for payments.
-The wallet has two main components: a frontend to create a beautiful wallet experience and securely collect payment credentials (removing PCI friction from the agent developer), and a backend to retrieve card details just-in-time and handle specific requirements of agentic payments, such as mandates.
-As agentic payments evolve quickly, some underlying details may change, but we always stay aligned with the latest requirements.
+Fint SDK provides a wallet designed specifically for AI agents and applications. It securely collects, stores, and reveals payment information only when needed, enabling agents to complete transactions on behalf of users.
+It also supports agentic payment requirements from card networks, such as recording user-specific authorization (mandate) and using network tokens.
+The wallet has two components: a frontend that renders the wallet UI and collects credentials (keeping you out of PCI scope), and a backend that records mandates and reveals payment details just-in-time.
+As agentic payments evolve quickly, some underlying details may change, but we stay aligned with the latest requirements.
+
+## Quick Snapshot
+
+| Area | What you get | Why it matters |
+| --- | --- | --- |
+| Frontend | Secure wallet UI + collection | Keeps you out of PCI scope |
+| Backend | Mandates + reveal tokens | Ensures user authorization |
+| Tokens | Network tokens or PANs | Compatible with real checkouts |
 
 ## Agent wallet examples
+
+![Agent wallet UI example](assets/system-overview/wallet-ui.svg)
 
 ## Main Workflows
 
@@ -28,15 +39,17 @@ The **Frontend SDK** renders a wallet within the agent GUI, enabling you to secu
 
 ### 2. Capture Payment Mandate
 
-Because users give permission to an agent to make purchases on their behalf, it is important to record the user mandate for that action. A mandate can take many forms (e.g. click a “buy” button, voice, text etc.) and the **Backend SDK** supports capturing it and storing it for future use. Once you record the mandate in our system, you’ll receive ‘reveal token’ that can be used to reveal the payment credentials when needed.
+Because users give permission to an agent to make purchases on their behalf, it is important to record the user mandate for that action. A mandate can take many forms (e.g. click a “buy” button, voice, text) and the **Backend SDK** supports capturing it and storing it for future use. Once you record the mandate in our system, you’ll receive a reveal token that can be used to reveal the payment credentials when needed.
 
 ### 3. Retrieve Card
 
-Using the reveal token and then retrieve the actual card details just-in-time for payment. This ensures card information is only accessed when explicitly authorized and needed. The card details can appear in two forms: either as a network token (a 16-digit number that looks and behaves like a credit card) when supported by the card network (for example Visa), or as a PAN when not. You can read about our [security best practices](best-practices.md) to handle this stage properly.
+Use the reveal token to retrieve the actual card details just-in-time for payment. This ensures card information is only accessed when explicitly authorized and needed. Card details can appear in two forms: either as a network token (a 16-digit number that looks and behaves like a credit card) when supported by the card network (for example Visa), or as a PAN when not. You can read about our [security best practices](best-practices.md) to handle this stage properly.
 
 ## Architecture Overview
 
 The Fint system consists of two main components that work together:
+
+![Architecture overview](assets/system-overview/architecture.svg)
 
 ### Frontend SDK
 
@@ -53,7 +66,7 @@ The **Frontend SDK** (`@fint/wallet`) runs in the user’s browser and handles:
 The **Backend SDKs** (`fint` for Python and `@fint/fint-js` for TypeScript) run on your server and handle:
 
 * Recording the user mandate
-* Card details / network token retrieve
+* Card details / network token retrieval
 * Policy engine for security (coming soon)
 
 **API Key:** Uses your **secret key** (`sk_*`) - must be kept private on your server. Allows card retrieval for your AI agent.
@@ -77,7 +90,7 @@ Mandates must be created before revealing card details, ensuring proper authoriz
 
 ### Reveal Tokens
 
-**Reveal tokens** are short-lived, single-use tokens that authorize the revelation of card details. They are:
+**Reveal tokens** are short-lived, single-use tokens that authorize revealing card details. They are:
 
 * Generated for specific mandates
 * Time-limited for security

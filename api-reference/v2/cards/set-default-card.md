@@ -1,4 +1,5 @@
 # Set Default Card
+![Lux Divider](../../../assets/lux/divider.svg)
 
 PUT /api/v2/wallet/cards/{card_id}/default
 

@@ -1,4 +1,5 @@
 # Collect Card Details (Legacy)
+![Lux Divider](../../../assets/lux/divider.svg)
 
 POST /api/v2/wallet/cards/collect
 

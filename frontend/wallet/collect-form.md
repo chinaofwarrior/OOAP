@@ -1,4 +1,5 @@
 # Collection Form
+![Lux Divider](../../assets/lux/divider.svg)
 
 ## Overview
 

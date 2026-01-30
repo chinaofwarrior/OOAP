@@ -1,4 +1,5 @@
 # Error Handling
+![Lux Divider](../assets/lux/divider.svg)
 
 The Fint SDK attempts to surface **actionable** errors – no gigantic stack-traces, no generic catch-alls. Everything inherits from `FintError` so you can decide how granular you want your error handling to be.
 
