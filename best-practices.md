@@ -5,7 +5,7 @@
 * **Fint** supplies PCI‑compliant iframes + token APIs; raw card data never hits your servers.
 * **You** keep tokens and logs safe and isolate card data from AI.
 
----
+***
 
 ### Core Principles
 
@@ -15,9 +15,9 @@
 * AI isolation: do **not** pass PAN or tokens to LLM prompts, outputs, or screenshots.
 * When in doubt, delete the data.
 
-![Security Best Practices](assets/Security%20Best%20Practices.png)
+![Security Best Practices](<.gitbook/assets/Security Best Practices.png>)
 
----
+***
 
 ### Data Flow
 
@@ -25,7 +25,7 @@
 2. **Backend** – Store only `{user_id ↔ fint_token}` + `mandate_id`, `request_id`.
 3. **Checkout** – Call `revealCardDetails`, pay immediately, forget the PAN.
 
----
+***
 
 ### Key Management
 
@@ -33,9 +33,9 @@
 * Separate keys per env (dev, staging, prod).
 * Rotate keys every 90 days or after any incident.
 
-![API Key Security Policy](assets/API%20Key%20Security%20Policy.png)
+![API Key Security Policy](<.gitbook/assets/API Key Security Policy.png>)
 
----
+***
 
 ### Quick Checklist
 
@@ -47,4 +47,4 @@
 * HTTPS enforced by default (SDK).
 * Secret key rotation scheduled.
 
-*Ship this and you’re done.*
+_Ship this and you’re done._

@@ -1,5 +1,5 @@
 ---
-description: By the middle of the 21st century
+description: by the middle of the 21st century
 ---
 
 # Fintechain Mission

@@ -2,7 +2,7 @@
 
 Before jumping into advanced usage, it’s worth getting familiar with the **building blocks** that form the Fint SDK public surface.
 
-![Core Concepts](../assets/Core%20Concepts.png)
+![Core Concepts](<../.gitbook/assets/Core Concepts.png>)
 
 ## FintClient
 
@@ -11,7 +11,6 @@ The **single entry-point** to all network operations that:
 * Manages an internal persistent HTTP client with automatic **retry & back-off** for 5xx / 429 responses
 * Can be instantiated directly or via the convenience constructor from environment variables
 * **Automatically normalizes URLs** (adds `https://`, removes trailing slashes). The default base URL is `https://api.fint.io`
-
 * Python
 * TypeScript
 
@@ -35,8 +34,7 @@ const client = new FintClient('sk_...', { baseUrl: 'https://api.fint.io/' });
 
 ## UserContext
 
-A lightweight wrapper returned by `client.user(user_id)` that automatically injects the `user_id` header on every call.
-**A `user_id` is mandatory for all user-specific operations like creating mandates or revealing cards.**
+A lightweight wrapper returned by `client.user(user_id)` that automatically injects the `user_id` header on every call. **A `user_id` is mandatory for all user-specific operations like creating mandates or revealing cards.**
 
 * Python
 * TypeScript
@@ -95,14 +93,11 @@ const revealResponse = await user.requestCardRevealToken(mandateResponse.mandate
 const cardDetails = await user.revealCardDetails(revealResponse.revealToken);
 ```
 
-Behind the scenes **no extra network round-trip** happens for
-`client.user(user_id)` – `UserContext` is just a convenience object that
-stores the `user_id`.
+Behind the scenes **no extra network round-trip** happens for `client.user(user_id)` – `UserContext` is just a convenience object that stores the `user_id`.
 
 ## MandateData
 
-A data class that represents the **user’s intent to purchase**.
-It must be successfully submitted via `user.create_mandate(mandate_data)` to obtain a `mandate_id` before you can request a card reveal token.
+A data class that represents the **user’s intent to purchase**. It must be successfully submitted via `user.create_mandate(mandate_data)` to obtain a `mandate_id` before you can request a card reveal token.
 
 * Python
 * TypeScript
@@ -245,8 +240,7 @@ FintError
  └─ FintValidationError       # client-side validation failed
 ```
 
-The SDK detects and properly handles HTML error pages (nginx
-errors, gateway timeouts) that sometimes occur during infrastructure issues.
+The SDK detects and properly handles HTML error pages (nginx errors, gateway timeouts) that sometimes occur during infrastructure issues.
 
 For a deep-dive see the dedicated [Error Handling](Errors.md) page.
 
@@ -258,8 +252,7 @@ The SDK automatically validates all API responses:
 
 Response Validation Features
 
-* HTML error pages (502 Bad Gateway, nginx errors) - Invalid JSON responses -
-  Missing required fields - Invalid field formats
+* HTML error pages (502 Bad Gateway, nginx errors) - Invalid JSON responses - Missing required fields - Invalid field formats
 
 ### URL Normalization
 
@@ -296,8 +289,7 @@ The SDK client is designed to be **cheap to instantiate** but you can (and shoul
 
 ### Future Roadmap
 
-**Async Support Coming Soon** 🔮 The public API has been designed with parity
-in mind, so an `AsyncFintClient` will drop in without breaking changes.
+**Async Support Coming Soon** 🔮 The public API has been designed with parity in mind, so an `AsyncFintClient` will drop in without breaking changes.
 
 ### Async-First Design
 
@@ -312,5 +304,5 @@ const card = await user.revealCardDetails(token.revealToken);
 
 ## What’s Next?
 
-- [Usage Guide](usage-guide.md) — Learn the complete payment flow step-by-step
-- [Configuration](Configuration.md) — Customize the SDK for your production environment
+* [Usage Guide](usage-guide.md) — Learn the complete payment flow step-by-step
+* [Configuration](Configuration.md) — Customize the SDK for your production environment
