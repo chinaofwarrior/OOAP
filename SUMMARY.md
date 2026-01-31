@@ -84,4 +84,4 @@
 
 ***
 
-* [Acknowledgements](acknowledgements.md)
+* [Acknowledgements](fintechain-mission.md)
