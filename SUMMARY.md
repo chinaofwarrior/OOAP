@@ -1,6 +1,7 @@
 # Table of contents
 
-* [Introduction](README.md)
+* [Fintechain Mission](README.md)
+* [Fintechain Project](<README (1).md>)
 
 ## Get Started
 
@@ -83,4 +84,4 @@
 
 ***
 
-* [Fintechain Mission](fintechain-mission.md)
+* [Fintechain Mission](fintechain-mission-1.md)

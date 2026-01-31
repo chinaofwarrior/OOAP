@@ -1,43 +1,20 @@
-# Introduction
+---
+description: By the middle of the 21st century
+---
 
-### Key Capabilities
+# Fintechain Mission
 
-* Securely collect and store payment credentials for AI agents and apps.
-* Record user mandates (authorization) and retrieve cards just-in-time for transactions.
-* Support network tokens and other agentic payment requirements from card networks.
-* No PCI burden — drop in the SDK and start transacting.
+Fintechain’s mission is to harness modern blockchain and AI infrastructure to lay the foundations of financial inclusion for the mid-21st century.
 
-### Select Use Cases
+By uniting 150 fintech experts committed to pushing financial inclusion beyond its current limits, we seek to build civilization-scale infrastructure for the financial world
 
-* **Browser assistant** that navigates to commerce sites and buys on command (e.g. “go ahead and pay for this flight”).
-* **In-app “Buy Now”** buttons powered by automation agents that drive checkout flows.
-* **In-chat agents** that buy on command using text instructions.
-* **Voice-driven purchases** without manually entering payment details.
+Fintechain is building a philosophy for the next 20 years of financial inclusion through a problem-oriented approach.
 
-### Getting Started
+The Fintechain team has brought together hundreds of fintech experts who embrace Problem-Oriented Technique, united by a shared conviction to tackle these challenges one problem at a time.
 
-1. Read the [System Overview](system-overview.md) for a clear description of how the Fint SDK works, covering the full payment flow and components of the system.
-2. Follow the [Quickstart guide](fint-sdk/Quickstart.md) to get your agent making payments in minutes.
-3. Check out our agent demo repository for complete implementation examples.
+Fintechain’s 2026 strategy is centered on building a Commerce Agent dedicated to financial inclusion. Using Problem-Oriented Technique as its core methodology, we decompose the challenges of the Commerce Agent into four fundamental problems:
 
-### Fint + Fintechain Combined Stack
-
-Fint is a developer-first stablecoin payment gateway that exposes a unified multi-chain API and SDK. Fintechain provides the underlying multi-chain payment execution and on-chain confirmation layer. Together, they deliver a single integration surface while abstracting chain-level differences in confirmations, fees, and settlement.
-
-![Stablecoin + Fintechain Joint Payment Architecture](<.gitbook/assets/Stablecoin + Fintechain Joint Payment Architecture.png>)
-
-**Highlights**
-
-* Unified access across chains and stablecoins with a consistent REST API
-* Server-side API key authentication for payment creation and status queries
-* Webhook-driven status updates for finality and reconciliation
-
-**Quick Start**
-
-* Install SDK
-
-```bash
-pip install fint
-```
-
-* API base URL: https://api.fint.io
+1. The agentic workflow of the Commerce Agent in procurement and supply-side scenarios
+2. Interoperability between the Commerce Agent and blockchain systems
+3. Fraud detection and risk mitigation for the Commerce Agent
+4. The construction of a financial profile for the Commerce Agent, laying the foundation for future credit and lending
