@@ -25,7 +25,7 @@ The Fint payment system follows a secure three-stage flow. **Critical: One Manda
 
 Users add their payment methods through the **FintWallet** component. This happens once when they set up their wallet.
 
-![Collect Payment Info](assets/Collect%20Payment%20Info.png)
+![Collect Payment Info](<.gitbook/assets/Collect Payment Info.png>)
 
 ```
 import { WalletProvider, FintWallet } from '@fint/wallet';
@@ -48,13 +48,13 @@ function UserSettings() {
 * Linked to the `userId` you provided
 * CVV is stored securely with timestamp
 
----
+***
 
 ### Stage 2: Mandate Creation (Backend)
 
 When your user instructs their AI agent to make a purchase, your backend creates a **mandate** - a record of the user’s intent to purchase.
 
-![Mandate Capture](assets/Mandate%20Capture.png)
+![Mandate Capture](<.gitbook/assets/Mandate Capture.png>)
 
 * Python
 * TypeScript
@@ -101,13 +101,13 @@ console.log(`Mandate ID: ${mandateResponse.mandateId}`);
 * Validates the request
 * Returns a `mandate_id` for authorization
 
----
+***
 
 ### Stage 3: Card Reveal (Backend)
 
 Using the mandate, request a reveal token and exchange it for the actual card details.
 
-![Reveal Token Generation & Usage](assets/Reveal%20Token%20Generation%20%26%20Usage.png)
+![Reveal Token Generation & Usage](<.gitbook/assets/Reveal Token Generation & Usage.png>)
 
 * Python
 * TypeScript
@@ -148,7 +148,7 @@ console.log(`Name: ${card.cardholderName}`);
 * Token is exchanged for card details
 * Returns card number, expiry, CVV\*, and cardholder name
 
----
+***
 
 ## 🔑 Mandate Requirements
 
@@ -162,10 +162,10 @@ console.log(`Name: ${card.cardholderName}`);
 
 Mandates serve multiple critical purposes:
 
-- **Authorization record:** Each mandate documents the user’s explicit intent to make a specific purchase, creating an audit trail.
-- **Security:** Single-use tokens prevent replay attacks and unauthorized card reveals.
-- **Compliance:** Card networks require proof of user authorization for each transaction.
-- **Transparency:** Users can review their purchase history through mandate records.
+* **Authorization record:** Each mandate documents the user’s explicit intent to make a specific purchase, creating an audit trail.
+* **Security:** Single-use tokens prevent replay attacks and unauthorized card reveals.
+* **Compliance:** Card networks require proof of user authorization for each transaction.
+* **Transparency:** Users can review their purchase history through mandate records.
 
 ### Token Lifecycle
 
@@ -184,7 +184,7 @@ Mandates serve multiple critical purposes:
 * **Mandates are tied to specific purchases** - you cannot use mandate #1 for purchase #2
 * **New purchase = complete new flow** - even if it’s the same user and same card
 
----
+***
 
 ## ⚠️ Critical: CVV Validation
 
@@ -353,7 +353,7 @@ Never store or log CVV values. Let Fint handle secure storage.
 
 Once `reveal_card_details()` succeeds, the CVV is always present. No need to check for `None`/`undefined`.
 
----
+***
 
 ## User ID: The Connection Point
 
@@ -370,7 +370,7 @@ The `userId` is what connects frontend card collection with backend retrieval:
 </WalletProvider>
 ```
 
----
+***
 
 ## Troubleshooting
 
@@ -404,23 +404,23 @@ How to extend CVV availability?**Answer:** The 60-minute window cannot be extend
 * Implement graceful error handling when CVV is missing
 * Guide users through quick re-entry flow
 
----
+***
 
 ## Next Steps
 
-- [Payment Flow Scenarios](payment-flow-scenarios.md) — See real-world examples with timing and CVV expiration
-- [Wallet Component](frontend/wallet/overview.md) — Set up FintWallet for card collection
-- [CVV Management](frontend/wallet/cvv-management.md) — Handle CVV expiration with FintCvvCollector
-- [Backend SDK](fint-sdk/getting-started.md) — Implement mandate creation and card reveal
- 
+* [Payment Flow Scenarios](payment-flow-scenarios.md) — See real-world examples with timing and CVV expiration
+* [Wallet Component](frontend/wallet/overview.md) — Set up FintWallet for card collection
+* [CVV Management](frontend/wallet/cvv-management.md) — Handle CVV expiration with FintCvvCollector
+* [Backend SDK](fint-sdk/getting-started.md) — Implement mandate creation and card reveal
+
 ### On-chain Stablecoin Payments (Fint + Fintechain)
- 
+
 If you need stablecoin payments, create an order in your backend through Fint’s REST API and handle webhook notifications for status changes. Fintechain performs multi-chain execution and confirmation beneath Fint’s API surface, so your integration remains consistent across chains and currencies.
 
-![Webhooks Status Push](assets/Webhooks%20Status%20Push.png)
- 
+![Webhooks Status Push](<.gitbook/assets/Webhooks Status Push.png>)
+
 **Create payment (server-side)**
- 
+
 ```bash
 curl -X POST https://api.fint.io/v1/payments \
   -H "Authorization: Bearer $FINT_API_KEY" \
@@ -436,6 +436,5 @@ curl -X POST https://api.fint.io/v1/payments \
     }
   }'
 ```
- 
-Handle the webhook to mark orders as succeeded or failed, and persist chain metadata (e.g., `tx_hash`, `chain`) when available for audit and reconciliation.
 
+Handle the webhook to mark orders as succeeded or failed, and persist chain metadata (e.g., `tx_hash`, `chain`) when available for audit and reconciliation.

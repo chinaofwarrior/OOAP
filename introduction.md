@@ -7,7 +7,7 @@
 * Support network tokens and other agentic payment requirements from card networks.
 * No PCI burden — drop in the SDK and start transacting.
 
-![Fint & AI Agents Integration](assets/Fint%20%26%20AI%20Agents%20Integration.png)
+![Fint & AI Agents Integration](<.gitbook/assets/Fint & AI Agents Integration.png>)
 
 ### Select Use Cases
 
@@ -16,7 +16,7 @@
 * **In-chat agents** that buy on command using text instructions.
 * **Voice-driven purchases** without manually entering payment details.
 
-![Use Case Scenarios](assets/Use%20Case%20Scenarios.png)
+![Use Case Scenarios](<.gitbook/assets/Use Case Scenarios.png>)
 
 ### Getting Started
 

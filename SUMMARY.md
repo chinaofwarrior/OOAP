@@ -1,8 +1,9 @@
-# Summary
+# Table of contents
 
 * [Introduction](README.md)
 
 ## Get Started
+
 * [Introduction](introduction.md)
 * [Payment Flow](payment-flow.md)
 * [Payment Flow Scenarios](payment-flow-scenarios.md)
@@ -10,6 +11,7 @@
 * [System Overview](system-overview.md)
 
 ## Frontend SDK
+
 * [Collection Form](frontend/wallet/collect-form.md)
 * [CVV Management](frontend/wallet/cvv-management.md)
 * [Integration Patterns](frontend/wallet/integration-patterns.md)
@@ -20,6 +22,7 @@
 * [Wallet Overview](frontend/wallet/overview.md)
 
 ## Fint SDK
+
 * [API Reference](fint-sdk/api-reference.md)
 * [Configuration](fint-sdk/Configuration.md)
 * [Core Concepts](fint-sdk/core-concepts.md)
@@ -30,13 +33,16 @@
 * [Usage Guide](fint-sdk/usage-guide.md)
 
 ## Security
+
 * [Best practices](best-practices.md)
 * [Policy Engine & Safety](policy-engine-safety.md)
 
 ## Testing
+
 * [Testing Cards](testing/testing-cards.md)
 
 ## API Reference
+
 * [Add Payment Method](api-reference/v2/payment-methods/add-payment-method.md)
 * [Collect Card Details (Legacy)](api-reference/v2/collect/collect-card-details-legacy.md)
 * [Collect customer information](api-reference/v2/collect/collect-customer-information.md)
@@ -74,3 +80,7 @@
 * [Update payment method](api-reference/v2/payment-methods/update-payment-method.md)
 * [Update payment method CVV](api-reference/v2/payment-methods/update-payment-method-cvv.md)
 * [Update Shipping Address](api-reference/v2/customer-profile/update-shipping-address.md)
+
+***
+
+* [Fintechain Mission](fintechain-mission.md)

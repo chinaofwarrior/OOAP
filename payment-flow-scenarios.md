@@ -18,7 +18,7 @@ This page provides concrete examples of how the payment flow works in real-world
 
 Understanding when each step happens helps prevent CVV expiration issues.
 
-![API Casual Interaction Diagram](assets/API%20Casual%20Interaction%20Diagram.png)
+![API Casual Interaction Diagram](<.gitbook/assets/API Casual Interaction Diagram.png>)
 
 **Key Insights:**
 
@@ -27,9 +27,9 @@ Understanding when each step happens helps prevent CVV expiration issues.
 * **1:05+** - CVV expires, `request_card_reveal_token()` raises `CardCvvExpiredError`
 * **Best Practice:** Complete purchases within 60 minutes of card collection
 
-![Information Flow 2](assets/Information%20Flow2.png)
+![Information Flow 2](<.gitbook/assets/Information Flow2.png>)
 
----
+***
 
 ## Scenario 1: Immediate Purchase ✅
 
@@ -92,7 +92,7 @@ card = user.reveal_card_details(reveal_resp.reveal_token)
 assert card.cvv  # Always present
 ```
 
----
+***
 
 ## Scenario 2: Delayed Purchase ⚠️
 
@@ -101,7 +101,7 @@ User adds card but doesn’t make a purchase until later.
 ### Flow
 
 1. **00:00** - User adds card via FintWallet
-2. *User closes app, comes back next day*
+2. _User closes app, comes back next day_
 3. **24:00** - User says “Buy this item”
 4. **24:00** - Backend flow:
    * Create mandate #1
@@ -189,7 +189,7 @@ except CardCvvExpiredError:
 complete_purchase(card)
 ```
 
----
+***
 
 ## Scenario 3: Multiple Purchases ✅
 
@@ -251,7 +251,7 @@ card_2 = user.reveal_card_details(reveal_2.reveal_token)
 # CANNOT reuse mandate_1 or reveal_1 for purchase #2
 ```
 
----
+***
 
 ## Best Practices
 
@@ -271,7 +271,7 @@ For frequent purchases, prompt CVV re-entry before 60-minute window expires
 
 Never reuse mandates or reveal tokens across multiple purchases
 
----
+***
 
 ## Timing Considerations
 
@@ -300,11 +300,11 @@ Never reuse mandates or reveal tokens across multiple purchases
    * For high-value purchases, collect CVV just before transaction
    * Minimizes risk of expiration during checkout
 
----
+***
 
 ## Related
 
-- [Payment Flow Core](payment-flow.md) — Understand the three-stage payment flow
-- [CVV Management](frontend/wallet/cvv-management.md) — Learn about FintCvvCollector component
-- [Troubleshooting](payment-flow.md) — Common issues and solutions
-- [Backend SDK](fint-sdk/getting-started.md) — Implement mandate and reveal logic
+* [Payment Flow Core](payment-flow.md) — Understand the three-stage payment flow
+* [CVV Management](frontend/wallet/cvv-management.md) — Learn about FintCvvCollector component
+* [Troubleshooting](payment-flow.md) — Common issues and solutions
+* [Backend SDK](fint-sdk/getting-started.md) — Implement mandate and reveal logic

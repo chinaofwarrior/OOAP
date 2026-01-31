@@ -1,5 +1,7 @@
 # Wallet Overview
 
+## Wallet Overview
+
 **Package Update (v0.2.0):** The SDK has been renamed from `@fint/react-fint-js` to `@fint/wallet`.
 
 ```
@@ -16,7 +18,7 @@ All functionality remains the same—only the package name changed.
 
 **First time using the Wallet?** Start with the Wallet Wizard for a quick, interactive walkthrough that shows you how to set up and use the wallet—ideal for visual learners or first-time users.
 
-## Data Collected by the Wallet
+### Data Collected by the Wallet
 
 The wallet organizes user data into three main groups:
 
@@ -26,7 +28,7 @@ The wallet organizes user data into three main groups:
 
 This structure gives your AI agent a complete set of credentials to handle purchases across different merchant sites without requiring users to re-enter information.
 
-![Wallet Component Breakdown](../../assets/Wallet%20Component%20Breakdown.png)
+![Wallet Component Breakdown](<../../.gitbook/assets/Wallet Component Breakdown.png>)
 
 **What You’ll Learn**
 
@@ -40,29 +42,29 @@ In this guide, you’ll learn:
 
 **Time to complete:** 10 minutes
 
-## Choose Your Integration Approach
+### Choose Your Integration Approach
 
 The Fint React SDK provides three ways to integrate payment collection into your application. Choose based on your needs:
 
-- [Prebuilt Wallet](#prebuilt-wallet) — Complete wallet component with all features included. Recommended for most applications. **Best for:** Getting started quickly with full functionality
-- [Styled Wallet](#styled-wallet) — Same functionality as prebuilt, with complete control over appearance and theming. **Best for:** Matching your existing design system
-- [Custom Integration](#custom-integration) — Standalone collection form for guest checkouts and custom flows. **Best for:** Guest checkout without wallet UI
+* [Prebuilt Wallet](overview.md#prebuilt-wallet) — Complete wallet component with all features included. Recommended for most applications. **Best for:** Getting started quickly with full functionality
+* [Styled Wallet](overview.md#styled-wallet) — Same functionality as prebuilt, with complete control over appearance and theming. **Best for:** Matching your existing design system
+* [Custom Integration](overview.md#custom-integration) — Standalone collection form for guest checkouts and custom flows. **Best for:** Guest checkout without wallet UI
 
-### Component Hierarchy
+#### Component Hierarchy
 
 The Fint React SDK provides components at different levels of abstraction:
 
-- **FintWallet** (highest level): Complete interface with payment methods management, contact info, and shipping address
-- **FintCollectForm** (mid level): Standalone card collection form for custom onboarding or checkout flows
-- **Individual Components** (lowest level): Field-level components (CardNumber, CVV, ExpiryDate) for complete control over layout and UX
+* **FintWallet** (highest level): Complete interface with payment methods management, contact info, and shipping address
+* **FintCollectForm** (mid level): Standalone card collection form for custom onboarding or checkout flows
+* **Individual Components** (lowest level): Field-level components (CardNumber, CVV, ExpiryDate) for complete control over layout and UX
 
----
+***
 
-## Prebuilt Wallet
+### Prebuilt Wallet
 
 `FintWallet` provides a complete wallet interface with payment methods, contact info, and shipping address management.
 
-![Card List & Management UI Mock](../../assets/Card%20List%20%26%20Management%20UI%20Mock.png)
+![Card List & Management UI Mock](<../../.gitbook/assets/Card List & Management UI Mock.png>)
 
 **When to use:**
 
@@ -71,7 +73,7 @@ The Fint React SDK provides components at different levels of abstraction:
 
 **Security Model:** Card data is tokenized on collection and stored server-side. Your frontend never has access to full card numbers or CVVs. Backend SDK retrieves actual card details using your secret API key when your agent needs to complete a purchase.
 
-### Frontend-Backend Flow
+#### Frontend-Backend Flow
 
 **Key Points:**
 
@@ -79,9 +81,9 @@ The Fint React SDK provides components at different levels of abstraction:
 * Backend uses `secretKey` (retrieval only)
 * Same `userId` required on both sides
 
----
+***
 
-## When to Use FintWallet
+### When to Use FintWallet
 
 **Use FintWallet when you need:**
 
@@ -105,9 +107,9 @@ The Fint React SDK provides components at different levels of abstraction:
 * Apply custom styles via props
 * See [Styling & Theming](styling-theming.md)
 
----
+***
 
-## Quick Start
+### Quick Start
 
 ```
 npm install @fint/wallet
@@ -129,12 +131,11 @@ function UserSettings() {
 
 Get your public key from app.fint.io. Users can now save and manage payment methods. Your backend can retrieve them via the backend SDK.
 
----
+***
 
-## Styled Wallet
+### Styled Wallet
 
-Use the same `FintWallet` component with full control over styling and appearance.
-**Styling options:**
+Use the same `FintWallet` component with full control over styling and appearance. **Styling options:**
 
 * **Themed mode:** Choose from light, dark, or minimal themes
 * **Custom mode:** Override specific style properties
@@ -148,9 +149,9 @@ Use the same `FintWallet` component with full control over styling and appearanc
 
 **Implementation:** See the [Styling & Theming](styling-theming.md) guide for complete details on customization options.
 
----
+***
 
-## Custom Integration
+### Custom Integration
 
 For applications with specific requirements beyond the wallet UI:**`FintCollectForm` Component:**
 
@@ -175,22 +176,21 @@ For applications with specific requirements beyond the wallet UI:**`FintCollectF
 
 See [Collection Form](collect-form.md) for complete documentation and examples.
 
----
+***
 
-## Key Concepts
+### Key Concepts
 
-### `userId`
+#### `userId`
 
 Your user’s unique identifier from your system (e.g., database ID). Must be consistent across frontend and backend. Fint doesn’t generate this - you provide it.
 
-### `publicKey`
+#### `publicKey`
 
-Your public API key (`pk_test_...` or `pk_live_...`) from app.fint.io. Safe to use in frontend code. Only allows card collection, not retrieval.
-Never use your secret key (`sk_*`) in frontend code - it’s for backend only.
+Your public API key (`pk_test_...` or `pk_live_...`) from app.fint.io. Safe to use in frontend code. Only allows card collection, not retrieval. Never use your secret key (`sk_*`) in frontend code - it’s for backend only.
 
----
+***
 
-## Technical Architecture
+### Technical Architecture
 
 **Provider Requirements:**
 
@@ -198,9 +198,9 @@ Never use your secret key (`sk_*`) in frontend code - it’s for backend only.
 * Provides authentication context for all API calls
 * `userId` links cards to your user system
 
----
+***
 
-## Accessing Payment Method Metadata
+### Accessing Payment Method Metadata
 
 Use `useWallet()` to access non-sensitive card metadata in your React components:
 
@@ -222,18 +222,17 @@ function Dashboard() {
 }
 ```
 
-**Available fields:** `id`, `lastFourDigits`, `expiryDate`, `cardType`, `cardHolderName`, `isDefault`, `isCvvValid`, `billingAddress`, timestamps.
-Full card numbers and CVVs are never exposed. Backend SDK only.
+**Available fields:** `id`, `lastFourDigits`, `expiryDate`, `cardType`, `cardHolderName`, `isDefault`, `isCvvValid`, `billingAddress`, timestamps. Full card numbers and CVVs are never exposed. Backend SDK only.
 
----
+***
 
-## Component Props Reference
+### Component Props Reference
 
-### `<WalletProvider>`
+#### `<WalletProvider>`
 
 Required wrapper that provides authentication context for all wallet operations.
 
-[​](#param-public-key)
+[​](overview.md#param-public-key)
 
 publicKey
 
@@ -243,7 +242,7 @@ required
 
 Your Fint **public API key** from the Fint Portal. Safe to use in client-side code. Format: `pk_test_...` or `pk_live_...`
 
-[​](#param-user-id)
+[​](overview.md#param-user-id)
 
 userId
 
@@ -253,7 +252,7 @@ required
 
 **Your user’s unique identifier** from your system. This links saved payment methods to your users. Can be your database user ID, customer ID, or any stable identifier you manage.
 
-[​](#param-debug)
+[​](overview.md#param-debug)
 
 debug
 
@@ -263,11 +262,11 @@ default:"false"
 
 Enable debug logging for troubleshooting API calls and iframe communication.
 
-### `<FintWallet>`
+#### `<FintWallet>`
 
 The main wallet component. All props are optional.
 
-[​](#param-mode)
+[​](overview.md#param-mode)
 
 mode
 
@@ -281,7 +280,7 @@ Styling mode:
 * `headless`: No styling, full control over appearance
 * `custom`: Apply partial style overrides
 
-[​](#param-theme)
+[​](overview.md#param-theme)
 
 theme
 
@@ -291,11 +290,11 @@ default:"'light'"
 
 Pre-built theme to use when `mode="themed"`.
 
-[​](#param-theme-config)
+[​](overview.md#param-theme-config)
 
 themeConfig
 
-Partial<ThemeContract>
+Partial
 
 Override theme tokens for brand customization. Changes cascade throughout the wallet.**Example:**
 
@@ -312,7 +311,7 @@ Override theme tokens for brand customization. Changes cascade throughout the wa
 
 See [Styling & Theming](styling-theming.md) for all available tokens.
 
-[​](#param-class-name)
+[​](overview.md#param-class-name)
 
 className
 
@@ -320,13 +319,13 @@ string
 
 CSS class name for the wallet container.
 
-[​](#param-styles)
+[​](overview.md#param-styles)
 
 styles
 
-Partial<WalletStyles>
+Partial
 
-Component-level style overrides for fine-grained control. Use this to customize specific UI elements (tabs, cards, buttons, etc.).** Use with themeConfig:**
+Component-level style overrides for fine-grained control. Use this to customize specific UI elements (tabs, cards, buttons, etc.).\*\* Use with themeConfig:\*\*
 
 ```
 <FintWallet
@@ -337,39 +336,39 @@ Component-level style overrides for fine-grained control. Use this to customize 
 
 See [Styling & Theming](styling-theming.md) for all style properties.
 
-[​](#param-default-contact)
+[​](overview.md#param-default-contact)
 
 defaultContact
 
-Partial<IdentityData>
+Partial
 
-Pre-fill contact information when user first opens Settings tab.** Fields**: `firstName`, `lastName`, `email`, `phone`
+Pre-fill contact information when user first opens Settings tab.\*\* Fields\*\*: `firstName`, `lastName`, `email`, `phone`
 
-[​](#param-default-shipping)
+[​](overview.md#param-default-shipping)
 
 defaultShipping
 
-Partial<AddressData>
+Partial
 
-Pre-fill shipping address when user first opens Settings tab.** Fields**: `addressLine1`, `addressLine2`, `city`, `state`, `zipCode`, `country`
+Pre-fill shipping address when user first opens Settings tab.\*\* Fields\*\*: `addressLine1`, `addressLine2`, `city`, `state`, `zipCode`, `country`
 
-[​](#param-default-billing)
+[​](overview.md#param-default-billing)
 
 defaultBilling
 
-Partial<AddressData>
+Partial
 
-Pre-fill billing address when user adds a new card.** Fields**: `addressLine1`, `addressLine2`, `city`, `state`, `zipCode`, `country`
+Pre-fill billing address when user adds a new card.\*\* Fields\*\*: `addressLine1`, `addressLine2`, `city`, `state`, `zipCode`, `country`
 
-[​](#param-default-collect-values)
+[​](overview.md#param-default-collect-values)
 
 defaultCollectValues
 
-Partial<CollectFormWithBillingData>
+Partial
 
 Pre-fill the entire “Add Card” form with contact, shipping, and billing details.
 
-[​](#param-render-empty-state)
+[​](overview.md#param-render-empty-state)
 
 renderEmptyState
 
@@ -377,7 +376,7 @@ renderEmptyState
 
 Custom component to render when user has no saved payment methods.
 
-[​](#param-on-error)
+[​](overview.md#param-on-error)
 
 onError
 
@@ -385,7 +384,7 @@ onError
 
 Callback when any operation fails (API errors, network issues, validation failures).
 
-[​](#param-on-contact-change)
+[​](overview.md#param-on-contact-change)
 
 onContactChange
 
@@ -393,7 +392,7 @@ onContactChange
 
 Callback when user updates contact information in Settings tab.
 
-[​](#param-on-shipping-change)
+[​](overview.md#param-on-shipping-change)
 
 onShippingChange
 
@@ -401,7 +400,7 @@ onShippingChange
 
 Callback when user updates shipping address in Settings tab.
 
-[​](#param-show-settings)
+[​](overview.md#param-show-settings)
 
 showSettings
 
@@ -411,11 +410,11 @@ default:"true"
 
 Control whether to show the Settings tab. When `false`, only the Payment Methods view is shown without tabs. Useful when you only need card management without contact/shipping information.
 
-[​](#param-collect-form-visible-sections)
+[​](overview.md#param-collect-form-visible-sections)
 
 collectFormVisibleSections
 
-CollectionSection[]
+CollectionSection\[]
 
 Control which sections to show when users click “Add Card”. By default, all sections are shown.
 
@@ -440,13 +439,13 @@ import { CollectionSection } from '@fint/wallet';
 
 See [Collection Form](collect-form.md) for all available sections.
 
-[​](#param-collect-form-collection-data)
+[​](overview.md#param-collect-form-collection-data)
 
 collectFormCollectionData
 
 CollectionData
 
-Provide data for sections hidden from the “Add Card” form. Use with `collectFormVisibleSections` to skip collecting information you already have.** Fields**: `contactInfo`, `shippingAddress`, `billingAddress`, `cardHolderName`, `customData`** Example:**Copy
+Provide data for sections hidden from the “Add Card” form. Use with `collectFormVisibleSections` to skip collecting information you already have.\*\* Fields\*\*: `contactInfo`, `shippingAddress`, `billingAddress`, `cardHolderName`, `customData`\*\* Example:\*\*Copy
 
 ```
 <FintWallet
@@ -462,15 +461,15 @@ Provide data for sections hidden from the “Add Card” form. Use with `collect
 />
 ```
 
----
+***
 
-## Advanced Example
+### Advanced Example
 
-### Streamlined Add Card Flow
+#### Streamlined Add Card Flow
 
 For existing users, simplify the “Add Card” experience by showing only payment and billing sections:
 
-```
+````
 import { WalletProvider, FintWallet, CollectionSection } from '@fint/wallet';
 
 function PaymentSettings() {
@@ -511,25 +510,23 @@ See [Integration Patterns](integration-patterns.md) for more examples.
 
 ## Frontend to Backend Flow
 
-```
+````
+
 // Frontend: User adds card
-<WalletProvider publicKey="pk_test_..." userId="user_123">
-  <FintWallet />
-</WalletProvider>
-```
 
 ```
-# Backend: Retrieve card when needed
+```
+
+## Backend: Retrieve card when needed
+
 from fint import FintClient, MandateData
 
-client = FintClient.from_env()
-user = client.user("user_123")  # Same userId
+client = FintClient.from\_env() user = client.user("user\_123") # Same userId
 
-mandate_resp = user.create_mandate(MandateData(...))
-reveal_resp = user.request_card_reveal_token(mandate_resp.mandate_id)
-card = user.reveal_card_details(reveal_resp.reveal_token)
+mandate\_resp = user.create\_mandate(MandateData(...)) reveal\_resp = user.request\_card\_reveal\_token(mandate\_resp.mandate\_id) card = user.reveal\_card\_details(reveal\_resp.reveal\_token)
 
-# AI agent now has: card.card_number, card.cvv, card.card_expiry_date
+## AI agent now has: card.card\_number, card.cvv, card.card\_expiry\_date
+
 ```
 
 Frontend stores cards (tokenized). Backend retrieves cards (full details) for your AI agent. See [Quickstart](../../fint-sdk/Quickstart.md) for complete example.
@@ -578,3 +575,4 @@ How do I check if user has saved cards?
 Is it mobile-responsive?
 
 Yes, automatically adapts to mobile screens.
+```

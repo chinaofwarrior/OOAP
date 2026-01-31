@@ -6,31 +6,25 @@ This guide walks you through the typical payment flow lifecycle with **type-safe
 
 The Fint payment flow for backend processing consists of these main steps:
 
-![Checkout Agents APIs Integration](../assets/Checkout%20Agents%20APIs%20Integration.png)
+![Checkout Agents APIs Integration](<../.gitbook/assets/Checkout Agents APIs Integration.png>)
 
-1. Initialize Client
+1.  Initialize Client
 
-   Set up the `FintClient` with your API key.
+    Set up the `FintClient` with your API key.
+2.  Create User Context
 
-2. Create User Context
+    Obtain a `UserContext` by providing a unique `user_id` for your end-user.
+3.  Create Mandate
 
-   Obtain a `UserContext` by providing a unique `user_id` for your end-user.
+    Describe the purchase intent by creating a `MandateData` object. This action returns a `mandate_id`.
+4.  Request Reveal Token
 
-3. Create Mandate
+    Use the `mandate_id` to get a short-lived, single-use token to access card details.
+5.  Reveal Card Details
 
-   Describe the purchase intent by creating a `MandateData` object. This action returns a `mandate_id`.
+    Exchange the token for actual card information to complete the purchase.
 
-4. Request Reveal Token
-
-   Use the `mandate_id` to get a short-lived, single-use token to access card details.
-
-5. Reveal Card Details
-
-   Exchange the token for actual card information to complete the purchase.
-
-**Important Workflow:** A `user_id` is **required** to create a user context.
-A `MandateData` object **must be created and submitted** to the API via
-`user.create_mandate()` to obtain a `mandate_id`. This `mandate_id` is then **required** to request a `reveal_token`.
+**Important Workflow:** A `user_id` is **required** to create a user context. A `MandateData` object **must be created and submitted** to the API via `user.create_mandate()` to obtain a `mandate_id`. This `mandate_id` is then **required** to request a `reveal_token`.
 
 ## Complete Example
 
@@ -430,8 +424,7 @@ import { FintError } from '@fint/fint-js';
 
 ### Token Security
 
-Reveal tokens (`reveal_token`) are single-use and time-limited. Store them
-securely if necessary, but ideally, use them immediately after generation.
+Reveal tokens (`reveal_token`) are single-use and time-limited. Store them securely if necessary, but ideally, use them immediately after generation.
 
 ### Rate Limiting
 
@@ -439,6 +432,6 @@ The SDK automatically handles rate limiting with exponential backoff based on `m
 
 ## What’s Next?
 
-- [Error Handling](Errors.md) — Build resilient applications with proper error handling
-- [Configuration](Configuration.md) — Configure advanced settings for your environment
-- [API Reference](api-reference.md) — Complete method documentation and examples
+* [Error Handling](Errors.md) — Build resilient applications with proper error handling
+* [Configuration](Configuration.md) — Configure advanced settings for your environment
+* [API Reference](api-reference.md) — Complete method documentation and examples
