@@ -508,7 +508,8 @@ function PaymentSettings() {
   );
 }
 ```
-{% endraw %}** Result**: When users click “Add Card”, they only fill in payment and billing details. Contact and shipping info is sent automatically from your system.
+{% endraw %}
+**Result**: When users click “Add Card”, they only fill in payment and billing details. Contact and shipping info is sent automatically from your system.
 See [Integration Patterns](integration-patterns.md) for more examples.
 
 ---
