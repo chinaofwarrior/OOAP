@@ -471,7 +471,7 @@ Provide data for sections hidden from the “Add Card” form. Use with `collect
 
 For existing users, simplify the “Add Card” experience by showing only payment and billing sections:
 
-````
+```jsx
 import { WalletProvider, FintWallet, CollectionSection } from '@fint/wallet';
 
 function PaymentSettings() {
@@ -506,7 +506,6 @@ function PaymentSettings() {
   );
 }
 ```
-{% endraw %}
 **Result**: When users click “Add Card”, they only fill in payment and billing details. Contact and shipping info is sent automatically from your system.
 See [Integration Patterns](integration-patterns.md) for more examples.
 
@@ -514,24 +513,26 @@ See [Integration Patterns](integration-patterns.md) for more examples.
 
 ## Frontend to Backend Flow
 
-````
-
-// Frontend: User adds card
-
-```
+```jsx
+<WalletProvider publicKey="pk_test_..." userId="user_123">
+  <FintWallet />
+</WalletProvider>
 ```
 
 ## Backend: Retrieve card when needed
 
+```python
 from fint import FintClient, MandateData
 
-client = FintClient.from\_env() user = client.user("user\_123") # Same userId
+client = FintClient.from_env()
+user = client.user("user_123")
 
-mandate\_resp = user.create\_mandate(MandateData(...)) reveal\_resp = user.request\_card\_reveal\_token(mandate\_resp.mandate\_id) card = user.reveal\_card\_details(reveal\_resp.reveal\_token)
-
-## AI agent now has: card.card\_number, card.cvv, card.card\_expiry\_date
-
+mandate_resp = user.create_mandate(MandateData(...))
+reveal_resp = user.request_card_reveal_token(mandate_resp.mandate_id)
+card = user.reveal_card_details(reveal_resp.reveal_token)
 ```
+
+AI agent now has: `card.card_number`, `card.cvv`, `card.card_expiry_date`.
 
 Frontend stores cards (tokenized). Backend retrieves cards (full details) for your AI agent. See [Quickstart](../../fint-sdk/Quickstart.md) for complete example.
 
@@ -579,4 +580,3 @@ How do I check if user has saved cards?
 Is it mobile-responsive?
 
 Yes, automatically adapts to mobile screens.
-```

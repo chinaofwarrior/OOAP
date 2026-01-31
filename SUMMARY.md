@@ -1,7 +1,8 @@
 # Table of contents
 
-* [Fintechain Mission](README.md)
-* [Fintechain Project](<README (1).md>)
+* [Fintechain Agent](Fintechain Paper1.md)
+* [Fintechain Protocol](Fintechain Paper2.md)
+* [Fintechain Detection](Fintechain Paper3.md)
 
 ## Get Started
 
