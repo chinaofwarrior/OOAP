@@ -18,3 +18,6 @@ Fintechain’s 2026 strategy is centered on building a Commerce Agent dedicated 
 2. Interoperability between the Commerce Agent and blockchain systems
 3. Fraud detection and risk mitigation for the Commerce Agent
 4. The construction of a financial profile for the Commerce Agent, laying the foundation for future credit and lending
+
+From a pragmatist methodological perspective, Fintechain adopts an umbrella strategy, with its Financial Inclusion Agentic AI as the core product and payment channels, digital banking, and interoperability protocols as “entry-level” products. Driven by revenue growth and executed step by step, this documentation focuses on the Commerce Agentic Infrastructure as the centerpiece for 2026
+
