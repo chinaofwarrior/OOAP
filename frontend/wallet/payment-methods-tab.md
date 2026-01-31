@@ -54,6 +54,8 @@ Show only payment and billing fields if you already have contact and shipping in
 ```
 import { CollectionSection } from '@fint/wallet';
 
+{% raw %}
+```
 <FintWallet
   collectFormVisibleSections={[
     CollectionSection.Payment,
@@ -64,6 +66,8 @@ import { CollectionSection } from '@fint/wallet';
     shippingAddress: user.shipping
   }}
 />
+```
+{% endraw %}
 ```
 
 See [Collection Form](collect-form.md) for more details on section control.

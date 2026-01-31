@@ -87,6 +87,7 @@ Your user already has an account with contact and shipping info. Just collect th
 ```
 import { FintCollectForm, CollectionSection } from '@fint/wallet';
 
+{% raw %}
 <FintCollectForm
   visibleSections={[CollectionSection.Payment, CollectionSection.Billing]}
   collectionData={{
@@ -102,6 +103,7 @@ import { FintCollectForm, CollectionSection } from '@fint/wallet';
     alert('Payment method added!');
   }}
 />
+{% endraw %}
 ```
 
 **What happens:**
@@ -183,6 +185,7 @@ This data is sent to the API along with what the user fills in.
 Pre-populate fields that the user will see:
 
 ```
+{% raw %}
 <FintCollectForm
   defaultValues={{
     firstName: 'Jane',
@@ -191,6 +194,7 @@ Pre-populate fields that the user will see:
     city: 'New York'
   }}
 />
+{% endraw %}
 ```
 
 User can edit these values before submitting.
@@ -219,6 +223,7 @@ Card fields (number, CVV, expiry) cannot be pre-filled for security.
 Apply your brand colors and typography consistently:
 
 ```
+{% raw %}
 <FintCollectForm
   mode="themed"
   theme="light"
@@ -233,6 +238,7 @@ Apply your brand colors and typography consistently:
     }
   }}
 />
+{% endraw %}
 ```
 
 ### Component-Specific Styling
@@ -240,6 +246,7 @@ Apply your brand colors and typography consistently:
 For fine-grained control, use the `styles` prop:
 
 ```
+{% raw %}
 <FintCollectForm
   mode="themed"
   theme="light"
@@ -251,6 +258,7 @@ For fine-grained control, use the `styles` prop:
     input: { fontSize: '16px' }        // Larger text
   }}
 />
+{% endraw %}
 ```
 
 See [Styling & Theming](styling-theming.md) for all customization options.
@@ -264,6 +272,7 @@ When users click “Add Card” in FintWallet, they see this collection form. Cu
 ```
 import { FintWallet, CollectionSection } from '@fint/wallet';
 
+{% raw %}
 <FintWallet
   // Show only payment + billing when adding cards
   collectFormVisibleSections={[
@@ -286,6 +295,7 @@ import { FintWallet, CollectionSection } from '@fint/wallet';
     email: user.email
   }}
 />
+{% endraw %}
 ```
 
 This gives existing users a streamlined “Add Payment Method” experience - they only fill in payment and billing details.
@@ -301,6 +311,7 @@ function Onboarding() {
   return (
     <WalletProvider publicKey="pk_test_..." userId={newUser.id}>
       <h2>Add a payment method</h2>
+{% raw %}
       <FintCollectForm
         visibleSections={[CollectionSection.Payment, CollectionSection.Billing]}
         collectionData={{
@@ -311,6 +322,7 @@ function Onboarding() {
         }}
         onSuccess={() => navigate('/dashboard')}
       />
+{% endraw %}
     </WalletProvider>
   );
 }
@@ -338,6 +350,7 @@ function AddPaymentMethod() {
 
   return (
     <WalletProvider publicKey="pk_test_..." userId={user.id}>
+{% raw %}
       <FintCollectForm
         visibleSections={[CollectionSection.Payment, CollectionSection.Billing]}
         collectionData={{
@@ -346,6 +359,7 @@ function AddPaymentMethod() {
         }}
         onSuccess={() => alert('Payment method added!')}
       />
+{% endraw %}
     </WalletProvider>
   );
 }
@@ -355,84 +369,22 @@ function AddPaymentMethod() {
 
 ## Key Props
 
-[​](#param-visible-sections)
-
-**visibleSections**
-
-Type: `CollectionSection[]`  
-Default: `"All sections"`  
-Choose which sections to show. Sections appear in the order you specify.
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `visibleSections` | `CollectionSection[]` | No | All sections | Choose which sections to show. Sections appear in the order you specify. |
+| `collectionData` | `CollectionData` | No | — | Data for sections you’re not showing. Fields: `contactInfo`, `shippingAddress`, `billingAddress`, `cardHolderName`, `customData`. |
+| `defaultValues` | `object` | No | — | Pre-fill visible form fields. User can edit before submitting. |
+| `onSuccess` | `(data) => void` | Yes | — | Called when collection succeeds. Returns contact, shipping, billing, and payment info. |
+| `onError` | `(error) => void` | No | — | Called when collection fails (validation errors, network issues, etc). |
+| `theme` | `'light' \| 'dark' \| 'minimal'` | No | `light` | Pre-built theme to use. |
+| `mode` | `'themed' \| 'custom' \| 'headless'` | No | `themed` | Styling mode. Use `custom` to override specific styles. |
+| `styles` | `object` | No | — | Custom style overrides. See [Styling & Theming](styling-theming.md). |
+| `googleApiKey` | `string` | No | — | Google Places API key for address autocomplete. |
 
 Example:
 ```
 visibleSections={[CollectionSection.Payment, CollectionSection.Billing]}
 ```
-
-[​](#param-collection-data)
-
-**collectionData**
-
-Type: `CollectionData`  
-Data for sections you’re not showing. Gets sent to API automatically.
-
-Fields:
-- `contactInfo`
-- `shippingAddress`
-- `billingAddress`
-- `cardHolderName`
-- `customData`
-
-[​](#param-default-values)
-
-**defaultValues**
-
-Type: `object`  
-Pre-fill visible form fields. User can edit before submitting.
-
-[​](#param-on-success)
-
-**onSuccess**
-
-Type: `(data) => void`  
-Required  
-Called when collection succeeds. Returns contact, shipping, billing, and payment info.
-
-[​](#param-on-error)
-
-**onError**
-
-Type: `(error) => void`  
-Called when collection fails (validation errors, network issues, etc).
-
-[​](#param-theme)
-
-**theme**
-
-Type: `'light' | 'dark' | 'minimal'`  
-Default: `'light'`  
-Pre-built theme to use.
-
-[​](#param-mode)
-
-**mode**
-
-Type: `'themed' | 'custom' | 'headless'`  
-Default: `'themed'`  
-Styling mode. Use `'custom'` to override specific styles.
-
-[​](#param-styles)
-
-**styles**
-
-Type: `object`  
-Custom style overrides. See [Styling & Theming](styling-theming.md).
-
-[​](#param-google-api-key)
-
-**googleApiKey**
-
-Type: `string`  
-Google Places API key for address autocomplete.
 
 ---
 

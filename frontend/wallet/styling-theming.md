@@ -129,6 +129,7 @@ Use built-in themes with no additional configuration.
 
 Apply partial overrides on top of a theme. Your custom styles merge with the base theme.
 
+{% raw %}
 ```
 <FintWallet
   mode="custom"
@@ -141,6 +142,7 @@ Apply partial overrides on top of a theme. Your custom styles merge with the bas
   }}
 />
 ```
+{% endraw %}
 
 ### `headless` Mode
 
@@ -163,6 +165,7 @@ For consistent branding across all wallet components, use `themeConfig` to overr
 
 ### Quick Brand Color Change
 
+{% raw %}
 ```
 <FintWallet
   mode="themed"
@@ -175,6 +178,7 @@ For consistent branding across all wallet components, use `themeConfig` to overr
   }}
 />
 ```
+{% endraw %}
 
 This single change updates:
 
@@ -185,6 +189,7 @@ This single change updates:
 
 ### Common Token Overrides
 
+{% raw %}
 ```
 <FintWallet
   mode="themed"
@@ -224,11 +229,13 @@ This single change updates:
   }}
 />
 ```
+{% endraw %}
 
 ### Surface Colors (Background Layers)
 
 Control the color hierarchy for proper depth:
 
+{% raw %}
 ```
 <FintWallet
   themeConfig={{
@@ -247,6 +254,7 @@ Control the color hierarchy for proper depth:
   }}
 />
 ```
+{% endraw %}
 
 **Rule of thumb:** App → Card → Sunken should progressively get darker (light mode) or lighter (dark mode) for proper visual hierarchy.
 
@@ -267,6 +275,7 @@ Control the color hierarchy for proper depth:
 
 **Use both together:** Copy
 
+{% raw %}
 ```
 <FintWallet
   mode="themed"
@@ -283,6 +292,7 @@ Control the color hierarchy for proper depth:
   }}
 />
 ```
+{% endraw %}
 
 ---
 
@@ -302,6 +312,7 @@ Controls the wallet-specific interface elements.
 * **Dialogs:** `dialogOverlay`, `dialogPanel`, `dialogActions`
 * **Empty State:** `emptyState`
 
+{% raw %}
 ```
 <FintWallet
   mode="custom"
@@ -331,6 +342,7 @@ Controls the wallet-specific interface elements.
   }}
 />
 ```
+{% endraw %}
 
 ### Layer 2: Form Styles
 
@@ -342,6 +354,7 @@ Controls forms within the wallet (contact info, shipping address, add card form)
 * **Input States:** `input`, `inputFocus`, `inputHover`, `inputValid`, `inputInvalid`
 * **Special:** `error`, `sectionHeader`, `placesDropdown`
 
+{% raw %}
 ```
 <FintWallet
   mode="custom"
@@ -379,6 +392,7 @@ Controls forms within the wallet (contact info, shipping address, add card form)
   }}
 />
 ```
+{% endraw %}
 
 ### Layer 3: Secure Element Styles (Iframe)
 
@@ -447,6 +461,7 @@ Match the wallet to your brand colors:
 
 Create distinctive focus states for accessibility:
 
+{% raw %}
 ```
 <FintWallet
   mode="custom"
@@ -465,11 +480,13 @@ Create distinctive focus states for accessibility:
   }}
 />
 ```
+{% endraw %}
 
 ### Rounded vs Sharp Corners
 
 Adjust border radius to match your design system:
 
+{% raw %}
 ```
 // Rounded design
 <FintWallet
@@ -497,6 +514,7 @@ Adjust border radius to match your design system:
   }}
 />
 ```
+{% endraw %}
 
 ### Spacing Adjustments
 
@@ -552,6 +570,7 @@ Use your brand fonts and sizing:
 
 The wallet is mobile-responsive by default. You can customize behavior with CSS media queries:
 
+{% raw %}
 ```
 <FintWallet
   mode="custom"
@@ -576,6 +595,7 @@ The wallet is mobile-responsive by default. You can customize behavior with CSS 
   }}
 />
 ```
+{% endraw %}
 
 **Mobile-First:** The wallet automatically adjusts layouts for mobile screens (single-column forms, larger touch targets, optimized spacing). You can override with custom styles if needed.
 
@@ -798,6 +818,7 @@ const customStyles: Partial<WalletStyles> = {
 
 Don’t start from scratch. Pick a theme close to your design and customize:
 
+{% raw %}
 ```
 // Good: Start with minimal theme and customize
 <FintWallet
@@ -809,6 +830,7 @@ Don’t start from scratch. Pick a theme close to your design and customize:
 // Avoid: Headless mode unless necessary
 <FintWallet mode="headless" />
 ```
+{% endraw %}
 
 ### 2. Override Sparingly
 
@@ -857,6 +879,7 @@ For dynamic theming, use CSS custom properties:
 
 Always test styling on mobile devices:
 
+{% raw %}
 ```
 <FintWallet
   mode="custom"
@@ -869,11 +892,13 @@ Always test styling on mobile devices:
   }}
 />
 ```
+{% endraw %}
 
 ### 5. Maintain Accessibility
 
 Ensure sufficient contrast and focus states:
 
+{% raw %}
 ```
 <FintWallet
   mode="custom"
@@ -894,6 +919,7 @@ Ensure sufficient contrast and focus states:
   }}
 />
 ```
+{% endraw %}
 
 ---
 
@@ -944,8 +970,11 @@ function CustomCard() {
     </div>
   );
 }
-```**Dynamic theme-aware styling:** Copy
+```
 
+**Dynamic theme-aware styling:** Copy
+
+{% raw %}
 ```
 function StatusIndicator({ status }) {
   const theme = useTheme();
@@ -960,7 +989,8 @@ function StatusIndicator({ status }) {
     </span>
   );
 }
-```**Available theme values:**
+```
+{% endraw %}**Available theme values:**
 
 ```
 const theme = useTheme();
@@ -1008,6 +1038,7 @@ Can I use a different font family?
 Yes! Set `fontFamily` on the `container` style, or target specific elements like `label`, `input`, or `button`:
 
 ```
+{% raw %}
 <FintWallet
   mode="custom"
   theme="light"
@@ -1017,6 +1048,7 @@ Yes! Set `fontFamily` on the `container` style, or target specific elements like
     input: { fontFamily: 'Inter, sans-serif' }
   }}
 />
+{% endraw %}
 ```
 
 Do custom styles apply to the secure iframe elements?
@@ -1047,6 +1079,7 @@ How do I match my existing design system?
 Use `mode="custom"` with your design tokens:
 
 ```
+{% raw %}
 <FintWallet
   mode="custom"
   theme="light"
@@ -1064,6 +1097,7 @@ Use `mode="custom"` with your design tokens:
     }
   }}
 />
+{% endraw %}
 ```
 
 Can I use Tailwind CSS with the wallet?
@@ -1081,6 +1115,7 @@ How do I preview different themes before choosing?
 Render multiple wallets side-by-side in development:
 
 ```
+{% raw %}
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '32px' }}>
   <div>
     <h3>Light</h3>
@@ -1095,6 +1130,7 @@ Render multiple wallets side-by-side in development:
     <FintWallet theme="minimal" />
   </div>
 </div>
+{% endraw %}
 ```
 
 Will my custom styles break with SDK updates?

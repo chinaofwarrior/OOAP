@@ -64,6 +64,7 @@ The collection form has been updated with improved styling and error handling.
 
 **Before:** Copy
 
+{% raw %}
 ```
 import { FintPaymentForm } from '@fint/wallet';
 
@@ -84,9 +85,11 @@ import { FintPaymentForm } from '@fint/wallet';
   }}
 />
 ```
+{% endraw %}
 
 **After:** Copy
 
+{% raw %}
 ```
 import { FintCollectForm } from '@fint/wallet';
 
@@ -104,6 +107,7 @@ import { FintCollectForm } from '@fint/wallet';
   theme="light"
 />
 ```
+{% endraw %}
 
 **Changes:**
 
@@ -121,6 +125,7 @@ The card management modal has evolved into a full-featured wallet component.
 
 **Before:** Copy
 
+{% raw %}
 ```
 import { FintCardManagement } from '@fint/wallet';
 
@@ -142,9 +147,11 @@ import { FintCardManagement } from '@fint/wallet';
   }}
 />
 ```
+{% endraw %}
 
 **After:** Copy
 
+{% raw %}
 ```
 import { FintWallet } from '@fint/wallet';
 
@@ -163,6 +170,7 @@ import { FintWallet } from '@fint/wallet';
   }}
 />
 ```
+{% endraw %}
 
 **Changes:**
 
@@ -255,7 +263,9 @@ function SettingsPage() {
     </FintWalletProvider>
   );
 }
-```**After:** Copy
+```
+
+**After:** Copy
 
 ```
 import { WalletProvider, FintWallet } from '@fint/wallet';
@@ -286,7 +296,9 @@ function CheckoutPage() {
     </FintWalletProvider>
   );
 }
-```**After:**
+```
+
+**After:**
 
 ```
 import { WalletProvider, FintCollectForm } from '@fint/wallet';
@@ -316,14 +328,17 @@ I'm using custom styling - how do I migrate?
 
 The new components use a simpler styling API:** Old:**Copy
 
+{% raw %}
 ```
 <FintCardManagement
   styles={{ fontFamily: 'Inter' }}
   elementsConfig={{ cardNumber: { color: '#000' } }}
   walletStyles={{ modal: { backgroundColor: '#fff' } }}
 />
-```** New:**
+```
+{% endraw %}** New:**
 
+{% raw %}
 ```
 <FintWallet
   mode="custom"
@@ -334,6 +349,7 @@ The new components use a simpler styling API:** Old:**Copy
   }}
 />
 ```
+{% endraw %}
 
 See [Styling & Theming](styling-theming.md) for details.
 

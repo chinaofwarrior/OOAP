@@ -1,0 +1,31 @@
+{
+    "title": "FintDoc",
+    "author": "Fint",
+    "language": "en",
+    "plugins": [
+        "-lunr", 
+        "-search", 
+        "search-pro", 
+        "back-to-top-button", 
+        "chapter-fold", 
+        "splitter", 
+        "tbfed-pagefooter", 
+        "theme-default"
+    ],
+    "pluginsConfig": {
+        "tbfed-pagefooter": {
+            "copyright": "&copy; FintDoc",
+            "modify_label": "Last Updated: ",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        },
+        "theme-default": {
+            "showLevel": false
+        }
+    },
+    "scripts": {
+        "website": "scripts/website.js"
+    },
+    "styles": {
+        "website": "styles/website.css"
+    }
+}

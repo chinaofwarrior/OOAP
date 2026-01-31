@@ -521,6 +521,7 @@ function OnboardingFlow() {
             publicKey={process.env.REACT_APP_FINT_PUBLIC_KEY}
             userId={user.id}
           >
+{% raw %}
             <FintCollectForm
               visibleSections={[CollectionSection.Payment, CollectionSection.Billing]}
               collectionData={{
@@ -538,6 +539,7 @@ function OnboardingFlow() {
                 console.error('Failed to add card:', error);
               }}
             />
+{% endraw %}
           </WalletProvider>
         </div>
       )}
@@ -889,6 +891,7 @@ function FullWallet() {
 #### Phase 4: Brand Customization
 
 ```
+{% raw %}
 function BrandedWallet() {
   return (
     <WalletProvider publicKey={publicKey} userId={userId}>
@@ -908,6 +911,7 @@ function BrandedWallet() {
     </WalletProvider>
   );
 }
+{% endraw %}
 ```
 
 **Key Points:**

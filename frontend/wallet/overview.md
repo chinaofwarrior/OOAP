@@ -299,6 +299,7 @@ Partial<ThemeContract>
 
 Override theme tokens for brand customization. Changes cascade throughout the wallet.**Example:**
 
+{% raw %}
 ```
 <FintWallet
   themeConfig={{
@@ -309,6 +310,7 @@ Override theme tokens for brand customization. Changes cascade throughout the wa
   }}
 />
 ```
+{% endraw %}
 
 See [Styling & Theming](styling-theming.md) for all available tokens.
 
@@ -470,6 +472,7 @@ Provide data for sections hidden from the “Add Card” form. Use with `collect
 
 For existing users, simplify the “Add Card” experience by showing only payment and billing sections:
 
+{% raw %}
 ```
 import { WalletProvider, FintWallet, CollectionSection } from '@fint/wallet';
 
@@ -504,7 +507,8 @@ function PaymentSettings() {
     </WalletProvider>
   );
 }
-```** Result**: When users click “Add Card”, they only fill in payment and billing details. Contact and shipping info is sent automatically from your system.
+```
+{% endraw %}** Result**: When users click “Add Card”, they only fill in payment and billing details. Contact and shipping info is sent automatically from your system.
 See [Integration Patterns](integration-patterns.md) for more examples.
 
 ---

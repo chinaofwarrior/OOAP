@@ -59,6 +59,7 @@ Get notified when users update their contact info:
 
 ### Pre-fill Shipping Data
 
+{% raw %}
 ```
 <FintWallet
   defaultShipping={{
@@ -71,6 +72,7 @@ Get notified when users update their contact info:
   }}
 />
 ```
+{% endraw %}
 
 ### Sync Changes
 

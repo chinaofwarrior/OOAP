@@ -141,12 +141,14 @@ Theme token overrides for brand customization.
 Example:
 
 ```
+{% raw %}
 <FintCvvCollector
   themeConfig={{
     accent: { primary: '#7C3AED' },
     typography: { fontFamily: { base: 'Inter' } }
   }}
 />
+{% endraw %}
 ```
 
 [​](#param-styles)
